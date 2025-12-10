@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity HND 1 - CBT Exam Simulator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+        width: 100%;
+        padding: 60px 40px;
+        text-align: center;
+        animation: slideUp 0.6s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .logo {
+        font-size: 80px;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        color: #2ecc71;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: #7f8c8d;
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+      }
+
+      .features {
+        text-align: left;
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+      }
+
+      .features h3 {
+        color: #2ecc71;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      .features ul {
+        list-style: none;
+      }
+
+      .features li {
+        padding: 10px 0;
+        color: #2c3e50;
+        display: flex;
+        align-items: center;
+      }
+
+      .features li:before {
+        content: "✓";
+        color: #2ecc71;
+        font-weight: bold;
+        margin-right: 12px;
+        font-size: 1.2rem;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 15px 40px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        color: white;
+        flex: 1;
+        min-width: 200px;
+        justify-content: center;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: #2ecc71;
+        border: 2px solid #2ecc71;
+      }
+
+      .btn-secondary:hover {
+        background: #f0fdf4;
+      }
+
+      .info-box {
+        background: #e8f5e9;
+        border-left: 4px solid #2ecc71;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+
+      .info-box h4 {
+        color: #2ecc71;
+        margin-bottom: 10px;
+      }
+
+      .info-box p {
+        color: #2c3e50;
+        line-height: 1.6;
+      }
+
+      .footer {
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid #ecf0f1;
+        color: #7f8c8d;
+        font-size: 0.9rem;
+      }
+
+      .quick-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .quick-link {
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #2c3e50;
+        border: 1px solid #ecf0f1;
+        transition: all 0.3s ease;
+      }
+
+      .quick-link:hover {
+        border-color: #2ecc71;
+        color: #2ecc71;
+        background: #f0fdf4;
+      }
+
+      .quick-link strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .quick-link small {
+        color: #7f8c8d;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 40px 25px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">🛡️</div>
+
+      <!-- Title -->
+      <h1>Cybersecurity HND 1 - CBT Exam Simulator</h1>
+      <p class="subtitle">Department Exam Assessment Platform</p>
+      <p class="subtitle">By Otobo Solomon Destiny</p>
+
+      <!-- Info Box -->
+      <div class="info-box">
+        <h4>Welcome! 👋</h4>
+        <p>
+          Start your exam preparation with our comprehensive CBT simulator
+          featuring 40 questions, real-time tracking, and detailed performance
+          analysis.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="quick-links">
+        <a href="QUICKSTART.md" class="quick-link">
+          <strong>🚀 Quick Start</strong>
+          <small>Get started in 3 steps</small>
+        </a>
+        <a href="README.md" class="quick-link">
+          <strong>📖 Documentation</strong>
+          <small>Complete guide</small>
+        </a>
+      </div>
+
+      <!-- Features -->
+      <div class="features">
+        <h3>✨ Key Features</h3>
+        <ul>
+          <li>60 comprehensive exam questions</li>
+          <li>Real-time 80-minute countdown timer</li>
+          <li>Instant performance analysis</li>
+          <li>Detailed answer review with explanations</li>
+          <li>Auto-save functionality</li>
+          <li>Print/Download results</li>
+          <li>Clean, responsive design</li>
+          <li>Professional green theme</li>
+        </ul>
+      </div>
+
+      <!-- Main Buttons -->
+      <div class="buttons">
+        <a href="login.html" class="btn btn-primary"> 🎯 Start Exam Now </a>
+        <a href="exam.html" class="btn btn-secondary">
+          🔎 Go To Exam (Direct)
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          <strong>Exam Duration:</strong> 80 minutes |
+          <strong>Questions:</strong> 60 | <strong>Passing Score:</strong> 40%
+        </p>
+        <p style="margin-top: 15px">
+          &copy; 2024 CBT Exam Simulator | All rights reserved
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,718 @@
+{
+  "exam": {
+    "title": "CYS 314 - Mathematics For Cybersecurity",
+    "courseCode": "CYS314",
+    "courseName": "Mathematics For Cybersecurity",
+    "department": "Cybersecurity HND 1",
+    "duration": 80,
+    "totalQuestions": 60,
+    "passingScore": 40,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the birthday paradox significance in cryptography?",
+        "options": ["1001", "1101", "1110", "1011"],
+        "correctAnswer": 1,
+        "explanation": "13 in binary is 1101 (8+4+1=13)"
+      },
+      {
+        "id": 2,
+        "question": "What is modular arithmetic used for in cryptography?",
+        "options": [
+          "Database management",
+          "Creating one-way functions for encryption",
+          "Network routing",
+          "Data compression"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Modular arithmetic creates one-way functions essential for cryptographic algorithms."
+      },
+      {
+        "id": 3,
+        "question": "In RSA encryption, what is the role of prime numbers?",
+        "options": [
+          "No role",
+          "Foundation of RSA security through large prime factorization",
+          "Only for speed",
+          "Random selection"
+        ],
+        "correctAnswer": 1,
+        "explanation": "RSA security depends on difficulty of factoring large products of primes."
+      },
+      {
+        "id": 4,
+        "question": "What is Euclidean algorithm used for?",
+        "options": [
+          "Sorting data",
+          "Finding greatest common divisor (GCD)",
+          "Encrypting messages",
+          "Network protocols"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Euclidean algorithm efficiently finds the GCD of two numbers."
+      },
+      {
+        "id": 5,
+        "question": "What is a hash function property that ensures security?",
+        "options": [
+          "Reversibility",
+          "Collision-free (difficult to find two inputs with same hash)",
+          "Predictability",
+          "Simplicity"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Collision resistance ensures no two different inputs produce same hash."
+      },
+      {
+        "id": 6,
+        "question": "What is the hexadecimal value of binary 11111111?",
+        "options": ["EE", "FF", "AA", "DD"],
+        "correctAnswer": 1,
+        "explanation": "Binary 11111111 equals decimal 255, which is FF in hexadecimal."
+      },
+      {
+        "id": 7,
+        "question": "What does XOR (exclusive OR) operation do?",
+        "options": [
+          "Logical AND",
+          "Returns 1 if bits are different, 0 if same",
+          "Bitwise multiplication",
+          "Data compression"
+        ],
+        "correctAnswer": 1,
+        "explanation": "XOR returns true only when inputs differ, fundamental in cryptography."
+      },
+      {
+        "id": 8,
+        "question": "What is Fermat's Little Theorem used for?",
+        "options": [
+          "Prime factorization",
+          "Modular exponentiation in cryptography",
+          "Network security",
+          "File encryption"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Fermat's Little Theorem enables efficient modular exponentiation in RSA."
+      },
+      {
+        "id": 9,
+        "question": "What is the relationship between encryption and permutations?",
+        "options": [
+          "No relationship",
+          "Encryption rearranges data using mathematical permutations",
+          "Unrelated concepts",
+          "Only theoretical"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Permutations mathematically describe how encryption rearranges data."
+      },
+      {
+        "id": 10,
+        "question": "What is a prime number?",
+        "options": [
+          "Even number",
+          "Number divisible only by 1 and itself",
+          "Any odd number",
+          "Number greater than 100"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A prime number has exactly two divisors: 1 and itself."
+      },
+      {
+        "id": 11,
+        "question": "What is complexity analysis in cryptography?",
+        "options": [
+          "System difficulty",
+          "Analyzing computational difficulty of breaking encryption",
+          "Programming complexity",
+          "Network issues"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Complexity analysis proves breaking encryption requires infeasible computation."
+      },
+      {
+        "id": 12,
+        "question": "What is a finite field in cryptography?",
+        "options": [
+          "Agricultural concept",
+          "Mathematical structure for cryptographic operations",
+          "Computer memory",
+          "Network topology"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Finite fields (Galois fields) provide mathematical foundation for crypto algorithms."
+      },
+      {
+        "id": 13,
+        "question": "What is the significance of group theory in cryptography?",
+        "options": [
+          "Team coordination",
+          "Mathematical structure for cryptographic operations",
+          "Social networking",
+          "Data organization"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Group theory describes algebraic structures used in elliptic curve cryptography."
+      },
+      {
+        "id": 14,
+        "question": "Convert decimal 42 to hexadecimal",
+        "options": ["2A", "3C", "1F", "2E"],
+        "correctAnswer": 0,
+        "explanation": "42 decimal = 2A hexadecimal (2×16 + 10 = 42)"
+      },
+      {
+        "id": 15,
+        "question": "What is bitwise AND operation?",
+        "options": [
+          "Logical OR",
+          "Returns 1 only if both bits are 1",
+          "Addition",
+          "Data storage"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Bitwise AND returns 1 only when both corresponding bits are 1."
+      },
+      {
+        "id": 16,
+        "question": "What is the purpose of public key infrastructure (PKI)?",
+        "options": [
+          "Public announcements",
+          "Mathematical framework for secure key distribution",
+          "Website hosting",
+          "Database management"
+        ],
+        "correctAnswer": 1,
+        "explanation": "PKI uses mathematics to securely distribute and manage cryptographic keys."
+      },
+      {
+        "id": 17,
+        "question": "What is multiplicative inverse modulo n?",
+        "options": [
+          "Division only",
+          "Number x such that (a × x) mod n = 1",
+          "Negative numbers",
+          "Prime factors"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Multiplicative inverse is critical for RSA encryption and decryption."
+      },
+      {
+        "id": 18,
+        "question": "What is Shannon entropy in information security?",
+        "options": [
+          "Temperature measurement",
+          "Measure of information randomness and uncertainty",
+          "Network bandwidth",
+          "Memory usage"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Shannon entropy quantifies information content and randomness in data."
+      },
+      {
+        "id": 19,
+        "question": "What is elliptic curve cryptography (ECC)?",
+        "options": [
+          "Circular encryption",
+          "Cryptography using algebraic curves over finite fields",
+          "Network routing",
+          "Database indexing"
+        ],
+        "correctAnswer": 1,
+        "explanation": "ECC provides strong encryption with smaller key sizes using elliptic curves."
+      },
+      {
+        "id": 20,
+        "question": "What is the significance of logarithm in crypto security?",
+        "options": [
+          "Tree data structures",
+          "Discrete logarithm problem provides cryptographic security",
+          "Data logging",
+          "Database operations"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Discrete logarithm difficulty is basis for many cryptographic algorithms."
+      },
+      {
+        "id": 21,
+        "question": "What is a bijection function?",
+        "options": [
+          "One-to-many function",
+          "One-to-one and onto function (perfect pairing)",
+          "Many-to-many",
+          "No function"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Bijections are essential for block ciphers ensuring reversible encryption."
+      },
+      {
+        "id": 22,
+        "question": "What is the birthday paradox significance in cryptography?",
+        "options": [
+          "Irrelevant",
+          "Shows hash collisions are more likely than expected",
+          "Only for celebrations",
+          "Marketing concept"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Birthday paradox explains why hash functions need sufficient output size."
+      },
+      {
+        "id": 23,
+        "question": "What is binary addition without carries?",
+        "options": [
+          "XOR operation",
+          "Regular addition",
+          "AND operation",
+          "OR operation"
+        ],
+        "correctAnswer": 0,
+        "explanation": "XOR performs binary addition without carries, fundamental in cryptography."
+      },
+      {
+        "id": 24,
+        "question": "What is modular exponentiation?",
+        "options": [
+          "Raising to power then dividing",
+          "Efficiently computing (base^exp) mod n",
+          "Simple exponentiation",
+          "Complex calculation"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Modular exponentiation enables efficient RSA without huge numbers."
+      },
+      {
+        "id": 25,
+        "question": "What is coprime (relatively prime)?",
+        "options": [
+          "Same numbers",
+          "Numbers whose GCD is 1",
+          "Prime numbers only",
+          "Even numbers"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Coprime numbers are essential in RSA key generation."
+      },
+      {
+        "id": 26,
+        "question": "What is Euler's totient function φ(n)?",
+        "options": [
+          "Simple counting",
+          "Count of numbers less than n coprime to n",
+          "Prime factorization",
+          "Random selection"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Euler's totient is crucial for RSA encryption parameters."
+      },
+      {
+        "id": 27,
+        "question": "What is bitwise NOT operation?",
+        "options": [
+          "Ignoring bits",
+          "Flipping all bits (0→1, 1→0)",
+          "Setting all to 1",
+          "Setting all to 0"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Bitwise NOT inverts all bits, used in encryption algorithms."
+      },
+      {
+        "id": 28,
+        "question": "What is the purpose of Diffie-Hellman exchange?",
+        "options": [
+          "Data storage",
+          "Secure key exchange over insecure channels",
+          "User authentication",
+          "File compression"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Diffie-Hellman enables secure symmetric key exchange without prior shared secret."
+      },
+      {
+        "id": 29,
+        "question": "What is probability theory's role in cryptanalysis?",
+        "options": [
+          "No role",
+          "Analyzing likelihood of breaking encryption",
+          "Game theory only",
+          "Mathematical proofs"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Probability analyzes expected effort required to break cryptographic systems."
+      },
+      {
+        "id": 30,
+        "question": "What is combinatorics used for in security?",
+        "options": [
+          "Counting only",
+          "Analyzing possible key combinations and attack complexity",
+          "Probability only",
+          "Statistical analysis"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Combinatorics calculates key space and computational complexity of attacks."
+      },
+      {
+        "id": 31,
+        "question": "What is polynomial evaluation mod p?",
+        "options": [
+          "Simple calculation",
+          "Mathematical operation fundamental to secret sharing schemes",
+          "Testing polynomials",
+          "Derivative calculation"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Polynomial evaluation is basis for Shamir's Secret Sharing scheme."
+      },
+      {
+        "id": 32,
+        "question": "What is matrix operation's role in cryptography?",
+        "options": [
+          "No role",
+          "Used in Hill cipher and linear crypto analysis",
+          "Only for storage",
+          "Data formatting"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Matrix operations are used in Hill cipher and cryptanalysis."
+      },
+      {
+        "id": 33,
+        "question": "What is the significance of Chinese Remainder Theorem?",
+        "options": [
+          "Historical only",
+          "Optimizes RSA decryption by system of congruences",
+          "Modern theory",
+          "Database concept"
+        ],
+        "correctAnswer": 1,
+        "explanation": "CRT significantly speeds up RSA decryption computation."
+      },
+      {
+        "id": 34,
+        "question": "What is bitwise left shift (<<)?",
+        "options": [
+          "Moving data",
+          "Shifting bits left, equivalent to multiplication by 2",
+          "Bit removal",
+          "Data compression"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Left shift multiplies binary number by 2, used in encryption."
+      },
+      {
+        "id": 35,
+        "question": "What is inverse operation in modular arithmetic?",
+        "options": [
+          "Forward operation only",
+          "Operation that undoes another operation mod n",
+          "No inverse",
+          "Random operation"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Inverse operations enable encryption/decryption in cryptographic systems."
+      },
+      {
+        "id": 36,
+        "question": "What is the purpose of numerical analysis in crypto?",
+        "options": [
+          "Just numbers",
+          "Analyzing numerical methods for cryptographic algorithms",
+          "Data storage",
+          "Network speed"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Numerical analysis ensures accurate, efficient crypto implementation."
+      },
+      {
+        "id": 37,
+        "question": "What is linear congruence used for?",
+        "options": [
+          "Geometry only",
+          "Solving equations in modular arithmetic",
+          "Physics calculations",
+          "Data visualization"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Linear congruences are fundamental in cryptographic key generation."
+      },
+      {
+        "id": 38,
+        "question": "What is bitwise right shift (>>)?",
+        "options": [
+          "Moving left",
+          "Shifting bits right, equivalent to division by 2",
+          "Bit addition",
+          "Data merging"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Right shift divides binary number by 2, used in encryption."
+      },
+      {
+        "id": 39,
+        "question": "What is substitution permutation network (SPN)?",
+        "options": [
+          "Network routing",
+          "Block cipher structure using substitution and permutation",
+          "Data transfer",
+          "User authentication"
+        ],
+        "correctAnswer": 1,
+        "explanation": "SPN combines substitution and permutation for strong block ciphers."
+      },
+      {
+        "id": 40,
+        "question": "What is the significance of algebraic structure in cryptography?",
+        "options": [
+          "No importance",
+          "Provides mathematical foundation for algorithm security",
+          "Only theoretical",
+          "Historical interest"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Algebraic structures ensure cryptographic algorithms are mathematically sound."
+      },
+      {
+        "id": 41,
+        "question": "What is a primitive root modulo p? (additional)",
+        "options": [
+          "An element whose powers generate all residues mod p",
+          "A composite number",
+          "A prime's factor",
+          "A polynomial"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A primitive root generates the multiplicative group modulo p."
+      },
+      {
+        "id": 42,
+        "question": "Why are large primes important in RSA? (additional)",
+        "options": [
+          "They make factorization computationally hard",
+          "They are easier to factor",
+          "They shorten keys",
+          "They are irrelevant"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Large primes make factoring the modulus difficult, securing RSA."
+      },
+      {
+        "id": 43,
+        "question": "What is modular inverse used for? (additional)",
+        "options": [
+          "Computing private keys and solving congruences",
+          "Deleting files",
+          "Sorting arrays",
+          "Encrypting only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Modular inverse is used in key generation and solving modular equations."
+      },
+      {
+        "id": 44,
+        "question": "What is Euler's totient function φ(n)? (additional)",
+        "options": [
+          "Count of integers < n coprime to n",
+          "Number of primes",
+          "A hash function",
+          "A cipher"
+        ],
+        "correctAnswer": 0,
+        "explanation": "φ(n) counts integers less than n that are relatively prime to n, used in RSA."
+      },
+      {
+        "id": 45,
+        "question": "What is the role of discrete logarithm problem? (additional)",
+        "options": [
+          "Foundation for some cryptosystems' hardness",
+          "A sorting method",
+          "A compression algorithm",
+          "A network protocol"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Discrete log is hard, underpinning systems like Diffie-Hellman."
+      },
+      {
+        "id": 46,
+        "question": "What is a hash function property needed for security? (additional)",
+        "options": [
+          "Preimage resistance",
+          "Predictability",
+          "Reversibility",
+          "Determinism only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Preimage resistance means it's hard to find input given hash output."
+      },
+      {
+        "id": 47,
+        "question": "Why is randomness important in cryptography? (additional)",
+        "options": [
+          "To prevent predictable keys and outputs",
+          "To simplify attacks",
+          "To make systems deterministic",
+          "To reduce entropy"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Good randomness prevents attackers from guessing keys or salts."
+      },
+      {
+        "id": 48,
+        "question": "What is the purpose of a one-way function? (additional)",
+        "options": [
+          "Easy to compute, hard to invert",
+          "Easy to invert",
+          "Slow to compute",
+          "Useless in crypto"
+        ],
+        "correctAnswer": 0,
+        "explanation": "One-way functions underpin hash functions and certain encryption primitives."
+      },
+      {
+        "id": 49,
+        "question": "What is modular exponentiation used for? (additional)",
+        "options": [
+          "Efficiently computing powers mod n as in RSA",
+          "Sorting numbers",
+          "Compressing data",
+          "Networking"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Modular exponentiation is used in encryption and key operations like RSA."
+      },
+      {
+        "id": 50,
+        "question": "What is Fermat's little theorem used for? (additional)",
+        "options": [
+          "Primality testing and modular arithmetic simplifications",
+          "File transfer",
+          "Image processing",
+          "Printing"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Fermat's theorem helps with primality and modular arithmetic calculations."
+      },
+      {
+        "id": 51,
+        "question": "What is Chinese Remainder Theorem beneficial for? (additional)",
+        "options": [
+          "Solving congruences and optimizing computations",
+          "Encrypting images",
+          "Sorting lists",
+          "Networking only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "CRT helps combine congruences and optimize arithmetic in cryptography."
+      },
+      {
+        "id": 52,
+        "question": "Why use finite fields in cryptography? (additional)",
+        "options": [
+          "They provide algebraic structure for many crypto algorithms",
+          "They reduce security",
+          "They are infinite",
+          "They are irrelevant"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Finite fields support operations used in asymmetric cryptography and coding."
+      },
+      {
+        "id": 53,
+        "question": "What is polynomial arithmetic's role in crypto? (additional)",
+        "options": [
+          "Used in algorithms and error-correcting codes",
+          "Used only for graphics",
+          "Not used",
+          "Only for sorting"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Polynomial arithmetic is used in schemes like ECC and coding theory."
+      },
+      {
+        "id": 54,
+        "question": "What is elliptic curve advantage? (additional)",
+        "options": [
+          "Smaller keys for comparable security",
+          "Larger keys required",
+          "No advantage",
+          "Only for hashing"
+        ],
+        "correctAnswer": 0,
+        "explanation": "ECC achieves strong security with smaller key sizes compared to RSA."
+      },
+      {
+        "id": 55,
+        "question": "What is modular reduction? (additional)",
+        "options": [
+          "Bringing values into range by modulus",
+          "Expanding numbers",
+          "Sorting",
+          "Encrypting only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Modular reduction ensures arithmetic stays within defined bounds (mod n)."
+      },
+      {
+        "id": 56,
+        "question": "Why use number theory in crypto? (additional)",
+        "options": [
+          "Provides hard problems like factoring and discrete log",
+          "To make systems slower",
+          "To reduce randomness",
+          "To compress data"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Number theory provides computational hardness assumptions for cryptography."
+      },
+      {
+        "id": 57,
+        "question": "What is key stretching? (additional)",
+        "options": [
+          "Increasing the cost of guessing keys via repeated hashing",
+          "Shortening keys",
+          "Deleting keys",
+          "No purpose"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Key stretching makes brute-force attacks more expensive by increasing computation per guess."
+      },
+      {
+        "id": 58,
+        "question": "What is a pseudorandom generator? (additional)",
+        "options": [
+          "Algorithm producing sequence close to random for cryptography",
+          "Truly random hardware",
+          "A hash only",
+          "A cipher mode"
+        ],
+        "correctAnswer": 0,
+        "explanation": "PRGs produce unpredictable sequences usable as keys or nonces."
+      },
+      {
+        "id": 59,
+        "question": "What is advantage of prime tests? (additional)",
+        "options": [
+          "Quickly determine probable primes for key generation",
+          "They are slow",
+          "They are inaccurate always",
+          "They are useless"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Probabilistic prime tests allow efficient generation of large primes for keys."
+      },
+      {
+        "id": 60,
+        "question": "Why combine math and cryptography? (additional)",
+        "options": [
+          "Math provides the foundations for secure algorithms",
+          "It does not help",
+          "It simplifies attacks",
+          "It only confuses"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Mathematical hardness assumptions underpin secure cryptographic schemes."
+      }
+    ]
+  }
+}

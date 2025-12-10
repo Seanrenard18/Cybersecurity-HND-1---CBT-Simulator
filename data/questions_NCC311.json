@@ -1,0 +1,693 @@
+{
+  "exam": {
+    "title": "NCC 311 - Network Essentials",
+    "courseCode": "NCC311",
+    "courseName": "Network Essentials",
+    "department": "Cybersecurity HND 1",
+    "duration": 80,
+    "totalQuestions": 60,
+    "passingScore": 40,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What does TCP/IP stand for?",
+        "options": [
+          "Transfer Control Protocol/Internet Processor",
+          "Transmission Control Protocol/Internet Protocol",
+          "Terminal Communication Process/Internal Path",
+          "Transfer Control Protocol/Information Process"
+        ],
+        "correctAnswer": 1,
+        "explanation": "TCP/IP is Transmission Control Protocol/Internet Protocol, the foundation of the internet."
+      },
+      {
+        "id": 2,
+        "question": "What is the primary function of a router?",
+        "options": [
+          "Store data files",
+          "Forward packets between networks",
+          "Manage user accounts",
+          "Compress data"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Routers forward data packets between different networks using IP addresses."
+      },
+      {
+        "id": 3,
+        "question": "Which layer of the OSI model deals with physical transmission of data?",
+        "options": [
+          "Transport Layer",
+          "Network Layer",
+          "Physical Layer",
+          "Data Link Layer"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Physical Layer (Layer 1) handles actual transmission through cables and signals."
+      },
+      {
+        "id": 4,
+        "question": "What is an IP address?",
+        "options": [
+          "Internet Processor address",
+          "A unique identifier for devices on a network",
+          "Internet Permission address",
+          "Internal Protocol address"
+        ],
+        "correctAnswer": 1,
+        "explanation": "IP address is a unique numerical identifier for each device on a network."
+      },
+      {
+        "id": 5,
+        "question": "How many bits are in an IPv4 address?",
+        "options": ["16 bits", "32 bits", "64 bits", "128 bits"],
+        "correctAnswer": 1,
+        "explanation": "IPv4 addresses consist of 32 bits, divided into 4 octets."
+      },
+      {
+        "id": 6,
+        "question": "What is a subnet mask used for?",
+        "options": [
+          "Encrypt passwords",
+          "Identify network and host portions of an IP address",
+          "Store network data",
+          "Compress files"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Subnet masks determine which part of IP address is network and which is host."
+      },
+      {
+        "id": 7,
+        "question": "What does DNS stand for?",
+        "options": [
+          "Data Network System",
+          "Domain Name System",
+          "Digital Network Service",
+          "Data Navigation Server"
+        ],
+        "correctAnswer": 1,
+        "explanation": "DNS translates domain names to IP addresses so users can use memorable names."
+      },
+      {
+        "id": 8,
+        "question": "Which port is typically used for HTTP?",
+        "options": ["Port 20", "Port 25", "Port 80", "Port 443"],
+        "correctAnswer": 2,
+        "explanation": "Port 80 is the default port for HTTP (unencrypted web traffic)."
+      },
+      {
+        "id": 9,
+        "question": "What is HTTPS?",
+        "options": [
+          "High Transfer Protocol Secure",
+          "Hyper Transfer Protocol System",
+          "HTTP with SSL/TLS encryption",
+          "Host Transfer Protocol Security"
+        ],
+        "correctAnswer": 2,
+        "explanation": "HTTPS is HTTP with encryption using SSL/TLS protocols for secure communication."
+      },
+      {
+        "id": 10,
+        "question": "What is the function of a firewall?",
+        "options": [
+          "Cool down computers",
+          "Monitor and filter network traffic",
+          "Store backup data",
+          "Amplify signals"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Firewalls monitor incoming and outgoing traffic, blocking unauthorized access."
+      },
+      {
+        "id": 11,
+        "question": "What is a MAC address?",
+        "options": [
+          "Macintosh computer address",
+          "Media Access Control address (physical address)",
+          "Machine Active Code",
+          "Main Access Controller"
+        ],
+        "correctAnswer": 1,
+        "explanation": "MAC address is the physical address of a network interface card (48 bits)."
+      },
+      {
+        "id": 12,
+        "question": "How many layers does the OSI model have?",
+        "options": ["4 layers", "5 layers", "7 layers", "9 layers"],
+        "correctAnswer": 2,
+        "explanation": "OSI model has 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application."
+      },
+      {
+        "id": 13,
+        "question": "What does DHCP provide?",
+        "options": [
+          "Encryption services",
+          "Automatic IP address assignment",
+          "Domain management",
+          "Data compression"
+        ],
+        "correctAnswer": 1,
+        "explanation": "DHCP automatically assigns IP addresses to devices on a network."
+      },
+      {
+        "id": 14,
+        "question": "What is a LAN?",
+        "options": [
+          "Long Area Network",
+          "Local Area Network",
+          "Large Access Node",
+          "Link Area Network"
+        ],
+        "correctAnswer": 1,
+        "explanation": "LAN is a Local Area Network, typically covering a small geographic area."
+      },
+      {
+        "id": 15,
+        "question": "What is a WAN?",
+        "options": [
+          "Wireless Area Network",
+          "Wide Area Network",
+          "Web Access Node",
+          "Wired Authorization Network"
+        ],
+        "correctAnswer": 1,
+        "explanation": "WAN is a Wide Area Network covering larger geographic areas than LANs."
+      },
+      {
+        "id": 16,
+        "question": "What is a gateway?",
+        "options": [
+          "Network entrance",
+          "Device converting data between different network types",
+          "Main server",
+          "Backup system"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Gateway converts data formats between different network protocols."
+      },
+      {
+        "id": 17,
+        "question": "What does FTP stand for?",
+        "options": [
+          "File Terminal Protocol",
+          "File Transfer Protocol",
+          "Fast Technology Protocol",
+          "File Transport Process"
+        ],
+        "correctAnswer": 1,
+        "explanation": "FTP is File Transfer Protocol for uploading/downloading files over networks."
+      },
+      {
+        "id": 18,
+        "question": "Which port is used for SMTP?",
+        "options": ["Port 20", "Port 25", "Port 53", "Port 110"],
+        "correctAnswer": 1,
+        "explanation": "Port 25 is used by SMTP (Simple Mail Transfer Protocol) for sending emails."
+      },
+      {
+        "id": 19,
+        "question": "What is bandwidth?",
+        "options": [
+          "Network speed limit",
+          "Maximum data transmission capacity",
+          "Memory storage",
+          "Processing power"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Bandwidth is the maximum amount of data that can be transmitted over a connection."
+      },
+      {
+        "id": 20,
+        "question": "What is latency?",
+        "options": [
+          "Data storage capacity",
+          "Time delay in data transmission",
+          "Network speed",
+          "Signal strength"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Latency is the time delay between sending and receiving data."
+      },
+      {
+        "id": 21,
+        "question": "What is a switch?",
+        "options": [
+          "On/off device",
+          "Device connecting devices on same network using MAC addresses",
+          "Router component",
+          "Backup storage"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Switch connects devices on a LAN using MAC addresses (Layer 2)."
+      },
+      {
+        "id": 22,
+        "question": "What is NAT?",
+        "options": [
+          "Network Access Terminal",
+          "Network Address Translation",
+          "Network Attachment Tool",
+          "Network Authorization Type"
+        ],
+        "correctAnswer": 1,
+        "explanation": "NAT translates between private and public IP addresses for security and efficiency."
+      },
+      {
+        "id": 23,
+        "question": "What is VPN?",
+        "options": [
+          "Virtual Processor Network",
+          "Very Private Network",
+          "Virtual Private Network",
+          "Virus Prevention Network"
+        ],
+        "correctAnswer": 2,
+        "explanation": "VPN creates encrypted tunnel for secure data transmission over public networks."
+      },
+      {
+        "id": 24,
+        "question": "Which protocol is used for secure shell access?",
+        "options": ["HTTP", "FTP", "SSH", "SMTP"],
+        "correctAnswer": 2,
+        "explanation": "SSH (Secure Shell) provides encrypted remote access to devices."
+      },
+      {
+        "id": 25,
+        "question": "What is QoS?",
+        "options": [
+          "Quantum Operating System",
+          "Quality of Service",
+          "Quick Operating Speed",
+          "Query Operating System"
+        ],
+        "correctAnswer": 1,
+        "explanation": "QoS ensures priority and performance for specific network traffic."
+      },
+      {
+        "id": 26,
+        "question": "What does ARP do?",
+        "options": [
+          "Allocates addresses",
+          "Resolves IP addresses to MAC addresses",
+          "Routes packets",
+          "Compresses data"
+        ],
+        "correctAnswer": 1,
+        "explanation": "ARP (Address Resolution Protocol) maps IP addresses to MAC addresses."
+      },
+      {
+        "id": 27,
+        "question": "What is ICMP used for?",
+        "options": [
+          "Data transmission",
+          "Error reporting and diagnostics (like ping)",
+          "File transfer",
+          "Email routing"
+        ],
+        "correctAnswer": 1,
+        "explanation": "ICMP provides error reporting and diagnostic tools like ping and tracert."
+      },
+      {
+        "id": 28,
+        "question": "What is a proxy server?",
+        "options": [
+          "Main server",
+          "Server acting as intermediary between clients and other servers",
+          "Backup server",
+          "DNS server"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Proxy server acts as intermediary, caching and filtering traffic."
+      },
+      {
+        "id": 29,
+        "question": "What is load balancing?",
+        "options": [
+          "Balancing power usage",
+          "Distributing network traffic across multiple servers",
+          "Balancing database loads",
+          "Stabilizing connections"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Load balancing distributes traffic to prevent server overload."
+      },
+      {
+        "id": 30,
+        "question": "What is a backbone network?",
+        "options": [
+          "Primary network infrastructure",
+          "Secondary network",
+          "Device connector",
+          "User network"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Backbone is main infrastructure connecting multiple networks."
+      },
+      {
+        "id": 31,
+        "question": "What is Ethernet?",
+        "options": [
+          "Internet protocol",
+          "Wired LAN technology standard",
+          "Wireless technology",
+          "Fiber optic type"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ethernet is standard for wired LAN communication."
+      },
+      {
+        "id": 32,
+        "question": "What is WiFi?",
+        "options": [
+          "Wire for Internet",
+          "Wireless network technology",
+          "Web Interface",
+          "Wide Internet Format"
+        ],
+        "correctAnswer": 1,
+        "explanation": "WiFi provides wireless internet access using radio frequencies."
+      },
+      {
+        "id": 33,
+        "question": "What does ISP provide?",
+        "options": [
+          "Internet security protection",
+          "Internet Service Provider - internet connectivity",
+          "Internal system protocol",
+          "Internet signal processor"
+        ],
+        "correctAnswer": 1,
+        "explanation": "ISP provides internet connectivity to users."
+      },
+      {
+        "id": 34,
+        "question": "What is a DMZ?",
+        "options": [
+          "Danger Management Zone",
+          "Demilitarized Zone - buffer between networks",
+          "Data Management Zone",
+          "Device Management Zone"
+        ],
+        "correctAnswer": 1,
+        "explanation": "DMZ is buffer zone between trusted internal network and untrusted internet."
+      },
+      {
+        "id": 35,
+        "question": "What is packet switching?",
+        "options": [
+          "Switching network equipment",
+          "Breaking data into packets routed independently",
+          "Switching data cables",
+          "Changing protocols"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Packet switching breaks data into packets sent through optimal routes."
+      },
+      {
+        "id": 36,
+        "question": "What is circuit switching?",
+        "options": [
+          "Using circuits for power",
+          "Dedicated connection between endpoints",
+          "Switching circuit breakers",
+          "Changing connections"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Circuit switching establishes dedicated connection for entire communication."
+      },
+      {
+        "id": 37,
+        "question": "What is VLAN?",
+        "options": [
+          "Virtual Line Access Network",
+          "Virtual Local Area Network",
+          "Very Large Area Network",
+          "Virtual Location Address Network"
+        ],
+        "correctAnswer": 1,
+        "explanation": "VLAN is virtual segmentation of physical network for better organization."
+      },
+      {
+        "id": 38,
+        "question": "What does throughput measure?",
+        "options": [
+          "Data storage capacity",
+          "Actual data transmission rate",
+          "Network delay",
+          "Signal strength"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Throughput is actual data transfer rate across a connection."
+      },
+      {
+        "id": 39,
+        "question": "What is a hub?",
+        "options": [
+          "Network center device",
+          "Device connecting devices and broadcasting to all ports",
+          "Main server",
+          "Router component"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Hub broadcasts data to all connected devices (less efficient than switch)."
+      },
+      {
+        "id": 40,
+        "question": "What is the function of a bridge?",
+        "options": [
+          "Connect the internet",
+          "Connect network segments, filtering traffic by MAC address",
+          "Route packets",
+          "Compress data"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Bridge connects and segments network, filtering by MAC addresses."
+      },
+      {
+        "id": 41,
+        "question": "What is a subnet mask used for? (additional)",
+        "options": [
+          "Determining network and host portions of an IP address",
+          "Encrypting packets",
+          "Compressing data",
+          "Routing decisions only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Subnet masks separate IP address into network and host identifiers."
+      },
+      {
+        "id": 42,
+        "question": "What is NAT? (additional)",
+        "options": [
+          "Network Address Translation",
+          "New Address Type",
+          "Network Automation Tool",
+          "Native Addressing Technique"
+        ],
+        "correctAnswer": 0,
+        "explanation": "NAT maps private addresses to public ones for routing across the internet."
+      },
+      {
+        "id": 43,
+        "question": "What is a default gateway? (additional)",
+        "options": [
+          "Router used to forward traffic to other networks",
+          "A firewall only",
+          "A DNS server",
+          "An authentication server"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Default gateway forwards packets to networks outside the local subnet."
+      },
+      {
+        "id": 44,
+        "question": "Which protocol is connection-oriented? (additional)",
+        "options": ["TCP", "UDP", "ICMP", "ARP"],
+        "correctAnswer": 0,
+        "explanation": "TCP provides reliable, connection-oriented transport."
+      },
+      {
+        "id": 45,
+        "question": "What is ARP used for? (additional)",
+        "options": [
+          "Mapping IP addresses to MAC addresses",
+          "Encrypting data",
+          "Routing packets across domains",
+          "Assigning IPs dynamically"
+        ],
+        "correctAnswer": 0,
+        "explanation": "ARP resolves layer 3 IP addresses to layer 2 MAC addresses."
+      },
+      {
+        "id": 46,
+        "question": "What is the purpose of DNS? (additional)",
+        "options": [
+          "Translate domain names to IP addresses",
+          "Compress data",
+          "Monitor traffic",
+          "Encrypt emails"
+        ],
+        "correctAnswer": 0,
+        "explanation": "DNS resolves human-readable domain names to numeric IP addresses."
+      },
+      {
+        "id": 47,
+        "question": "What is a MAC address? (additional)",
+        "options": [
+          "Hardware address for network interfaces",
+          "IP address",
+          "Port number",
+          "Hostname"
+        ],
+        "correctAnswer": 0,
+        "explanation": "MAC is a layer 2 hardware identifier assigned to network interfaces."
+      },
+      {
+        "id": 48,
+        "question": "Which device segments collision domains? (additional)",
+        "options": ["Switch", "Hub", "Modem", "Repeater"],
+        "correctAnswer": 0,
+        "explanation": "Switches separate collision domains for each port."
+      },
+      {
+        "id": 49,
+        "question": "What does QoS manage? (additional)",
+        "options": [
+          "Prioritization of network traffic",
+          "File backups",
+          "User accounts",
+          "Power consumption"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Quality of Service manages bandwidth and traffic priority."
+      },
+      {
+        "id": 50,
+        "question": "What is a DHCP server role? (additional)",
+        "options": [
+          "Assign IP addresses dynamically to hosts",
+          "Route traffic",
+          "Encrypt packets",
+          "Store files"
+        ],
+        "correctAnswer": 0,
+        "explanation": "DHCP automates IP address assignment for hosts on a network."
+      },
+      {
+        "id": 51,
+        "question": "What is link aggregation? (additional)",
+        "options": [
+          "Combining multiple network links for redundancy and throughput",
+          "Splitting a link",
+          "Compressing packets",
+          "Encrypting links"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Link aggregation increases bandwidth and provides redundancy across links."
+      },
+      {
+        "id": 52,
+        "question": "What is MTU? (additional)",
+        "options": [
+          "Maximum Transmission Unit - largest packet size",
+          "Minimal Transfer Utility",
+          "Memory Tracking Unit",
+          "Managed Tunnel Utility"
+        ],
+        "correctAnswer": 0,
+        "explanation": "MTU is the largest packet size that can be transmitted without fragmentation."
+      },
+      {
+        "id": 53,
+        "question": "What is latency? (additional)",
+        "options": [
+          "Delay before data transfer begins",
+          "Throughput",
+          "Packet loss",
+          "Signal strength"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Latency refers to the delay in packet delivery across the network."
+      },
+      {
+        "id": 54,
+        "question": "What is a broadcast domain? (additional)",
+        "options": [
+          "Network segment where broadcast frames are forwarded",
+          "A routing table",
+          "A security domain",
+          "An administrative unit only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Broadcast domains define scope where broadcast traffic is propagated."
+      },
+      {
+        "id": 55,
+        "question": "Which protocol resolves hostnames? (additional)",
+        "options": ["DNS", "ARP", "SMTP", "FTP"],
+        "correctAnswer": 0,
+        "explanation": "DNS resolves domain names to IP addresses."
+      },
+      {
+        "id": 56,
+        "question": "What is the purpose of vlan tagging? (additional)",
+        "options": [
+          "Identify VLAN membership across trunks",
+          "Encrypt VLANs",
+          "Compress VLAN traffic",
+          "Remove VLANs"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Tagging carries VLAN IDs over trunk links between switches."
+      },
+      {
+        "id": 57,
+        "question": "What is a broadcast storm? (additional)",
+        "options": [
+          "Excessive broadcast traffic overwhelming a network",
+          "A weather event",
+          "Normal operation",
+          "A routing protocol"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Broadcast storms can degrade or crash network performance."
+      },
+      {
+        "id": 58,
+        "question": "What is the main use of SNMP? (additional)",
+        "options": [
+          "Network monitoring and management",
+          "Encrypting data",
+          "Routing packets",
+          "User authentication"
+        ],
+        "correctAnswer": 0,
+        "explanation": "SNMP collects and manages device statistics across the network."
+      },
+      {
+        "id": 59,
+        "question": "What is port forwarding? (additional)",
+        "options": [
+          "Mapping external ports to internal hosts/services",
+          "Closing ports",
+          "Deleting services",
+          "Encrypting ports"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Port forwarding directs incoming connections to specific internal resources."
+      },
+      {
+        "id": 60,
+        "question": "Why monitor network logs? (additional)",
+        "options": [
+          "Detect anomalies and investigate incidents",
+          "To slow the network",
+          "For storage only",
+          "To delete evidence"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Logs provide insight for troubleshooting and security investigations."
+      }
+    ]
+  }
+}

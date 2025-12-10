@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity HND 1 - CBT Exam Simulator - Instructions</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <h1>🛡️ Cybersecurity HND 1 - CBT Exam Simulator</h1>
+        </div>
+        <div class="navbar-right">
+          <button class="btn btn-link" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="instructions-container">
+      <div class="instructions-wrapper">
+        <!-- User Info Card -->
+        <div class="user-info-card">
+          <div class="user-info-header">
+            <h3>Welcome, <span id="userName"></span>!</h3>
+          </div>
+          <div class="user-info-details">
+            <p>
+              <strong>Registration Number:</strong>
+              <span id="userRegNumber"></span>
+            </p>
+            <p><strong>Subject:</strong> <span id="userSubject"></span></p>
+            <p><strong>Email:</strong> <span id="userEmail"></span></p>
+          </div>
+        </div>
+
+        <!-- Instructions Card -->
+        <div class="instructions-card">
+          <h2>📋 Exam Instructions</h2>
+
+          <!-- Exam Details Section -->
+          <section class="instruction-section">
+            <h3>Exam Details</h3>
+            <div class="details-grid">
+              <div class="detail-item">
+                <span class="detail-label">Total Questions:</span>
+                <span class="detail-value" id="totalQuestionsDisplay">40</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Duration:</span>
+                <span class="detail-value" id="durationDisplay"
+                  >60 minutes</span
+                >
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Passing Score:</span>
+                <span class="detail-value" id="passingScoreDisplay">40%</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Question Type:</span>
+                <span class="detail-value">Multiple Choice</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Important Rules Section -->
+          <section class="instruction-section">
+            <h3>⚠️ Important Rules</h3>
+            <ul class="rules-list">
+              <li>
+                <strong>No Cheating:</strong> This is an honor-based
+                examination. Any form of cheating is strictly prohibited.
+              </li>
+              <li>
+                <strong>Time Limit:</strong> Once you start the exam, you have
+                60 minutes to complete all questions.
+              </li>
+              <li>
+                <strong>Network Connection:</strong> Ensure your internet
+                connection is stable throughout the exam.
+              </li>
+              <li>
+                <strong>No Distractions:</strong> Find a quiet place and
+                minimize distractions during the exam.
+              </li>
+              <li>
+                <strong>Complete Answers:</strong> You must answer all questions
+                before submitting. No partial submissions are allowed.
+              </li>
+              <li>
+                <strong>Review Before Submit:</strong> You can review and change
+                your answers before final submission.
+              </li>
+              <li>
+                <strong>Auto-Save:</strong> Your answers are automatically saved
+                as you progress. However, ensure you submit before time ends.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Guidelines Section -->
+          <section class="instruction-section">
+            <h3>📖 Guidelines for Success</h3>
+            <ol class="guidelines-list">
+              <li>Read each question carefully before answering.</li>
+              <li>
+                Select the most appropriate answer from the given options.
+              </li>
+              <li>You can change your answer anytime before submission.</li>
+              <li>Use the question navigation to move between questions.</li>
+              <li>Keep track of the remaining time on your screen.</li>
+              <li>
+                Review all your answers before clicking the submit button.
+              </li>
+              <li>Ensure all questions are answered before submission.</li>
+            </ol>
+          </section>
+
+          <!-- Navigation Instructions Section -->
+          <section class="instruction-section">
+            <h3>🎮 How to Navigate</h3>
+            <div class="navigation-guide">
+              <div class="guide-item">
+                <strong>Question Navigation:</strong> Use the question buttons
+                at the bottom to jump to any question.
+              </div>
+              <div class="guide-item">
+                <strong>Multiple Choice:</strong> Click on an option to select
+                it. Click again to deselect.
+              </div>
+              <div class="guide-item">
+                <strong>Question Status:</strong> Answered questions are marked,
+                unanswered questions are highlighted.
+              </div>
+              <div class="guide-item">
+                <strong>Timer:</strong> Your remaining time is displayed at the
+                top of the exam page.
+              </div>
+            </div>
+          </section>
+
+          <!-- Acknowledgment Section -->
+          <section class="instruction-section">
+            <div class="acknowledgment">
+              <div class="form-group checkbox">
+                <input type="checkbox" id="agreeCheckbox" name="agree" />
+                <label for="agreeCheckbox" class="checkbox-label">
+                  I have read and understood all the instructions above. I agree
+                  to follow all rules and guidelines.
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button class="btn btn-secondary" id="backBtn">
+              ← Back to Login
+            </button>
+            <button class="btn btn-primary" id="startExamBtn" disabled>
+              Start Exam →
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 CBT Exam Simulator | All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script>
+      // Load user data
+      function loadUserData() {
+        const userData = localStorage.getItem("userData");
+        if (!userData) {
+          window.location.href = "login.html";
+          return;
+        }
+
+        const user = JSON.parse(userData);
+        document.getElementById("userName").textContent = user.fullName;
+        document.getElementById("userRegNumber").textContent = user.regNumber;
+        document.getElementById("userSubject").textContent = user.subject;
+        document.getElementById("userEmail").textContent = user.email;
+      }
+
+      // Enable start exam button when checkbox is checked
+      document
+        .getElementById("agreeCheckbox")
+        .addEventListener("change", function () {
+          document.getElementById("startExamBtn").disabled = !this.checked;
+        });
+
+      // Start exam button handler
+      document
+        .getElementById("startExamBtn")
+        .addEventListener("click", function () {
+          const userData = JSON.parse(localStorage.getItem("userData"));
+          userData.examStartTime = new Date().toISOString();
+          localStorage.setItem("userData", JSON.stringify(userData));
+          window.location.href = "exam.html";
+        });
+
+      // Back button handler
+      document.getElementById("backBtn").addEventListener("click", function () {
+        if (confirm("Are you sure? You will need to login again.")) {
+          localStorage.removeItem("userData");
+          window.location.href = "login.html";
+        }
+      });
+
+      // Logout button handler
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function () {
+          if (confirm("Are you sure you want to logout?")) {
+            localStorage.removeItem("userData");
+            localStorage.removeItem("examAnswers");
+            window.location.href = "login.html";
+          }
+        });
+
+      // Initialize page
+      loadUserData();
+    </script>
+  </body>
+</html>

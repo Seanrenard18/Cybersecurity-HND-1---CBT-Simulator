@@ -1,0 +1,703 @@
+{
+  "exam": {
+    "title": "CYS 312 - Operating System",
+    "courseCode": "CYS312",
+    "courseName": "Operating System",
+    "department": "Cybersecurity HND 1",
+    "duration": 80,
+    "totalQuestions": 60,
+    "passingScore": 40,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is an operating system?",
+        "options": [
+          "A hardware component",
+          "A system software that manages hardware and software resources",
+          "An application program",
+          "A type of virus"
+        ],
+        "correctAnswer": 1,
+        "explanation": "An OS is system software that manages hardware resources and provides an interface for applications."
+      },
+      {
+        "id": 2,
+        "question": "Which of the following is a kernel function?",
+        "options": [
+          "Text editing",
+          "Memory management and process scheduling",
+          "Web browsing",
+          "Email sending"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The kernel manages core functions like memory, processes, and hardware resources."
+      },
+      {
+        "id": 3,
+        "question": "What does the term 'multitasking' mean?",
+        "options": [
+          "Using multiple computers",
+          "Multiple processes sharing CPU time",
+          "Multiple users using one computer",
+          "Multiple monitors connected to one PC"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Multitasking allows multiple processes to share CPU time through scheduling."
+      },
+      {
+        "id": 4,
+        "question": "Which OS is based on Unix and known for security?",
+        "options": ["Windows XP", "Linux", "MS-DOS", "MacOS 7"],
+        "correctAnswer": 1,
+        "explanation": "Linux is Unix-based and known for its security features and open-source nature."
+      },
+      {
+        "id": 5,
+        "question": "What is virtual memory?",
+        "options": [
+          "Memory that doesn't exist",
+          "RAM only",
+          "Using disk space to supplement RAM",
+          "Memory in the cloud"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Virtual memory uses disk storage to extend available RAM, improving system performance."
+      },
+      {
+        "id": 6,
+        "question": "Which scheduling algorithm is known as FCFS?",
+        "options": [
+          "Fixed Cycle First Serve",
+          "First Come First Serve",
+          "Fast Computation First System",
+          "Free Cache First Storage"
+        ],
+        "correctAnswer": 1,
+        "explanation": "FCFS (First Come First Serve) processes tasks in the order they arrive."
+      },
+      {
+        "id": 7,
+        "question": "What is a process in OS?",
+        "options": [
+          "A hardware component",
+          "An instance of a running program",
+          "A type of file",
+          "A memory address"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A process is an instance of a program in execution with its own memory and resources."
+      },
+      {
+        "id": 8,
+        "question": "What is the purpose of paging?",
+        "options": [
+          "Organizing telephone numbers",
+          "Dividing memory into fixed-size blocks for easier management",
+          "Creating web pages",
+          "Managing network traffic"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Paging divides physical memory into fixed-size blocks to reduce fragmentation."
+      },
+      {
+        "id": 9,
+        "question": "Which OS provides a graphical user interface as standard?",
+        "options": [
+          "MS-DOS",
+          "Windows and macOS",
+          "UNIX command line",
+          "Assembly language"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Windows and macOS provide GUI as standard for user interaction."
+      },
+      {
+        "id": 10,
+        "question": "What is a thread?",
+        "options": [
+          "A lightweight process sharing process resources",
+          "A type of file",
+          "A network connection",
+          "A storage device"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A thread is a lightweight process that shares resources with other threads in the same process."
+      },
+      {
+        "id": 11,
+        "question": "What is deadlock?",
+        "options": [
+          "A system crash",
+          "When two or more processes are blocked waiting for resources",
+          "A security breach",
+          "A type of malware"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Deadlock occurs when processes are mutually blocked waiting for resources held by each other."
+      },
+      {
+        "id": 12,
+        "question": "Which protection mechanism prevents user programs from accessing kernel memory?",
+        "options": [
+          "Hardware interrupt",
+          "Privilege levels (User and Kernel modes)",
+          "Firewall",
+          "Password protection"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Privilege levels separate User mode (restricted) from Kernel mode (unrestricted)."
+      },
+      {
+        "id": 13,
+        "question": "What is a file system?",
+        "options": [
+          "A computer network",
+          "A method for organizing and accessing data on storage devices",
+          "A type of malware",
+          "An email system"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A file system provides methods for organizing, storing, and retrieving files."
+      },
+      {
+        "id": 14,
+        "question": "Which file system is commonly used in Windows?",
+        "options": ["ext4", "NTFS", "HFS+", "FAT32"],
+        "correctAnswer": 1,
+        "explanation": "NTFS is the modern file system used in Windows systems."
+      },
+      {
+        "id": 15,
+        "question": "What is I/O buffering?",
+        "options": [
+          "Improving internet speed",
+          "Temporary storage for data during input/output operations",
+          "A virus protection",
+          "A type of memory chip"
+        ],
+        "correctAnswer": 1,
+        "explanation": "I/O buffering uses temporary storage to improve efficiency of input/output operations."
+      },
+      {
+        "id": 16,
+        "question": "Which OS is primarily used on smartphones?",
+        "options": [
+          "Windows Server",
+          "Android and iOS",
+          "Red Hat Enterprise Linux",
+          "FreeBSD"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Android and iOS are the primary operating systems for smartphones."
+      },
+      {
+        "id": 17,
+        "question": "What is the purpose of interrupt handling?",
+        "options": [
+          "To block all user requests",
+          "To respond to hardware or software events requiring immediate attention",
+          "To slow down the system",
+          "To prevent data access"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Interrupt handling allows the OS to respond promptly to hardware or software events."
+      },
+      {
+        "id": 18,
+        "question": "What is swap memory?",
+        "options": [
+          "Trading computer systems",
+          "Disk space used as virtual memory",
+          "Exchanging user accounts",
+          "Network bandwidth"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Swap memory is disk space used as virtual memory to extend available RAM."
+      },
+      {
+        "id": 19,
+        "question": "Which scheduling algorithm minimizes average waiting time?",
+        "options": [
+          "FCFS",
+          "Shortest Job First (SJF)",
+          "Round Robin",
+          "Priority Scheduling"
+        ],
+        "correctAnswer": 1,
+        "explanation": "SJF minimizes average waiting time by processing shortest jobs first."
+      },
+      {
+        "id": 20,
+        "question": "What is a system call?",
+        "options": [
+          "A telephone call to IT support",
+          "An interface between user program and kernel services",
+          "An error message",
+          "A network request"
+        ],
+        "correctAnswer": 1,
+        "explanation": "System calls provide the interface through which programs request kernel services."
+      },
+      {
+        "id": 21,
+        "question": "Which memory hierarchy level is fastest?",
+        "options": ["Hard Disk", "RAM", "CPU Cache", "CD-ROM"],
+        "correctAnswer": 2,
+        "explanation": "CPU Cache is the fastest memory in the hierarchy, closest to the processor."
+      },
+      {
+        "id": 22,
+        "question": "What is fragmentation in file systems?",
+        "options": [
+          "Breaking files into smaller pieces",
+          "Scattered allocation of file data on disk",
+          "Encrypting files",
+          "Compressing data"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Fragmentation occurs when files are scattered across non-contiguous disk sectors."
+      },
+      {
+        "id": 23,
+        "question": "What is context switching?",
+        "options": [
+          "Changing user accounts",
+          "Saving and restoring process state when switching between processes",
+          "Switching between applications manually",
+          "Changing network settings"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Context switching saves one process's state and restores another's to switch execution."
+      },
+      {
+        "id": 24,
+        "question": "Which is a real-time operating system (RTOS)?",
+        "options": ["Windows 10", "VxWorks", "Linux Desktop", "macOS"],
+        "correctAnswer": 1,
+        "explanation": "VxWorks is a real-time OS designed for immediate, predictable response."
+      },
+      {
+        "id": 25,
+        "question": "What is mutual exclusion (mutex)?",
+        "options": [
+          "Excluding users",
+          "A mechanism preventing simultaneous access to shared resources",
+          "Deleting accounts",
+          "Blocking network traffic"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Mutex ensures only one process/thread accesses critical sections at a time."
+      },
+      {
+        "id": 26,
+        "question": "What does RAID provide?",
+        "options": [
+          "Network acceleration",
+          "Data redundancy and improved performance",
+          "User authentication",
+          "Email delivery"
+        ],
+        "correctAnswer": 1,
+        "explanation": "RAID provides data redundancy and improved I/O performance through disk arrays."
+      },
+      {
+        "id": 27,
+        "question": "What is a device driver?",
+        "options": [
+          "A person who drives vehicles",
+          "Software enabling OS to communicate with hardware devices",
+          "A type of malware",
+          "A network protocol"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Device drivers are software modules that enable OS-hardware communication."
+      },
+      {
+        "id": 28,
+        "question": "What is the boot process?",
+        "options": [
+          "Starting a computer",
+          "The sequence of events when computer starts from power-on to OS loading",
+          "Closing applications",
+          "Updating software"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Boot process is the sequence from power-on, BIOS, bootloader to OS kernel loading."
+      },
+      {
+        "id": 29,
+        "question": "Which OS is open-source and free?",
+        "options": ["Windows Server", "Linux", "macOS", "iOS"],
+        "correctAnswer": 1,
+        "explanation": "Linux is open-source and free, allowing anyone to modify and distribute it."
+      },
+      {
+        "id": 30,
+        "question": "What is process synchronization?",
+        "options": [
+          "Coordinating timing of multiple processes working together",
+          "Making backups",
+          "Updating software",
+          "Checking file dates"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Process synchronization coordinates multiple processes to prevent race conditions."
+      },
+      {
+        "id": 31,
+        "question": "What is a semaphore?",
+        "options": [
+          "A flag-based signaling system",
+          "A synchronization primitive controlling resource access",
+          "A type of malware",
+          "A network device"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Semaphores are synchronization primitives using counters to control resource access."
+      },
+      {
+        "id": 32,
+        "question": "What is logical addressing?",
+        "options": [
+          "Physical memory addresses",
+          "Virtual addresses generated by CPU and translated by MMU",
+          "IP addresses",
+          "MAC addresses"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Logical addressing uses virtual addresses that are translated to physical addresses."
+      },
+      {
+        "id": 33,
+        "question": "Which OS is typically used on servers?",
+        "options": ["Windows 10", "Linux and Windows Server", "iOS", "macOS"],
+        "correctAnswer": 1,
+        "explanation": "Linux and Windows Server are commonly used server operating systems."
+      },
+      {
+        "id": 34,
+        "question": "What is the purpose of the scheduler?",
+        "options": [
+          "Managing user emails",
+          "Deciding which process gets CPU time and when",
+          "Organizing files",
+          "Controlling network traffic"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The scheduler allocates CPU time among processes according to scheduling algorithms."
+      },
+      {
+        "id": 35,
+        "question": "What is cache coherence?",
+        "options": [
+          "A type of memory encryption",
+          "Ensuring consistency of data across multiple caches",
+          "A network protocol",
+          "A backup system"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Cache coherence ensures data consistency in multi-processor systems."
+      },
+      {
+        "id": 36,
+        "question": "What is a zombie process?",
+        "options": [
+          "A malware infection",
+          "A terminated process still occupying resources",
+          "A hacked computer",
+          "An encrypted file"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A zombie process has terminated but hasn't been fully cleaned up by parent."
+      },
+      {
+        "id": 37,
+        "question": "What is memory segmentation?",
+        "options": [
+          "Deleting memory",
+          "Dividing memory into logical segments with different sizes",
+          "Encrypting memory",
+          "Compressing memory"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Segmentation divides memory into variable-sized logical segments."
+      },
+      {
+        "id": 38,
+        "question": "Which OS architecture uses microkernel design?",
+        "options": [
+          "Linux monolithic kernel",
+          "Windows NT-based systems",
+          "QNX",
+          "FreeBSD"
+        ],
+        "correctAnswer": 2,
+        "explanation": "QNX uses microkernel architecture with minimal kernel, other services as processes."
+      },
+      {
+        "id": 39,
+        "question": "What is preemptive scheduling?",
+        "options": [
+          "No interruption of running processes",
+          "OS can interrupt running process to give CPU to another",
+          "Manual process switching",
+          "No scheduling at all"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Preemptive scheduling allows OS to interrupt running processes for fair CPU sharing."
+      },
+      {
+        "id": 40,
+        "question": "What is the main advantage of multithreading?",
+        "options": [
+          "Increased memory usage",
+          "Improved responsiveness and resource sharing",
+          "Reduced security",
+          "Slower execution"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Multithreading improves responsiveness and allows efficient resource sharing."
+      },
+      {
+        "id": 41,
+        "question": "Which scheduling policy favors short jobs? (additional)",
+        "options": [
+          "Round-Robin",
+          "Shortest Job First",
+          "First Come First Serve",
+          "No scheduling"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Shortest Job First prioritizes jobs with shorter execution times."
+      },
+      {
+        "id": 42,
+        "question": "What is kernel panic? (additional)",
+        "options": [
+          "A controlled shutdown",
+          "A fatal error in the kernel leading to system halt",
+          "A user action",
+          "A scheduling event"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Kernel panic is a critical kernel error causing system halt to prevent damage."
+      },
+      {
+        "id": 43,
+        "question": "Which is an advantage of preemptive multitasking? (additional)",
+        "options": [
+          "Better responsiveness",
+          "Longer latency",
+          "No context switches",
+          "Simpler design"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Preemption improves responsiveness by allowing the OS to switch tasks as needed."
+      },
+      {
+        "id": 44,
+        "question": "Why use kernel modules? (additional)",
+        "options": [
+          "Add features without rebooting",
+          "Replace the OS",
+          "Delete users",
+          "Slow down boot"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Kernel modules allow functionality extensions like drivers without rebuilding the kernel."
+      },
+      {
+        "id": 45,
+        "question": "What is a zombie process? (additional)",
+        "options": [
+          "Terminated process still holding an entry in process table",
+          "A running process",
+          "A kernel thread",
+          "A hardware interrupt"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Zombie processes are dead but still have process table entries until reaped by parent."
+      },
+      {
+        "id": 46,
+        "question": "What is memory fragmentation? (additional)",
+        "options": [
+          "Scattered free memory preventing large allocations",
+          "Contiguous memory only",
+          "A security feature",
+          "A scheduling policy"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Fragmentation prevents efficient use of memory for large blocks."
+      },
+      {
+        "id": 47,
+        "question": "Which mechanism speeds up file access? (additional)",
+        "options": [
+          "Caching",
+          "Deleting files",
+          "Disabling IO",
+          "Formatting disks"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Caching keeps frequently accessed data in faster storage to improve access times."
+      },
+      {
+        "id": 48,
+        "question": "What is prefetching? (additional)",
+        "options": [
+          "Loading data before it is requested to reduce latency",
+          "Delaying loading",
+          "Encrypting data",
+          "Corrupting cache"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Prefetching anticipates future requests to improve performance."
+      },
+      {
+        "id": 49,
+        "question": "Which is a method to protect memory? (additional)",
+        "options": [
+          "Memory protection using MMU",
+          "Open access",
+          "No protection",
+          "Shared memory everywhere"
+        ],
+        "correctAnswer": 0,
+        "explanation": "MMUs enforce access control to memory regions for safety and isolation."
+      },
+      {
+        "id": 50,
+        "question": "What is a file descriptor? (additional)",
+        "options": [
+          "An integer handle to an open file",
+          "A file name",
+          "A network packet",
+          "A driver"
+        ],
+        "correctAnswer": 0,
+        "explanation": "File descriptors are OS-level handles representing open files or streams."
+      },
+      {
+        "id": 51,
+        "question": "What is kernel space vs user space? (additional)",
+        "options": [
+          "Kernel space has privileged code; user space runs applications",
+          "They are identical",
+          "Both are for hardware only",
+          "User space is for drivers"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Kernel and user spaces separate privileged OS code from unprivileged application code."
+      },
+      {
+        "id": 52,
+        "question": "Why use logical addresses? (additional)",
+        "options": [
+          "They provide process-level addressing independent of physical memory",
+          "They are used for networking only",
+          "They slow systems",
+          "They encrypt data"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Logical addresses allow processes to operate as if they have contiguous memory."
+      },
+      {
+        "id": 53,
+        "question": "What is a page table? (additional)",
+        "options": [
+          "Mapping from virtual pages to physical frames",
+          "A disk table",
+          "A network map",
+          "A user list"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Page tables map virtual memory pages to physical memory frames."
+      },
+      {
+        "id": 54,
+        "question": "Which improves disk throughput? (additional)",
+        "options": [
+          "Disk scheduling algorithms and caching",
+          "Deleting files",
+          "Turning off disks",
+          "Increasing fragmentation"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Scheduling and caching increase disk throughput by ordering and buffering requests."
+      },
+      {
+        "id": 55,
+        "question": "What is a kernel module's purpose? (additional)",
+        "options": [
+          "Extend kernel functionality dynamically",
+          "Replace user apps",
+          "Format disks",
+          "Slow boot"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Modules allow adding/removing kernel features like drivers at runtime."
+      },
+      {
+        "id": 56,
+        "question": "What is demand paging advantage? (additional)",
+        "options": [
+          "Saves memory by loading only needed pages",
+          "Loads everything always",
+          "Increases memory usage",
+          "Removes swapping"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Demand paging reduces memory footprint and loads pages only on access."
+      },
+      {
+        "id": 57,
+        "question": "Why prefer copy-on-write? (additional)",
+        "options": [
+          "It delays copies until necessary, saving memory",
+          "It copies immediately",
+          "It prevents sharing",
+          "It encrypts memory"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Copy-on-write optimizes memory by avoiding unnecessary duplication."
+      },
+      {
+        "id": 58,
+        "question": "What is kernel thread advantage? (additional)",
+        "options": [
+          "Better performance for blocking operations",
+          "No benefit",
+          "More crashes",
+          "Slower IO"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Kernel threads can be scheduled independently and handle blocking efficiently."
+      },
+      {
+        "id": 59,
+        "question": "What does the swap space store? (additional)",
+        "options": [
+          "Pages moved out of RAM to disk",
+          "Permanent files",
+          "Network packets",
+          "Log files only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Swap stores memory pages that have been moved to disk to free RAM."
+      },
+      {
+        "id": 60,
+        "question": "How does the OS balance I/O and CPU? (additional)",
+        "options": [
+          "Through scheduling and buffering",
+          "By ignoring IO",
+          "By halting CPU",
+          "By deleting processes"
+        ],
+        "correctAnswer": 0,
+        "explanation": "OS uses scheduling and buffering to coordinate CPU and I/O tasks efficiently."
+      }
+    ]
+  }
+}

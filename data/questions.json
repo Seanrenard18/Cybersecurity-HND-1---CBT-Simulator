@@ -1,0 +1,391 @@
+{
+  "exam": {
+    "title": "Sample CBT Examination",
+    "subject": "English Language",
+    "duration": 60,
+    "totalQuestions": 40,
+    "passingScore": 40,
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which of the following is the correct spelling?",
+        "options": ["Occassion", "Occasion", "Ocasion", "Occassoin"],
+        "correctAnswer": 1,
+        "explanation": "The correct spelling is 'Occasion' with two 'c's and two 's's."
+      },
+      {
+        "id": 2,
+        "question": "What does 'ubiquitous' mean?",
+        "options": [
+          "Rare and uncommon",
+          "Present everywhere at the same time",
+          "Difficult to understand",
+          "Very expensive"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Ubiquitous' means present or found everywhere at the same time."
+      },
+      {
+        "id": 3,
+        "question": "Choose the word that best completes the sentence: 'Despite his illness, he remained ___'.",
+        "options": ["Hopeful", "Hopeless", "Careless", "Reckless"],
+        "correctAnswer": 0,
+        "explanation": "The word 'hopeful' best fits the context, showing a positive attitude despite adversity."
+      },
+      {
+        "id": 4,
+        "question": "Which sentence is grammatically correct?",
+        "options": [
+          "She don't like ice cream",
+          "They was playing football",
+          "He has been working here for five years",
+          "We have went to the market"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The sentence 'He has been working here for five years' uses the correct present perfect continuous tense."
+      },
+      {
+        "id": 5,
+        "question": "What is the plural of 'analysis'?",
+        "options": ["Analysises", "Analyses", "Analysies", "Analysises"],
+        "correctAnswer": 1,
+        "explanation": "The plural of 'analysis' is 'analyses', following Latin plural rules."
+      },
+      {
+        "id": 6,
+        "question": "Which word is a synonym for 'benevolent'?",
+        "options": ["Kind", "Cruel", "Selfish", "Arrogant"],
+        "correctAnswer": 0,
+        "explanation": "'Benevolent' means kind and generous, so 'kind' is its synonym."
+      },
+      {
+        "id": 7,
+        "question": "Choose the correct form: 'If I ___ him, I would have told him the truth.'",
+        "options": ["See", "Saw", "Had seen", "Would see"],
+        "correctAnswer": 2,
+        "explanation": "The past perfect 'had seen' is correct for expressing a hypothetical past condition."
+      },
+      {
+        "id": 8,
+        "question": "What is the antonym of 'ephemeral'?",
+        "options": ["Temporary", "Brief", "Permanent", "Fleeting"],
+        "correctAnswer": 2,
+        "explanation": "'Ephemeral' means lasting a short time, so 'permanent' is its antonym."
+      },
+      {
+        "id": 9,
+        "question": "Which sentence contains an oxymoron?",
+        "options": [
+          "The weather is sunny today",
+          "She is a bitter sweet person",
+          "He arrived early in the morning",
+          "The cat is sleeping peacefully"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Bitter sweet' is an oxymoron—a combination of contradictory terms."
+      },
+      {
+        "id": 10,
+        "question": "Choose the correct punctuation: 'What are you doing today___'",
+        "options": [".", ";", "?", "!"],
+        "correctAnswer": 2,
+        "explanation": "A question mark (?) is the correct punctuation for a question."
+      },
+      {
+        "id": 11,
+        "question": "What does 'pragmatic' mean?",
+        "options": [
+          "Overly theoretical",
+          "Dealing with things in a practical way",
+          "Very artistic",
+          "Extremely cautious"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Pragmatic' means dealing with things in a realistic and practical way."
+      },
+      {
+        "id": 12,
+        "question": "Which word is correctly hyphenated?",
+        "options": [
+          "Mother-in-law",
+          "Mother in-law",
+          "Mother-in law",
+          "Mother in law"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Mother-in-law' requires hyphens between all parts of the compound word."
+      },
+      {
+        "id": 13,
+        "question": "Complete the analogy: 'Read is to book as _____ is to film'",
+        "options": ["Write", "Watch", "Create", "Direct"],
+        "correctAnswer": 1,
+        "explanation": "Just as you read a book, you watch a film."
+      },
+      {
+        "id": 14,
+        "question": "Which of the following is NOT a conjunctive adverb?",
+        "options": ["However", "Furthermore", "Carefully", "Nevertheless"],
+        "correctAnswer": 2,
+        "explanation": "'Carefully' is an adverb of manner, not a conjunctive adverb."
+      },
+      {
+        "id": 15,
+        "question": "What is the correct form of the verb? 'She ___ been to Paris twice.'",
+        "options": ["Has", "Have", "Had", "Is"],
+        "correctAnswer": 0,
+        "explanation": "With the singular subject 'she', the auxiliary verb 'has' is correct."
+      },
+      {
+        "id": 16,
+        "question": "Which phrase is an example of alliteration?",
+        "options": [
+          "Beautiful mountains",
+          "Pretty pink petals",
+          "Large trees",
+          "Bright light"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Pretty pink petals' demonstrates alliteration with the repeated 'p' sound."
+      },
+      {
+        "id": 17,
+        "question": "What does 'meticulous' mean?",
+        "options": [
+          "Showing care and precision",
+          "Very loud",
+          "Extremely fast",
+          "Overly emotional"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Meticulous' means showing great care and precision in detail."
+      },
+      {
+        "id": 18,
+        "question": "Which sentence is punctuated correctly?",
+        "options": [
+          "She said, 'I will arrive soon'.",
+          "She said 'I will arrive soon'.",
+          "She said, 'I will arrive soon.'",
+          "She said, 'I will arrive soon\""
+        ],
+        "correctAnswer": 2,
+        "explanation": "The period should be inside the quotation marks in American English."
+      },
+      {
+        "id": 19,
+        "question": "What is a symbol for 'freedom'?",
+        "options": ["A chain", "An eagle", "A wall", "A door"],
+        "correctAnswer": 1,
+        "explanation": "An eagle is commonly used as a symbol for freedom and strength."
+      },
+      {
+        "id": 20,
+        "question": "Choose the sentence with correct subject-verb agreement:",
+        "options": [
+          "The group of students are studying",
+          "The team have won the game",
+          "The class has completed the assignment",
+          "Everyone have arrived"
+        ],
+        "correctAnswer": 2,
+        "explanation": "'The class has completed the assignment' correctly uses 'has' with the singular collective noun."
+      },
+      {
+        "id": 21,
+        "question": "What is the meaning of 'eloquent'?",
+        "options": [
+          "Fluent, persuasive speech",
+          "Quiet and reserved",
+          "Technical jargon",
+          "Foreign language"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Eloquent' means fluent and persuasive in speaking or writing."
+      },
+      {
+        "id": 22,
+        "question": "Which word best describes someone who is 'loquacious'?",
+        "options": ["Quiet", "Talkative", "Angry", "Sad"],
+        "correctAnswer": 1,
+        "explanation": "'Loquacious' means talkative or given to excessive talking."
+      },
+      {
+        "id": 23,
+        "question": "What does 'vindicate' mean?",
+        "options": [
+          "To accuse falsely",
+          "To clear from blame or suspicion",
+          "To punish severely",
+          "To forgive completely"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Vindicate' means to clear someone from blame, suspicion, or criticism."
+      },
+      {
+        "id": 24,
+        "question": "Which word is an adverb?",
+        "options": ["Quick", "Quickly", "Quickness", "Quicken"],
+        "correctAnswer": 1,
+        "explanation": "'Quickly' is an adverb that modifies verbs, adjectives, or other adverbs."
+      },
+      {
+        "id": 25,
+        "question": "Choose the correct spelling:",
+        "options": ["Definately", "Definitely", "Definitly", "Definitelly"],
+        "correctAnswer": 1,
+        "explanation": "The correct spelling is 'definitely'."
+      },
+      {
+        "id": 26,
+        "question": "What is an example of a metaphor?",
+        "options": [
+          "She is like a star",
+          "She is a star",
+          "She shines like the sun",
+          "She is as bright as light"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'She is a star' is a metaphor (direct comparison without 'like' or 'as')."
+      },
+      {
+        "id": 27,
+        "question": "Which sentence uses the passive voice correctly?",
+        "options": [
+          "The book is write by the author",
+          "The book is written by the author",
+          "The book are written by the author",
+          "The book written is by the author"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'The book is written by the author' is the correct passive voice construction."
+      },
+      {
+        "id": 28,
+        "question": "What does 'ambiguous' mean?",
+        "options": [
+          "Very clear",
+          "Open to more than one interpretation",
+          "Completely uncertain",
+          "Totally confusing"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Ambiguous' means having more than one possible meaning or interpretation."
+      },
+      {
+        "id": 29,
+        "question": "Which is the correct plural form?",
+        "options": ["Childs", "Children", "Childes", "Childrens"],
+        "correctAnswer": 1,
+        "explanation": "The correct plural of 'child' is 'children'."
+      },
+      {
+        "id": 30,
+        "question": "What is the meaning of 'nostalgia'?",
+        "options": [
+          "Fear of the future",
+          "Sentimental yearning for the past",
+          "Excitement about new things",
+          "Sadness about present situations"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Nostalgia' is a sentimental longing for the past, typically for a period or place with happy memories."
+      },
+      {
+        "id": 31,
+        "question": "Which sentence contains correct comma usage?",
+        "options": [
+          "I went to the store, and I bought milk, bread and butter",
+          "I went to the store and, I bought milk, bread, and butter",
+          "I went to the store, and I bought milk, bread, and butter",
+          "I went to the store and I bought, milk bread and butter"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The serial comma (Oxford comma) is used correctly before 'and butter'."
+      },
+      {
+        "id": 32,
+        "question": "What does 'procrastinate' mean?",
+        "options": [
+          "To plan ahead",
+          "To delay or postpone action",
+          "To work quickly",
+          "To organize efficiently"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Procrastinate' means to delay or postpone tasks unnecessarily."
+      },
+      {
+        "id": 33,
+        "question": "Which word is correctly used in this sentence: 'Their ___ is to succeed'?",
+        "options": ["Goal", "Goall", "Gole", "Goel"],
+        "correctAnswer": 0,
+        "explanation": "'Goal' is the correct spelling for the intended destination or objective."
+      },
+      {
+        "id": 34,
+        "question": "What is an oxymoron?",
+        "options": [
+          "A word that means exactly the opposite of another",
+          "A combination of contradictory or opposite words",
+          "A word with multiple meanings",
+          "A comparison between two unlike things"
+        ],
+        "correctAnswer": 1,
+        "explanation": "An oxymoron is when two contradictory or opposite words are used together."
+      },
+      {
+        "id": 35,
+        "question": "Choose the correct form: 'I wish I ___ to the party.'",
+        "options": ["Go", "Went", "Had gone", "Would go"],
+        "correctAnswer": 2,
+        "explanation": "The past perfect 'had gone' expresses a regret about a past event."
+      },
+      {
+        "id": 36,
+        "question": "What does 'diligent' mean?",
+        "options": [
+          "Lazy and careless",
+          "Intelligent and quick",
+          "Showing care in work",
+          "Forgetful and slow"
+        ],
+        "correctAnswer": 2,
+        "explanation": "'Diligent' means showing careful and persistent effort in one's work."
+      },
+      {
+        "id": 37,
+        "question": "Which is the correct contraction?",
+        "options": ["Wont", "Wo'nt", "Won't", "Wno't"],
+        "correctAnswer": 2,
+        "explanation": "'Won't' is the correct contraction of 'will not'."
+      },
+      {
+        "id": 38,
+        "question": "What type of figurative language is 'The wind whispered through the trees'?",
+        "options": ["Metaphor", "Personification", "Hyperbole", "Simile"],
+        "correctAnswer": 1,
+        "explanation": "'Personification' is giving human qualities to non-human things, like wind whispering."
+      },
+      {
+        "id": 39,
+        "question": "Choose the word that correctly completes: 'Due to ___ efforts, we succeeded.'",
+        "options": ["Their", "There", "They're", "Theyr"],
+        "correctAnswer": 0,
+        "explanation": "'Their' is the possessive pronoun used to show ownership."
+      },
+      {
+        "id": 40,
+        "question": "What is the meaning of 'serendipity'?",
+        "options": [
+          "Bad luck or misfortune",
+          "The occurrence of events by chance in a happy way",
+          "Planned success",
+          "Careful planning"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Serendipity' means finding good things by chance or luck."
+      }
+    ]
+  }
+}

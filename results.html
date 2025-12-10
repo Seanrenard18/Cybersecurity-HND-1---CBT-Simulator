@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity HND 1 - CBT Exam Simulator - Results</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <h1>🛡️ Cybersecurity HND 1 - CBT Exam Simulator</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Results Container -->
+    <main class="results-container">
+      <div class="results-wrapper">
+        <!-- Result Status Card -->
+        <div class="result-status-card" id="statusCard">
+          <div class="status-icon" id="statusIcon">✅</div>
+          <h2 id="statusMessage">Congratulations!</h2>
+          <p id="statusDescription">You have passed the examination.</p>
+        </div>
+
+        <!-- Results Summary Card -->
+        <div class="results-summary-card">
+          <h3>Exam Summary</h3>
+
+          <!-- Score Section -->
+          <div class="score-section">
+            <div class="score-display">
+              <div class="score-circle">
+                <div class="score-value">
+                  <span id="scorePercentage">0</span>%
+                </div>
+              </div>
+            </div>
+            <div class="score-details">
+              <div class="score-detail-item">
+                <span class="detail-label">Your Score:</span>
+                <span class="detail-value" id="scoreValue">0/40</span>
+              </div>
+              <div class="score-detail-item">
+                <span class="detail-label">Passing Score:</span>
+                <span class="detail-value" id="passingScoreValue">16/40</span>
+              </div>
+              <div class="score-detail-item">
+                <span class="detail-label">Status:</span>
+                <span class="detail-value" id="statusValue">Passed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Breakdown -->
+          <div class="performance-breakdown">
+            <h4>Performance Breakdown</h4>
+            <div class="breakdown-stats">
+              <div class="stat-box correct">
+                <div class="stat-icon">✓</div>
+                <div class="stat-info">
+                  <div class="stat-number" id="correctCount">0</div>
+                  <div class="stat-label">Correct</div>
+                </div>
+              </div>
+              <div class="stat-box incorrect">
+                <div class="stat-icon">✗</div>
+                <div class="stat-info">
+                  <div class="stat-number" id="incorrectCount">0</div>
+                  <div class="stat-label">Incorrect</div>
+                </div>
+              </div>
+              <div class="stat-box unanswered">
+                <div class="stat-icon">?</div>
+                <div class="stat-info">
+                  <div class="stat-number" id="unansweredCount">0</div>
+                  <div class="stat-label">Unanswered</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Info Section -->
+          <div class="user-info-section">
+            <h4>Exam Details</h4>
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">Full Name:</span>
+                <span class="info-value" id="resultUserName">-</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Registration Number:</span>
+                <span class="info-value" id="resultRegNumber">-</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Subject:</span>
+                <span class="info-value" id="resultSubject">-</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Exam Duration:</span>
+                <span class="info-value" id="resultDuration">60 minutes</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Submission Time:</span>
+                <span class="info-value" id="submissionTime">-</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Time Taken:</span>
+                <span class="info-value" id="timeTaken">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review Answers Section -->
+        <div class="review-section">
+          <h3>Answer Review</h3>
+          <button class="btn btn-secondary" id="reviewBtn">
+            Review All Answers
+          </button>
+
+          <!-- Answer Review Container (Initially Hidden) -->
+          <div
+            class="answer-review-container"
+            id="answerReviewContainer"
+            style="display: none"
+          >
+            <div id="reviewContent"></div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="results-actions">
+          <button class="btn btn-secondary" id="downloadBtn">
+            📥 Download Result
+          </button>
+          <button class="btn btn-primary" id="newExamBtn">
+            Start New Exam
+          </button>
+          <button class="btn btn-link" id="logoutResultBtn">Logout</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 CBT Exam Simulator | All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/results.js"></script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity HND 1 - CBT Exam Simulator - Exam</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Header -->
+    <header class="navbar exam-navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <h1>🛡️ CBT Exam</h1>
+        </div>
+        <div class="exam-info">
+          <div class="timer-display">
+            <span class="timer-icon">⏱️</span>
+            <span class="timer-text"
+              >Time Remaining: <strong id="timer">60:00</strong></span
+            >
+          </div>
+          <div class="subject-display">
+            <span class="subject-text" id="subjectDisplay"></span>
+          </div>
+        </div>
+        <div class="exam-actions">
+          <button
+            id="terminateBtn"
+            class="btn btn-secondary"
+            title="Terminate current course"
+          >
+            ⛔ End Course
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Exam Container -->
+    <main class="exam-container">
+      <!-- Left Sidebar - Question List -->
+      <aside class="question-sidebar">
+        <div class="sidebar-header">
+          <h3>Questions</h3>
+          <div class="progress-info">
+            <span id="answeredCount">0</span> / <span id="totalCount">40</span>
+          </div>
+        </div>
+
+        <!-- Question List -->
+        <div class="question-list">
+          <div id="questionListContainer"></div>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="sidebar-footer">
+          <div class="stats">
+            <div class="stat-item answered">
+              <span class="stat-color"></span>
+              <span class="stat-label">Answered</span>
+            </div>
+            <div class="stat-item unanswered">
+              <span class="stat-color"></span>
+              <span class="stat-label">Unanswered</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Content Area - Question Display -->
+      <section class="exam-content">
+        <!-- Current Question Display -->
+        <div class="question-display">
+          <div class="question-header">
+            <h3 id="questionNumber">Question 1</h3>
+            <span class="question-counter">
+              <span id="currentQuestionNum">1</span> of
+              <span id="totalQuestionsNum">40</span>
+            </span>
+          </div>
+
+          <!-- Question Text -->
+          <div class="question-text">
+            <p id="questionContent"></p>
+          </div>
+
+          <!-- Options -->
+          <div class="options-container">
+            <div id="optionsContainer"></div>
+          </div>
+
+          <!-- Question Navigation -->
+          <div class="question-navigation">
+            <button class="btn btn-secondary" id="prevBtn" disabled>
+              ← Previous
+            </button>
+            <button class="btn btn-secondary" id="nextBtn">Next →</button>
+            <button class="btn btn-primary" id="submitBtn">Submit Exam</button>
+          </div>
+
+          <!-- Explanation Box (Shown after submission) -->
+          <div
+            class="explanation-box"
+            id="explanationBox"
+            style="display: none"
+          >
+            <h4>Explanation</h4>
+            <p id="explanationText"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Confirm Submit Modal -->
+    <div class="modal" id="confirmModal">
+      <div class="modal-content">
+        <h3>Confirm Submission</h3>
+        <p id="confirmMessage"></p>
+        <div class="modal-buttons">
+          <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+          <button class="btn btn-primary" id="confirmBtn">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Backdrop -->
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/exam.js"></script>
+  </body>
+</html>

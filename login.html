@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity HND 1 - CBT Exam Simulator - Login</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <h1>🛡️ Cybersecurity HND 1 - CBT Exam Simulator</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Login Container -->
+    <main class="login-container">
+      <div class="login-wrapper">
+        <div class="login-card">
+          <!-- Login Illustration -->
+          <div class="login-illustration">
+            <div class="illustration-icon">👤</div>
+          </div>
+
+          <!-- Login Form -->
+          <h2>Welcome Back</h2>
+          <p class="login-subtitle">Sign in to start your exam</p>
+
+          <form id="loginForm" class="login-form">
+            <!-- Full Name Input -->
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+
+            <!-- Email Input -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <!-- Registration Number Input -->
+            <div class="form-group">
+              <label for="regNumber">Registration Number</label>
+              <input
+                type="text"
+                id="regNumber"
+                name="regNumber"
+                placeholder="e.g., REG-2024-001"
+                required
+              />
+            </div>
+
+            <!-- Course Selection -->
+            <div class="form-group">
+              <label for="subject">Select Course</label>
+              <select id="subject" name="subject" required>
+                <option value="">-- Choose a course --</option>
+                <option value="CYS311">
+                  CYS 311 - Information Security & Policy Development
+                </option>
+                <option value="CYS312">CYS 312 - Operating Systems</option>
+                <option value="CYS313">
+                  CYS 313 - Cyber Diplomacy & International Cooperation
+                </option>
+                <option value="CYS314">
+                  CYS 314 - Mathematics For Cybersecurity
+                </option>
+                <option value="GNS301">GNS 301 - Use Of English</option>
+                <option value="NCC311">NCC 311 - Network Essentials</option>
+              </select>
+            </div>
+
+            <!-- Remember Me Checkbox -->
+            <div class="form-group checkbox">
+              <input type="checkbox" id="rememberMe" name="rememberMe" />
+              <label for="rememberMe" class="checkbox-label"
+                >Remember my credentials</label
+              >
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block">
+              Proceed to Instructions
+            </button>
+          </form>
+
+          <!-- Info Section -->
+          <div class="login-info">
+            <p class="info-text">
+              <strong>ℹ️ Important:</strong> Please ensure you have a stable
+              internet connection before proceeding with the exam.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 CBT Exam Simulator | All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script>
+      // Handle login form submission
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const fullName = document.getElementById("fullName").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const regNumber = document.getElementById("regNumber").value.trim();
+          const subject = document.getElementById("subject").value;
+
+          // Basic validation
+          if (!fullName || !email || !regNumber || !subject) {
+            alert("Please fill in all required fields");
+            return;
+          }
+
+          // Validate email format
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address");
+            return;
+          }
+
+          // Store user data in localStorage
+          const userData = {
+            fullName,
+            email,
+            regNumber,
+            subject,
+            loginTime: new Date().toISOString(),
+          };
+
+          localStorage.setItem("userData", JSON.stringify(userData));
+
+          // Redirect to instructions page
+          window.location.href = "instructions.html";
+        });
+    </script>
+  </body>
+</html>

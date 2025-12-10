@@ -1,0 +1,728 @@
+{
+  "exam": {
+    "title": "CYS 311 - Information Security & Policy Development",
+    "courseCode": "CYS311",
+    "courseName": "Information Security & Policy Development",
+    "department": "Cybersecurity HND 1",
+    "duration": 80,
+    "totalQuestions": 60,
+    "passingScore": 40,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the primary goal of information security?",
+        "options": [
+          "To maximize system performance",
+          "To protect data confidentiality, integrity, and availability",
+          "To increase network bandwidth",
+          "To reduce operational costs"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Information security aims to protect data confidentiality, integrity, and availability - the CIA triad."
+      },
+      {
+        "id": 2,
+        "question": "Which of the following is NOT a common security threat?",
+        "options": [
+          "Phishing attacks",
+          "Malware",
+          "Data encryption",
+          "Social engineering"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Data encryption is a security control, not a threat. The other options are common security threats."
+      },
+      {
+        "id": 3,
+        "question": "What does CIA stand for in cybersecurity?",
+        "options": [
+          "Computer Integrity Assurance",
+          "Confidentiality, Integrity, and Availability",
+          "Cyber Intelligence Agency",
+          "Central Information Authority"
+        ],
+        "correctAnswer": 1,
+        "explanation": "CIA stands for Confidentiality, Integrity, and Availability - the core principles of information security."
+      },
+      {
+        "id": 4,
+        "question": "Which policy document defines how an organization handles data security?",
+        "options": [
+          "Employee handbook",
+          "Information Security Policy",
+          "Marketing strategy",
+          "Payroll procedures"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The Information Security Policy is a formal document that outlines how an organization manages data security."
+      },
+      {
+        "id": 5,
+        "question": "What is the purpose of a security audit?",
+        "options": [
+          "To increase company profits",
+          "To assess compliance with security policies and identify vulnerabilities",
+          "To reduce employee wages",
+          "To improve marketing efficiency"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Security audits assess compliance with security policies and help identify vulnerabilities."
+      },
+      {
+        "id": 6,
+        "question": "Which type of policy addresses how employees should handle passwords?",
+        "options": [
+          "Attendance policy",
+          "Password management policy",
+          "Vacation policy",
+          "Dress code policy"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Password management policy defines standards for creating, storing, and changing passwords."
+      },
+      {
+        "id": 7,
+        "question": "What is a vulnerability?",
+        "options": [
+          "A successful cyber attack",
+          "A weakness that can be exploited by threats",
+          "A strong security measure",
+          "An employee benefit"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A vulnerability is a weakness or flaw that can potentially be exploited by threats."
+      },
+      {
+        "id": 8,
+        "question": "Which document outlines acceptable use of company resources?",
+        "options": [
+          "Employment contract",
+          "Acceptable Use Policy (AUP)",
+          "Performance review",
+          "Promotion guidelines"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The Acceptable Use Policy defines how employees should use company resources responsibly."
+      },
+      {
+        "id": 9,
+        "question": "What is the first step in risk management?",
+        "options": [
+          "Implement security controls",
+          "Train employees",
+          "Identify and assess risks",
+          "Purchase insurance"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The first step in risk management is to identify and assess potential risks."
+      },
+      {
+        "id": 10,
+        "question": "Which policy addresses data classification and handling?",
+        "options": [
+          "Communications policy",
+          "Data classification policy",
+          "Leave policy",
+          "Procurement policy"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Data classification policy defines how different types of data should be handled based on sensitivity."
+      },
+      {
+        "id": 11,
+        "question": "What does GDPR stand for?",
+        "options": [
+          "General Data Protection Regulation",
+          "Global Digital Privacy Requirement",
+          "Government Data Protection Resolution",
+          "General Database Processing Rule"
+        ],
+        "correctAnswer": 0,
+        "explanation": "GDPR stands for General Data Protection Regulation, a key data protection regulation."
+      },
+      {
+        "id": 12,
+        "question": "Which is a key principle of information security policy?",
+        "options": [
+          "Maximize profits only",
+          "Least privilege principle",
+          "Avoid documentation",
+          "Allow all access requests"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The least privilege principle ensures users only have access to data and systems they need."
+      },
+      {
+        "id": 13,
+        "question": "What is security awareness training?",
+        "options": [
+          "Training on financial accounting",
+          "Education to help employees understand security risks",
+          "Training on software development",
+          "Training on HR management"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Security awareness training educates employees about security risks and best practices."
+      },
+      {
+        "id": 14,
+        "question": "Which scenario represents a breach of confidentiality?",
+        "options": [
+          "System downtime",
+          "Unauthorized access to sensitive data",
+          "Slow network performance",
+          "Update failure"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A confidentiality breach occurs when unauthorized individuals access sensitive data."
+      },
+      {
+        "id": 15,
+        "question": "What is the purpose of an incident response policy?",
+        "options": [
+          "To prevent all security incidents",
+          "To define procedures for responding to security incidents",
+          "To eliminate all employees",
+          "To increase sales"
+        ],
+        "correctAnswer": 1,
+        "explanation": "An incident response policy defines procedures for detecting, responding to, and recovering from incidents."
+      },
+      {
+        "id": 16,
+        "question": "Which role is responsible for overall information security?",
+        "options": [
+          "Receptionist",
+          "Chief Information Security Officer (CISO)",
+          "Accountant",
+          "Janitor"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The CISO is responsible for developing and implementing information security strategies."
+      },
+      {
+        "id": 17,
+        "question": "What is a security policy?",
+        "options": [
+          "A marketing document",
+          "A formal document defining security requirements and procedures",
+          "An employee complaint form",
+          "A social media post"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A security policy is a formal document that defines security requirements and procedures."
+      },
+      {
+        "id": 18,
+        "question": "Which is NOT a typical component of a security policy?",
+        "options": [
+          "Purpose and scope",
+          "Responsibilities",
+          "Employee vacation dates",
+          "Compliance requirements"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Employee vacation dates are not part of security policies. Security policies focus on security aspects."
+      },
+      {
+        "id": 19,
+        "question": "What does access control involve?",
+        "options": [
+          "Controlling building temperature",
+          "Determining who can access what resources",
+          "Controlling traffic flow",
+          "Managing employee breaks"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Access control determines who is allowed to access specific resources based on their role."
+      },
+      {
+        "id": 20,
+        "question": "Which principle requires security measures to be proportionate to the value of data?",
+        "options": [
+          "Usability principle",
+          "Cost-benefit principle",
+          "Risk management principle",
+          "Documentation principle"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The risk management principle ensures security measures are proportionate to identified risks and data value."
+      },
+      {
+        "id": 21,
+        "question": "What is data retention?",
+        "options": [
+          "Permanently deleting all data",
+          "Keeping data for a specified period as defined by policy",
+          "Sharing data publicly",
+          "Storing data without organization"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Data retention involves keeping data for specified periods as defined by organizational policies."
+      },
+      {
+        "id": 22,
+        "question": "Which policy addresses how to handle sensitive employee information?",
+        "options": [
+          "Software installation policy",
+          "Privacy policy",
+          "Hardware replacement policy",
+          "Meeting scheduling policy"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Privacy policy defines how personal and sensitive employee information is handled and protected."
+      },
+      {
+        "id": 23,
+        "question": "What is a security baseline?",
+        "options": [
+          "A minimum set of security controls and standards",
+          "The first line of defense",
+          "An employee's salary level",
+          "A type of malware"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A security baseline is the minimum set of security controls and standards expected across the organization."
+      },
+      {
+        "id": 24,
+        "question": "Which document outlines the process for handling data breaches?",
+        "options": [
+          "Employee handbook",
+          "Incident response plan",
+          "Budget document",
+          "Facilities manual"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The incident response plan outlines procedures for detecting and responding to data breaches."
+      },
+      {
+        "id": 25,
+        "question": "What does compliance mean in security context?",
+        "options": [
+          "Following company suggestions",
+          "Adhering to security policies, regulations, and standards",
+          "Ignoring security requirements",
+          "Making up own security rules"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Compliance means adhering to established security policies, regulations, and industry standards."
+      },
+      {
+        "id": 26,
+        "question": "Which is a benefit of information security policies?",
+        "options": [
+          "Increased complexity",
+          "Reduced employee productivity",
+          "Clear security expectations and reduced risk",
+          "Higher costs"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Security policies establish clear expectations and significantly reduce organizational security risks."
+      },
+      {
+        "id": 27,
+        "question": "What is policy governance?",
+        "options": [
+          "Making policies without input",
+          "Ignoring policies",
+          "Oversight and approval of policy creation and updates",
+          "Deleting old policies"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Policy governance involves oversight, approval, and management of policy creation and updates."
+      },
+      {
+        "id": 28,
+        "question": "Which stakeholder should be involved in security policy development?",
+        "options": [
+          "Only IT department",
+          "Representatives from all departments",
+          "Only senior management",
+          "Only external consultants"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Representatives from all departments should participate in security policy development."
+      },
+      {
+        "id": 29,
+        "question": "What is the purpose of policy review and updates?",
+        "options": [
+          "To make work harder",
+          "To ensure policies remain relevant and effective",
+          "To confuse employees",
+          "To increase bureaucracy"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Regular policy review ensures policies remain relevant, effective, and aligned with current threats."
+      },
+      {
+        "id": 30,
+        "question": "Which scenario violates the integrity principle?",
+        "options": [
+          "Reading authorized data",
+          "Unauthorized modification of data",
+          "Secure data storage",
+          "Data backup"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Integrity violation occurs when data is unauthorized modified, ensuring it's no longer trustworthy."
+      },
+      {
+        "id": 31,
+        "question": "What is separation of duties?",
+        "options": [
+          "Eliminating job responsibilities",
+          "Dividing tasks among multiple people to prevent fraud",
+          "Making one person do everything",
+          "Duplicating all work"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Separation of duties prevents fraud by dividing critical tasks among multiple people."
+      },
+      {
+        "id": 32,
+        "question": "Which policy addresses employee access to company systems?",
+        "options": [
+          "Parking policy",
+          "Access control policy",
+          "Cafeteria policy",
+          "Transportation policy"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Access control policy defines who can access company systems and under what conditions."
+      },
+      {
+        "id": 33,
+        "question": "What is a security exception?",
+        "options": [
+          "A permanent override of security policies",
+          "A temporary deviation from policy with documented justification",
+          "Ignoring all security measures",
+          "A type of malware"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Security exceptions are temporary deviations approved with documentation and limited scope."
+      },
+      {
+        "id": 34,
+        "question": "Which is a key element of a data protection policy?",
+        "options": [
+          "Employee age restrictions",
+          "Data classification and handling procedures",
+          "Parking restrictions",
+          "Dress code standards"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Data protection policies include classification levels and specific handling procedures."
+      },
+      {
+        "id": 35,
+        "question": "What is policy enforcement?",
+        "options": [
+          "Suggesting policies without follow-up",
+          "Implementing consequences for policy violations",
+          "Ignoring violations",
+          "Changing policies frequently"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Policy enforcement ensures compliance through monitoring and appropriate consequences."
+      },
+      {
+        "id": 36,
+        "question": "Which document describes security roles and responsibilities?",
+        "options": [
+          "Employee social media guide",
+          "Security roles and responsibilities matrix",
+          "Office decoration guide",
+          "Event planning manual"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The RACI matrix or responsibility matrix clearly defines security roles and responsibilities."
+      },
+      {
+        "id": 37,
+        "question": "What is the purpose of security policy documentation?",
+        "options": [
+          "To waste time",
+          "To create a reference and ensure accountability",
+          "To confuse employees",
+          "To increase paperwork only"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Documentation provides clear reference for employees and creates accountability for enforcement."
+      },
+      {
+        "id": 38,
+        "question": "Which is a principle of effective security policy?",
+        "options": [
+          "Complexity for its own sake",
+          "Clarity and accessibility to all employees",
+          "Keeping policies secret",
+          "Ignoring feedback"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Effective policies are clear, accessible, and understood by all affected employees."
+      },
+      {
+        "id": 39,
+        "question": "What should happen after a security policy is implemented?",
+        "options": [
+          "Nothing - policy is permanent",
+          "Periodic review, monitoring, and updates",
+          "Delete the policy",
+          "Make it more complex"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Policies require ongoing review, monitoring, and updates to remain effective."
+      },
+      {
+        "id": 40,
+        "question": "Which regulation focuses on protecting personal data privacy?",
+        "options": [
+          "HIPAA (Health Insurance Portability and Accountability Act)",
+          "GDPR (General Data Protection Regulation)",
+          "PCI DSS (Payment Card Industry Data Security Standard)",
+          "All of the above regulate personal data"
+        ],
+        "correctAnswer": 3,
+        "explanation": "All mentioned regulations protect personal data but GDPR is most comprehensive for privacy."
+      },
+      {
+        "id": 41,
+        "question": "What is a common method to ensure data confidentiality? (additional)",
+        "options": [
+          "Open file sharing",
+          "Data encryption",
+          "Publishing data publicly",
+          "Ignoring access controls"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Encryption is used to ensure confidentiality by making data unreadable without keys."
+      },
+      {
+        "id": 42,
+        "question": "Which is an example of multi-factor authentication? (additional)",
+        "options": [
+          "Password only",
+          "Password and fingerprint",
+          "Username only",
+          "IP address check only"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Multi-factor authentication combines multiple verification methods like password plus biometric."
+      },
+      {
+        "id": 43,
+        "question": "What is the role of access control? (additional)",
+        "options": [
+          "To allow everyone full access",
+          "To restrict access to authorized users",
+          "To remove all security",
+          "To slow down systems"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Access control restricts resources to authorized users only."
+      },
+      {
+        "id": 44,
+        "question": "Why perform vulnerability assessments? (additional)",
+        "options": [
+          "To find and fix security weaknesses",
+          "To increase system downtime",
+          "To reduce security",
+          "To avoid audits"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Vulnerability assessments identify weaknesses so they can be remediated."
+      },
+      {
+        "id": 45,
+        "question": "Which control helps prevent data leakage? (additional)",
+        "options": [
+          "Data Loss Prevention (DLP)",
+          "Public posting",
+          "Unrestricted USB access",
+          "Open Wi‑Fi"
+        ],
+        "correctAnswer": 0,
+        "explanation": "DLP tools help prevent unauthorized exfiltration of sensitive data."
+      },
+      {
+        "id": 46,
+        "question": "What is patch management? (additional)",
+        "options": [
+          "Applying updates to software to fix vulnerabilities",
+          "Deleting important files",
+          "Creating malware",
+          "Hiding logs"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Patch management keeps systems updated to reduce vulnerability exposure."
+      },
+      {
+        "id": 47,
+        "question": "Which of these is a social engineering technique? (additional)",
+        "options": ["Phishing", "Encryption", "Firewalling", "Backup"],
+        "correctAnswer": 0,
+        "explanation": "Phishing manipulates users into revealing sensitive information."
+      },
+      {
+        "id": 48,
+        "question": "What does least privilege mean? (additional)",
+        "options": [
+          "Users get full rights",
+          "Users receive only rights necessary to perform tasks",
+          "No authentication required",
+          "Everyone is an admin"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Least privilege ensures users have only the permissions they need."
+      },
+      {
+        "id": 49,
+        "question": "Why are security incidents logged? (additional)",
+        "options": [
+          "For audit, investigation and forensic analysis",
+          "To delete evidence",
+          "To confuse administrators",
+          "To increase storage use only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Logging provides evidence for investigation and helps improve defenses."
+      },
+      {
+        "id": 50,
+        "question": "What is an intrusion detection system used for? (additional)",
+        "options": [
+          "Detecting suspicious network or host activity",
+          "Improving network speed",
+          "Deleting files",
+          "Designing interfaces"
+        ],
+        "correctAnswer": 0,
+        "explanation": "IDS monitors and alerts on possible malicious activity."
+      },
+      {
+        "id": 51,
+        "question": "Which is a strong password practice? (additional)",
+        "options": [
+          "Using long passphrases and avoiding reuse",
+          "Using 'password123'",
+          "Sharing passwords",
+          "Using short simple words"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Long, unique passphrases improve password strength."
+      },
+      {
+        "id": 52,
+        "question": "What is the purpose of a security baseline? (additional)",
+        "options": [
+          "To define minimum security configuration standards",
+          "To remove security",
+          "To confuse users",
+          "To speed up systems"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Baselines ensure systems meet minimum secure configuration requirements."
+      },
+      {
+        "id": 53,
+        "question": "How should sensitive data be transmitted? (additional)",
+        "options": [
+          "Over encrypted channels (e.g., TLS)",
+          "Via plain HTTP",
+          "On public bulletin boards",
+          "Through SMS only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Use encryption like TLS to protect data in transit."
+      },
+      {
+        "id": 54,
+        "question": "What is an acceptable use policy? (additional)",
+        "options": [
+          "A policy defining permitted uses of IT resources",
+          "A marketing plan",
+          "A hiring document",
+          "A financial report"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Acceptable use policies specify permitted and prohibited actions on IT resources."
+      },
+      {
+        "id": 55,
+        "question": "What should be done after a breach? (additional)",
+        "options": [
+          "Contain, investigate, remediate, and notify as appropriate",
+          "Ignore it",
+          "Delete logs",
+          "Panic only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Incident response requires containment, investigation, remediation, and notification."
+      },
+      {
+        "id": 56,
+        "question": "Which control reduces insider risk? (additional)",
+        "options": [
+          "Role-based access control (RBAC)",
+          "Unlimited privileges",
+          "Open data access",
+          "No monitoring"
+        ],
+        "correctAnswer": 0,
+        "explanation": "RBAC limits permissions, reducing insider threat exposure."
+      },
+      {
+        "id": 57,
+        "question": "What is the benefit of security awareness training? (additional)",
+        "options": [
+          "Reduces successful social engineering and human errors",
+          "Increases breaches",
+          "Removes all risk",
+          "Is unnecessary"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Training reduces human-risk factors for security incidents."
+      },
+      {
+        "id": 58,
+        "question": "Why keep backups offline? (additional)",
+        "options": [
+          "To protect against ransomware and corruption",
+          "To make them inaccessible forever",
+          "To slow recovery",
+          "To share publicly"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Offline or immutable backups reduce risk of ransomware damaging backups."
+      },
+      {
+        "id": 59,
+        "question": "What is data classification? (additional)",
+        "options": [
+          "Categorizing data by sensitivity to apply controls",
+          "Deleting data randomly",
+          "Publishing everything",
+          "Encrypting all data indiscriminately"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Classification helps determine appropriate handling and protection for different data types."
+      },
+      {
+        "id": 60,
+        "question": "What is the value of penetration testing? (additional)",
+        "options": [
+          "To identify exploitable weaknesses before attackers do",
+          "To reduce security",
+          "To delete evidence",
+          "To slow networks"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Penetration testing proactively uncovers weaknesses so they can be fixed."
+      }
+    ]
+  }
+}

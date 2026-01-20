@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,24 +13,36 @@
         <div class="logo">
           <h1>🛡️ CBT Exam</h1>
         </div>
+        <div class="course-selector-container">
+          <label for="courseSelector" class="course-label">Course:</label>
+          <select id="courseSelector" class="course-selector">
+            <option value="">-- Select Course --</option>
+            <option value="CYS311">CYS 311</option>
+            <option value="CYS312">CYS 312</option>
+            <option value="CYS313">CYS 313</option>
+            <option value="CYS314">CYS 314</option>
+            <option value="GNS301">GNS 301</option>
+            <option value="NCC311">NCC 311</option>
+          </select>
+        </div>
         <div class="exam-info">
           <div class="timer-display">
             <span class="timer-icon">⏱️</span>
             <span class="timer-text"
-              >Time Remaining: <strong id="timer">60:00</strong></span
+              >Time: <strong id="timer">30:00</strong></span
             >
           </div>
           <div class="subject-display">
-            <span class="subject-text" id="subjectDisplay"></span>
+            <span class="subject-text" id="courseCodeDisplay"></span>
           </div>
         </div>
         <div class="exam-actions">
           <button
             id="terminateBtn"
-            class="btn btn-secondary"
-            title="Terminate current course"
+            class="btn btn-exit btn-small"
+            title="Exit exam"
           >
-            ⛔ End Course
+            ⏻ Exit
           </button>
         </div>
       </div>
@@ -43,7 +55,8 @@
         <div class="sidebar-header">
           <h3>Questions</h3>
           <div class="progress-info">
-            <span id="answeredCount">0</span> / <span id="totalCount">40</span>
+            <span id="currentQuestionNum">1</span> /
+            <span id="totalQuestionsNum">30</span>
           </div>
         </div>
 
@@ -57,11 +70,15 @@
           <div class="stats">
             <div class="stat-item answered">
               <span class="stat-color"></span>
-              <span class="stat-label">Answered</span>
+              <span class="stat-label"
+                >Answered: <span id="answeredCount">0</span></span
+              >
             </div>
             <div class="stat-item unanswered">
               <span class="stat-color"></span>
-              <span class="stat-label">Unanswered</span>
+              <span class="stat-label"
+                >Unanswered: <span id="unansweredCount">0</span></span
+              >
             </div>
           </div>
         </div>
@@ -73,10 +90,6 @@
         <div class="question-display">
           <div class="question-header">
             <h3 id="questionNumber">Question 1</h3>
-            <span class="question-counter">
-              <span id="currentQuestionNum">1</span> of
-              <span id="totalQuestionsNum">40</span>
-            </span>
           </div>
 
           <!-- Question Text -->
@@ -119,6 +132,18 @@
         <div class="modal-buttons">
           <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
           <button class="btn btn-primary" id="confirmBtn">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exit Exam Modal -->
+    <div class="modal" id="exitModal">
+      <div class="modal-content">
+        <h3>Exit Exam?</h3>
+        <p id="exitMessage">All progress will be lost. Are you sure?</p>
+        <div class="modal-buttons">
+          <button class="btn btn-secondary" id="exitCancelBtn">Cancel</button>
+          <button class="btn btn-exit" id="exitConfirmBtn">Exit Exam</button>
         </div>
       </div>
     </div>

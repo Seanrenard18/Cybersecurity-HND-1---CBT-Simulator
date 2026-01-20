@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,12 +28,10 @@
             <h3>Welcome, <span id="userName"></span>!</h3>
           </div>
           <div class="user-info-details">
-            <p>
-              <strong>Registration Number:</strong>
-              <span id="userRegNumber"></span>
-            </p>
-            <p><strong>Subject:</strong> <span id="userSubject"></span></p>
             <p><strong>Email:</strong> <span id="userEmail"></span></p>
+            <p>
+              <strong>Selected Course:</strong> <span id="userSubject"></span>
+            </p>
           </div>
         </div>
 
@@ -47,17 +45,15 @@
             <div class="details-grid">
               <div class="detail-item">
                 <span class="detail-label">Total Questions:</span>
-                <span class="detail-value" id="totalQuestionsDisplay">40</span>
+                <span class="detail-value" id="totalQuestionsDisplay">--</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Duration:</span>
-                <span class="detail-value" id="durationDisplay"
-                  >60 minutes</span
-                >
+                <span class="detail-value">30 minutes</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Passing Score:</span>
-                <span class="detail-value" id="passingScoreDisplay">40%</span>
+                <span class="detail-value">40%</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Question Type:</span>
@@ -66,80 +62,20 @@
             </div>
           </section>
 
-          <!-- Important Rules Section -->
+          <!-- Quick Rules Section -->
           <section class="instruction-section">
             <h3>⚠️ Important Rules</h3>
             <ul class="rules-list">
               <li>
-                <strong>No Cheating:</strong> This is an honor-based
-                examination. Any form of cheating is strictly prohibited.
+                Read questions carefully and select the most appropriate answer.
               </li>
+              <li>You can change your answers before submitting the exam.</li>
+              <li>Auto-submission occurs when time runs out.</li>
               <li>
-                <strong>Time Limit:</strong> Once you start the exam, you have
-                60 minutes to complete all questions.
+                Ensure your internet connection remains stable during the exam.
               </li>
-              <li>
-                <strong>Network Connection:</strong> Ensure your internet
-                connection is stable throughout the exam.
-              </li>
-              <li>
-                <strong>No Distractions:</strong> Find a quiet place and
-                minimize distractions during the exam.
-              </li>
-              <li>
-                <strong>Complete Answers:</strong> You must answer all questions
-                before submitting. No partial submissions are allowed.
-              </li>
-              <li>
-                <strong>Review Before Submit:</strong> You can review and change
-                your answers before final submission.
-              </li>
-              <li>
-                <strong>Auto-Save:</strong> Your answers are automatically saved
-                as you progress. However, ensure you submit before time ends.
-              </li>
+              <li>You can switch between courses and the timer will reset.</li>
             </ul>
-          </section>
-
-          <!-- Guidelines Section -->
-          <section class="instruction-section">
-            <h3>📖 Guidelines for Success</h3>
-            <ol class="guidelines-list">
-              <li>Read each question carefully before answering.</li>
-              <li>
-                Select the most appropriate answer from the given options.
-              </li>
-              <li>You can change your answer anytime before submission.</li>
-              <li>Use the question navigation to move between questions.</li>
-              <li>Keep track of the remaining time on your screen.</li>
-              <li>
-                Review all your answers before clicking the submit button.
-              </li>
-              <li>Ensure all questions are answered before submission.</li>
-            </ol>
-          </section>
-
-          <!-- Navigation Instructions Section -->
-          <section class="instruction-section">
-            <h3>🎮 How to Navigate</h3>
-            <div class="navigation-guide">
-              <div class="guide-item">
-                <strong>Question Navigation:</strong> Use the question buttons
-                at the bottom to jump to any question.
-              </div>
-              <div class="guide-item">
-                <strong>Multiple Choice:</strong> Click on an option to select
-                it. Click again to deselect.
-              </div>
-              <div class="guide-item">
-                <strong>Question Status:</strong> Answered questions are marked,
-                unanswered questions are highlighted.
-              </div>
-              <div class="guide-item">
-                <strong>Timer:</strong> Your remaining time is displayed at the
-                top of the exam page.
-              </div>
-            </div>
           </section>
 
           <!-- Acknowledgment Section -->
@@ -148,8 +84,7 @@
               <div class="form-group checkbox">
                 <input type="checkbox" id="agreeCheckbox" name="agree" />
                 <label for="agreeCheckbox" class="checkbox-label">
-                  I have read and understood all the instructions above. I agree
-                  to follow all rules and guidelines.
+                  I have read and understood the instructions and rules above.
                 </label>
               </div>
             </div>
@@ -186,9 +121,37 @@
 
         const user = JSON.parse(userData);
         document.getElementById("userName").textContent = user.fullName;
-        document.getElementById("userRegNumber").textContent = user.regNumber;
-        document.getElementById("userSubject").textContent = user.subject;
         document.getElementById("userEmail").textContent = user.email;
+        document.getElementById("userSubject").textContent = user.subject;
+
+        // Load total questions dynamically
+        loadTotalQuestions(user.subject);
+      }
+
+      // Load total questions for the selected course
+      async function loadTotalQuestions(courseCode) {
+        try {
+          const basePath = location.pathname.substring(
+            0,
+            location.pathname.lastIndexOf("/"),
+          );
+          const jsonPath = `${location.origin}${basePath}/data/questions_${courseCode}.json`;
+
+          const response = await fetch(jsonPath).catch(() =>
+            fetch(`data/questions_${courseCode}.json`),
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            if (data.exam && data.exam.questions) {
+              document.getElementById("totalQuestionsDisplay").textContent =
+                data.exam.questions.length;
+            }
+          }
+        } catch (err) {
+          console.error("Could not load question count:", err);
+          document.getElementById("totalQuestionsDisplay").textContent = "--";
+        }
       }
 
       // Enable start exam button when checkbox is checked

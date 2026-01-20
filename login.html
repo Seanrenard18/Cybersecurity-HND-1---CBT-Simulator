@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -54,18 +54,6 @@
               />
             </div>
 
-            <!-- Registration Number Input -->
-            <div class="form-group">
-              <label for="regNumber">Registration Number</label>
-              <input
-                type="text"
-                id="regNumber"
-                name="regNumber"
-                placeholder="e.g., REG-2024-001"
-                required
-              />
-            </div>
-
             <!-- Course Selection -->
             <div class="form-group">
               <label for="subject">Select Course</label>
@@ -84,14 +72,6 @@
                 <option value="GNS301">GNS 301 - Use Of English</option>
                 <option value="NCC311">NCC 311 - Network Essentials</option>
               </select>
-            </div>
-
-            <!-- Remember Me Checkbox -->
-            <div class="form-group checkbox">
-              <input type="checkbox" id="rememberMe" name="rememberMe" />
-              <label for="rememberMe" class="checkbox-label"
-                >Remember my credentials</label
-              >
             </div>
 
             <!-- Submit Button -->
@@ -128,11 +108,10 @@
           // Get form values
           const fullName = document.getElementById("fullName").value.trim();
           const email = document.getElementById("email").value.trim();
-          const regNumber = document.getElementById("regNumber").value.trim();
           const subject = document.getElementById("subject").value;
 
           // Basic validation
-          if (!fullName || !email || !regNumber || !subject) {
+          if (!fullName || !email || !subject) {
             alert("Please fill in all required fields");
             return;
           }
@@ -148,7 +127,6 @@
           const userData = {
             fullName,
             email,
-            regNumber,
             subject,
             loginTime: new Date().toISOString(),
           };

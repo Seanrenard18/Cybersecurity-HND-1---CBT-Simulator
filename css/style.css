@@ -259,15 +259,15 @@ a:hover {
 }
 
 .btn-exit {
-  background: rgba(231, 76, 60, 0.15);
+  background: rgba(239, 40, 18, 0.925);
   color: var(--white);
   border: 1.5px solid rgba(231, 76, 60, 0.6);
   transition: var(--transition);
 }
 
 .btn-exit:hover:not(:disabled) {
-  background: rgba(231, 76, 60, 0.25);
-  border-color: rgba(231, 76, 60, 0.9);
+  background: rgba(239, 32, 9, 0.811);
+  border-color: rgba(239, 66, 47, 0.9);
   transform: translateY(-2px);
 }
 

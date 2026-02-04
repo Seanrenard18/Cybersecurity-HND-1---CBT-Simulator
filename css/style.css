@@ -83,6 +83,7 @@ body {
   line-height: 1.6;
   color: var(--gray-dark);
   background-color: var(--light-bg);
+  overflow-x: hidden;
 }
 
 /* ========================================
@@ -1322,11 +1323,30 @@ input[type="checkbox"] {
 @media (max-width: 1024px) {
   .exam-container {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar"
+      "content";
   }
 
   .question-sidebar {
     position: static;
     max-height: 300px;
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+    box-shadow: none;
+  }
+
+  .question-sidebar .question-list {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+
+  .exam-content {
+    grid-area: content;
+  }
+
+  .question-sidebar {
+    grid-area: sidebar;
   }
 
   .score-section {
@@ -1343,6 +1363,40 @@ input[type="checkbox"] {
   .navbar-container {
     flex-direction: column;
     gap: var(--spacing-md);
+    align-items: stretch;
+  }
+
+  /* Stack header in a predictable mobile-friendly order */
+  .course-selector-container {
+    order: 1;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .timer-display {
+    order: 2;
+    width: 100%;
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: var(--spacing-xs);
+  }
+
+  .subject-display {
+    order: 3;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .exam-actions {
+    order: 4;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: var(--spacing-xs);
   }
 
   .exam-info {
@@ -1350,6 +1404,17 @@ input[type="checkbox"] {
     gap: var(--spacing-sm);
     margin-left: 0;
     width: 100%;
+  }
+
+  /* Make exit button small and consistent with other buttons */
+  .btn-exit {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .btn-small {
+    padding: 0.25rem 0.5rem;
   }
 
   .login-card {
@@ -1425,6 +1490,38 @@ input[type="checkbox"] {
   .question-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* Tighten exam content padding and ensure no horizontal scroll */
+  .exam-content {
+    padding: 1rem;
+  }
+
+  /* Make question navigator compact and grid-like above questions */
+  .question-sidebar {
+    max-height: none;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .question-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+    gap: 0.5rem;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+
+  .question-item {
+    text-align: center;
+    padding: 0.5rem 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  /* Ensure exit button remains unobtrusive */
+  .btn-exit {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.85rem;
   }
 
   .score-circle {

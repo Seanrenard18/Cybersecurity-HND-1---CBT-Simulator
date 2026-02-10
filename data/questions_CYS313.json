@@ -1,733 +1,374 @@
 {
   "exam": {
-    "title": "CYS 313 - Cyber Diplomacy & International Cooperation",
+    "title": "CYS 313 - Cyber Diplomacy, Policy and Law",
     "courseCode": "CYS313",
-    "courseName": "Cyber Diplomacy & International Cooperation",
+    "courseName": "Cyber Diplomacy, Policy and Law",
     "department": "Cybersecurity HND 1",
-    "duration": 80,
-    "totalQuestions": 60,
-    "passingScore": 40,
+    "duration": 30,
+    "totalQuestions": 30,
+    "passingScore": 20,
     "questions": [
       {
         "id": 1,
-        "question": "What is cyber diplomacy?",
+        "question": "In UN cyber norms, how does 'no intentional generation of transboundary ICT incident' primarily shift state obligations compared with classical non-intervention?",
         "options": [
-          "Using military force in cyberspace",
-          "International relations and negotiations in cyberspace",
-          "Creating computer viruses",
-          "Building computer networks"
+          "It eliminates state sovereignty over networks",
+          "It emphasizes preventive due diligence obligations to avoid harmful cross-border effects",
+          "It makes private actors solely responsible for incidents",
+          "It converts cyber incidents into purely domestic matters"
         ],
         "correctAnswer": 1,
-        "explanation": "Cyber diplomacy involves international relations and negotiations addressing cyber issues."
+        "explanation": "The norm stresses states' preventive due diligence to avoid transboundary harm rather than only prohibiting direct hostile conduct."
       },
       {
         "id": 2,
-        "question": "Which organization is the primary UN body for ICT issues?",
+        "question": "Given attribution uncertainty, which legal standard from the Tallinn Manual best supports holding a state responsible for proxy cyber actors?",
         "options": [
-          "WHO",
-          "UNESCO",
-          "ITU (International Telecommunication Union)",
-          "IMO"
+          "Strict intent standard requiring explicit orders",
+          "Effective control over specific operations",
+          "General political influence over groups",
+          "Presence of state nationals among attackers"
         ],
-        "correctAnswer": 2,
-        "explanation": "ITU is the UN specialized agency for ICT and cyber governance issues."
+        "correctAnswer": 1,
+        "explanation": "Effective control over particular operations (not mere influence) aligns with contemporary attribution frameworks."
       },
       {
         "id": 3,
-        "question": "What is the Budapest Convention about?",
+        "question": "Which mechanism of CBMs most directly reduces misperception in incidents involving dual-use cyber capabilities?",
         "options": [
-          "Trade agreements",
-          "Cybercrime and digital evidence",
-          "Military alliances",
-          "Environmental protection"
+          "Secrecy about capabilities",
+          "Transparency measures and prior notifications of major exercises",
+          "Rapid offensive deployment",
+          "Economic sanctions for disclosure"
         ],
         "correctAnswer": 1,
-        "explanation": "The Budapest Convention addresses cybercrime, digital evidence, and international cooperation."
+        "explanation": "Transparency and prior notifications help states interpret activities as defensive rather than offensive."
       },
       {
         "id": 4,
-        "question": "Which concept refers to national sovereignty in cyberspace?",
+        "question": "Why do harmonization efforts for cybersecurity standards often fail despite technical compatibility options?",
         "options": [
-          "Cyber freedom",
-          "Cyber sovereignty",
-          "Cyber democracy",
-          "Cyber anarchy"
+          "Because technology cannot be standardized",
+          "Divergent legal philosophies, threat perceptions, and sovereignty concerns impede harmonization",
+          "Standards bodies refuse participation",
+          "All countries already share identical threat models"
         ],
         "correctAnswer": 1,
-        "explanation": "Cyber sovereignty means applying national sovereignty principles to cyberspace."
+        "explanation": "Non-technical factors like legal approaches and sovereignty create major barriers to harmonization."
       },
       {
         "id": 5,
-        "question": "What is cyber espionage?",
+        "question": "How does reverse engineering for security research clash with anti-circumvention rules under some IP regimes?",
         "options": [
-          "Sending emails",
-          "Covert intelligence gathering through cyber means",
-          "Creating websites",
-          "Internet shopping"
+          "Reverse engineering is always prohibited",
+          "Anti-circumvention can criminalize accessing software for legitimate security analysis unless exceptions exist",
+          "Reverse engineering always overrides IP protections",
+          "Anti-circumvention has no legal effect"
         ],
         "correctAnswer": 1,
-        "explanation": "Cyber espionage involves gathering intelligence through unauthorized cyber access."
+        "explanation": "Anti-circumvention rules can restrict researchers unless statutory exceptions or safe harbors apply."
       },
       {
         "id": 6,
-        "question": "Which countries are members of the NATO Cyber Defense Centre?",
+        "question": "What legal gap emerges from treating 'cyber operations' and 'cybercrime' under separate regimes?",
         "options": [
-          "Only Russia",
-          "NATO member countries",
-          "Only United States",
-          "Only European countries"
+          "There is no practical gap",
+          "State-sanctioned operations may escape criminal classifications while non-state actors face criminal law, producing unequal accountability",
+          "Cybercrime supersedes international law",
+          "All cyber operations become war crimes by default"
         ],
         "correctAnswer": 1,
-        "explanation": "NATO's Cyber Defence Centre coordinates cyber defense among NATO members."
+        "explanation": "Different legal lenses (criminal vs. international law) can leave accountability gaps for state-linked operations."
       },
       {
         "id": 7,
-        "question": "What is critical infrastructure protection in cyber context?",
+        "question": "What makes operationalizing 'due diligence' in cyberspace contentious?",
         "options": [
-          "Building physical walls",
-          "Securing systems essential to national functioning",
-          "Hiding information",
-          "Banning the internet"
+          "There is a universal definition already",
+          "Lack of consensus on what constitutes reasonable measures across differing capacities and threat environments",
+          "Due diligence is irrelevant in practice",
+          "States uniformly accept strict monitoring duties"
         ],
         "correctAnswer": 1,
-        "explanation": "Critical infrastructure protection secures systems vital to national security and economy."
+        "explanation": "States disagree on what reasonable preventive measures entail given varying capacities and political concerns."
       },
       {
         "id": 8,
-        "question": "Which principle guides international cyber cooperation?",
+        "question": "How does proportionality under IHL become complex in cyber operations against dual-use infrastructure?",
         "options": [
-          "Unilateral action only",
-          "Mutual respect and international law",
-          "No cooperation needed",
-          "Avoiding agreements"
+          "Proportionality is straightforward in cyberspace",
+          "Damage estimation and foreseeable cascading effects in networks complicate balancing military advantage against civilian harm",
+          "Dual-use infrastructure is always military",
+          "Cyber operations never cause civilian harm"
         ],
         "correctAnswer": 1,
-        "explanation": "International cooperation is guided by mutual respect and adherence to international law."
+        "explanation": "Network effects and interdependencies make assessing proportionality technically and legally challenging."
       },
       {
         "id": 9,
-        "question": "What is a cyber warfare doctrine?",
+        "question": "What is the key trade-off when states share threat intelligence internationally?",
         "options": [
-          "Rules for internet etiquette",
-          "Official policy on using cyber operations in military context",
-          "Guidelines for software development",
-          "Regulations for email use"
+          "There is no trade-off",
+          "Balancing actionable sharing with protection of sensitive sources and methods",
+          "Sharing eliminates all threats",
+          "Intelligence sharing is cost-free"
         ],
         "correctAnswer": 1,
-        "explanation": "Cyber warfare doctrines define how nations use cyber operations in military contexts."
+        "explanation": "Revealing detailed intelligence can impair sources and methods, limiting willingness to share."
       },
       {
         "id": 10,
-        "question": "Which treaty addresses Internet governance?",
+        "question": "Which normative approach mitigates the defensive-offensive ambiguity of cyber capabilities?",
         "options": [
-          "Treaty of Versailles",
-          "Paris Agreement",
-          "World Summit on the Information Society (WSIS)",
-          "Treaty of Rome"
+          "Complete bans on cyber defense",
+          "Transparency, restraint and mutual vulnerability recognition",
+          "Mandatory offensive development",
+          "Privatization of all cyber capabilities"
         ],
-        "correctAnswer": 2,
-        "explanation": "WSIS addresses Internet governance and digital inclusion globally."
+        "correctAnswer": 1,
+        "explanation": "Norms that promote transparency and restraint help reduce suspicions arising from dual-use tools."
       },
       {
         "id": 11,
-        "question": "What is the role of ICANN?",
+        "question": "Why does the GDPR 'right to be forgotten' conflict with cybersecurity evidence retention?",
         "options": [
-          "Military cyber operations",
-          "Managing Internet domain names and IP addresses",
-          "Creating security firewalls",
-          "Building satellites"
+          "Because GDPR mandates no data deletion",
+          "Deletion requests can remove forensic data needed for investigations and accountability",
+          "Right to be forgotten only applies to metadata",
+          "Cybersecurity never requires data retention"
         ],
         "correctAnswer": 1,
-        "explanation": "ICANN manages DNS, domain names, and IP address allocation globally."
+        "explanation": "Privacy deletion can impede forensic evidence preservation unless balanced by legal retention exceptions."
       },
       {
         "id": 12,
-        "question": "What is a cyber incident declaration in diplomacy?",
+        "question": "How can the UN norm requiring states not to permit their infrastructure to be used for hostile acts be made practicable?",
         "options": [
-          "A computer malfunction",
-          "Formal notification of cyber attack to international community",
-          "A software bug",
-          "An antivirus alert"
+          "By requiring perfect attribution",
+          "By adopting due-diligence obligations and reasonable monitoring measures adapted to capacity",
+          "By ignoring state capacity differences",
+          "By eliminating private networks"
         ],
         "correctAnswer": 1,
-        "explanation": "Cyber incident declarations involve formally notifying international partners of cyber attacks."
+        "explanation": "Due diligence calibrated to capacity is the pragmatic path to implementing the norm."
       },
       {
         "id": 13,
-        "question": "Which framework guides responsible state behavior in cyberspace?",
+        "question": "How do ISO 27001 and NIST frameworks assist courts in interpreting 'reasonable security'?",
         "options": [
-          "Company policies",
-          "UN General Assembly norms on responsible state conduct",
-          "Personal preferences",
-          "Marketing strategies"
+          "They provide absolute legal standards",
+          "They supply auditable controls and best-practice baselines for demonstrating due care",
+          "They nullify statutory obligations",
+          "They prescribe identical measures for all organizations"
         ],
         "correctAnswer": 1,
-        "explanation": "UN norms provide framework for responsible state conduct in cyberspace."
+        "explanation": "Standards give concrete, auditable measures that help show compliance with legal duties."
       },
       {
         "id": 14,
-        "question": "What is confidence-building measures (CBM) in cyber context?",
+        "question": "Why is assigning state responsibility difficult when attack chains involve many actors?",
         "options": [
-          "Trusting without verification",
-          "Mutual understanding and transparency between nations",
-          "Ignoring disagreements",
-          "Increasing military spending"
+          "Because only one actor can be liable",
+          "Because causation and control may be diffuse, requiring nuanced legal analysis to apportion responsibility",
+          "Because international law disallows multiple liability",
+          "Because non-state actors are always excluded"
         ],
         "correctAnswer": 1,
-        "explanation": "CBMs include transparency, hotlines, and joint operations to build trust."
+        "explanation": "Complex operational chains make attributing effective control and causation legally challenging."
       },
       {
         "id": 15,
-        "question": "What is the significance of attribution in cyber diplomacy?",
+        "question": "Legally, how does targeting election infrastructure differ from espionage?",
         "options": [
-          "It doesn't matter",
-          "Identifying attackers is crucial for diplomatic responses",
-          "Always blaming everyone",
-          "Never assigning blame"
+          "They are identical under international law",
+          "Election interference can amount to unlawful intervention in domestic affairs, while espionage is treated as a distinct, often tolerated violation",
+          "Espionage is always lawful",
+          "Election systems have no international protection"
         ],
         "correctAnswer": 1,
-        "explanation": "Attribution determines who is responsible, enabling appropriate diplomatic responses."
+        "explanation": "Election targeting implicates non-intervention and democratic integrity, unlike conventional espionage which is treated differently in practice."
       },
       {
         "id": 16,
-        "question": "Which concept involves using cyber means for political influence?",
+        "question": "How do cross-border networks complicate critical infrastructure protection?",
         "options": [
-          "Cyber terrorism",
-          "Information warfare",
-          "Cyber defense",
-          "Firewall management"
+          "They simplify legal authority",
+          "They blur jurisdictional authority when damage in one state affects services in another",
+          "Cross-border networks are rare",
+          "Only the provider's state has authority"
         ],
         "correctAnswer": 1,
-        "explanation": "Information warfare uses cyber and information means for political/military objectives."
+        "explanation": "Shared infrastructure raises questions about which state has rights or obligations to act."
       },
       {
         "id": 17,
-        "question": "What is the mandate of the International Court of Justice regarding cyber issues?",
+        "question": "What is the influence of epistemic communities on cybersecurity policy convergence?",
         "options": [
-          "No jurisdiction",
-          "Adjudicating cyber disputes between nations",
-          "Operating computer systems",
-          "Selling software"
+          "They have no influence",
+          "They propagate shared technical and policy understandings that can align national approaches over time",
+          "They enforce laws directly",
+          "They promote isolationism"
         ],
         "correctAnswer": 1,
-        "explanation": "ICJ can adjudicate cyber-related disputes between nations under international law."
+        "explanation": "Expert networks shape consensus and policy diffusion even amid geopolitical divergence."
       },
       {
         "id": 18,
-        "question": "What is cross-border data transfer in cyber diplomacy context?",
+        "question": "Why is the principle of distinction hard to apply in cyber operations?",
         "options": [
-          "Copying files",
-          "Moving data between countries with governance and legal implications",
-          "Email attachments",
-          "USB transfers"
+          "Because cyber operations always target weapons",
+          "Because many digital systems are dual-use and effects may cascade unpredictably",
+          "Because civilians are not protected online",
+          "Because law ignores cyberspace"
         ],
         "correctAnswer": 1,
-        "explanation": "Cross-border data transfer involves complex legal and diplomatic issues around data sovereignty."
+        "explanation": "Dual-use systems and unpredictable cascading effects make distinguishing legitimate targets difficult."
       },
       {
         "id": 19,
-        "question": "Which principle refers to non-use of force in cyberspace?",
+        "question": "How do key-escrow proposals expose a policy trade-off?",
         "options": [
-          "Free internet access",
-          "Application of international law on force to cyberspace",
-          "Unlimited cyber operations",
-          "No security measures"
+          "They eliminate all encryption benefits",
+          "They trade investigative access for increased systemic vulnerability and privacy erosion",
+          "They are technically impossible",
+          "They guarantee absolute security"
         ],
         "correctAnswer": 1,
-        "explanation": "International law principles on force apply to cyberspace to prevent escalation."
+        "explanation": "Escrow can aid investigations but introduces new attack surfaces and privacy risks."
       },
       {
         "id": 20,
-        "question": "What is the purpose of UN Group of Governmental Experts (GGE)?",
+        "question": "What dilemma does 'zero-day retention' by intelligence services create?",
         "options": [
-          "Creating computer games",
-          "Developing international cyber security norms",
-          "Building websites",
-          "Email management"
+          "No dilemma exists",
+          "Keeping zero-days aids intelligence but prolongs public exposure; disclosure aids security but loses operational advantage",
+          "Zero-days are irrelevant",
+          "All zero-days must be sold to vendors"
         ],
         "correctAnswer": 1,
-        "explanation": "UN GGE develops norms for responsible state conduct in cyberspace."
+        "explanation": "Governments must balance public security benefits of patching against the intelligence value of retained exploits."
       },
       {
         "id": 21,
-        "question": "What is cyber terrorism?",
+        "question": "Implicit versus explicit norms: which is often more resilient in cyberspace and why?",
         "options": [
-          "Fear of computers",
-          "Using cyber means to create fear for political objectives",
-          "Disliking technology",
-          "Avoiding the internet"
+          "Implicit norms are always weaker",
+          "Implicit norms can be more resilient because they adapt and persist through state practice without rigid treaty constraints",
+          "Explicit norms are always ignored",
+          "Neither impacts state behavior"
         ],
         "correctAnswer": 1,
-        "explanation": "Cyber terrorism uses cyber attacks to create fear and pursue political or ideological goals."
+        "explanation": "Flexible norms can survive political shifts and still shape behavior through practice."
       },
       {
         "id": 22,
-        "question": "Which concept addresses internet access as a human right?",
+        "question": "How does technological neutrality in law create enforcement challenges?",
         "options": [
-          "Digital divide",
-          "Net neutrality",
-          "Right to internet access and digital rights",
-          "Bandwidth limiting"
+          "It resolves all enforcement issues",
+          "Outcome-focused rules risk being outdated as technology evolves faster than enforcement mechanisms",
+          "It mandates specific tech",
+          "It prevents any legal interpretation"
         ],
-        "correctAnswer": 2,
-        "explanation": "Digital rights include internet access as recognized by UN and various treaties."
+        "correctAnswer": 1,
+        "explanation": "Legislation that is technology-neutral can be difficult to interpret and enforce as capabilities change."
       },
       {
         "id": 23,
-        "question": "What is the role of regional organizations in cyber diplomacy?",
+        "question": "Why do legal definitions of 'cyber attack' struggle with non-physical impacts?",
         "options": [
-          "No role",
-          "Developing regional cyber security frameworks and cooperation",
-          "Only military issues",
-          "Entertainment only"
+          "Because law requires physical harm to qualify",
+          "Because states differ on thresholds—disruption, economic loss or physical damage—for qualifying an operation as an attack",
+          "Because technical impacts are always trivial",
+          "Because international law excludes cyber matters"
         ],
         "correctAnswer": 1,
-        "explanation": "Regional organizations like ASEAN and AU develop cyber security cooperation frameworks."
+        "explanation": "Divergent thresholds for harm produce differing legal classifications of cyber incidents."
       },
       {
         "id": 24,
-        "question": "What is capacity building in cyber diplomacy?",
+        "question": "What structural obstacle does a trust deficit create for real-time intelligence sharing?",
         "options": [
-          "Building computer servers",
-          "Helping nations develop cyber security capabilities",
-          "Manufacturing hardware",
-          "Selling software licenses"
+          "There is no obstacle",
+          "States require safeguards and verification to avoid intelligence misuse, slowing or limiting sharing",
+          "Trust deficits speed up sharing",
+          "Real-time sharing is always bilateral only"
         ],
         "correctAnswer": 1,
-        "explanation": "Capacity building involves training and resources to strengthen cyber capabilities."
+        "explanation": "Safeguards to prevent misuse of shared data are necessary, which complicates real-time mechanisms."
       },
       {
         "id": 25,
-        "question": "Which factor complicates cyber attribution?",
+        "question": "How do supply-chain vulnerabilities expose gaps in manufacturer liability frameworks?",
         "options": [
-          "Computers are too fast",
-          "Attackers hide identities through proxies and spoofing",
-          "There are no records",
-          "No technology exists"
+          "They are irrelevant",
+          "Third-party components create diffuse responsibility and unclear liability across jurisdictions",
+          "Manufacturers are always fully liable",
+          "Supply chains never affect security"
         ],
         "correctAnswer": 1,
-        "explanation": "Attribution is difficult due to anonymization, proxies, and false flag operations."
+        "explanation": "Complex supply chains make apportioning responsibility for vulnerabilities difficult."
       },
       {
         "id": 26,
-        "question": "What is a cyber arms control agreement?",
+        "question": "What role does soft law play when hard treaties are politically infeasible?",
         "options": [
-          "Limiting computer sales",
-          "Mutual agreement limiting cyber weapons development",
-          "Banning internet",
-          "Restricting email"
+          "None; soft law is meaningless",
+          "Soft law establishes expectations, norms and practices that can shape behavior informally",
+          "It replaces domestic law",
+          "It creates immediate enforcement mechanisms"
         ],
         "correctAnswer": 1,
-        "explanation": "Cyber arms control agreements limit development of offensive cyber capabilities."
+        "explanation": "Soft law fills governance gaps by creating shared expectations even without binding enforcement."
       },
       {
         "id": 27,
-        "question": "What is the significance of cyber security in international relations?",
+        "question": "How does the distinction between 'authorization' and 'effective control' standards affect attribution outcomes?",
         "options": [
-          "Not important",
-          "Critical for national security and trust between nations",
-          "Only for IT companies",
-          "Optional consideration"
+          "It has no effect",
+          "Different standards lead to different thresholds for imputing state responsibility",
+          "Both standards always yield the same result",
+          "Authorization always implies effective control"
         ],
         "correctAnswer": 1,
-        "explanation": "Cyber security is central to modern international relations and national security."
+        "explanation": "The legal standard applied changes whether a state is deemed responsible for non-state actor conduct."
       },
       {
         "id": 28,
-        "question": "What is intelligence sharing in cyber cooperation?",
+        "question": "Why can proprietary IP protections hinder collective cybersecurity in practice?",
         "options": [
-          "Broadcasting all information",
-          "Sharing threat intelligence between allied nations",
-          "Public distribution of secrets",
-          "No sharing"
+          "They always improve security",
+          "They can limit sharing of defensive tools and vulnerability information that would benefit collective defense",
+          "They have no impact",
+          "They force open-source adoption"
         ],
         "correctAnswer": 1,
-        "explanation": "Intelligence sharing among allies improves collective cyber defense."
+        "explanation": "Restrictive IP regimes can reduce transparency and slow dissemination of fixes."
       },
       {
         "id": 29,
-        "question": "Which principle addresses cyber neutrality?",
+        "question": "What is the 'compliance trap' in cybersecurity regulation?",
         "options": [
-          "Taking all sides",
-          "Maintaining non-alignment in cyber conflicts",
-          "No internet use",
-          "Equal aggression"
+          "Compliance always ensures security",
+          "Organizations focus on paperwork to show compliance without materially reducing vulnerabilities",
+          "Compliance is optional",
+          "Regulation eliminates risk entirely"
         ],
         "correctAnswer": 1,
-        "explanation": "Some nations maintain cyber neutrality as a diplomatic principle."
+        "explanation": "Performative compliance can create a false sense of security absent real risk reduction."
       },
       {
         "id": 30,
-        "question": "What is the role of private sector in cyber diplomacy?",
+        "question": "Which UN norm aims to protect humanitarian functions in cyberspace?",
         "options": [
-          "No role at all",
-          "Partners with governments in policy development and response",
-          "Purely profit-focused",
-          "Conflicting interests only"
+          "Attacking emergency management systems is permitted",
+          "Not conducting cyber operations against emergency response and critical humanitarian systems",
+          "All cyber operations are neutral",
+          "Humanitarian systems have no special status"
         ],
         "correctAnswer": 1,
-        "explanation": "Private sector plays crucial role in cyber defense and policy implementation."
-      },
-      {
-        "id": 31,
-        "question": "What is diplomatic immunity in cyber context?",
-        "options": [
-          "Protection for all websites",
-          "Uncertain - expanding concept in diplomacy",
-          "Never applies",
-          "Everyone has it"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Diplomatic immunity implications in cyberspace remain evolving and contested."
-      },
-      {
-        "id": 32,
-        "question": "Which platform is used for cyber diplomacy discussions?",
-        "options": [
-          "Social media only",
-          "UN bodies, regional organizations, bilateral channels",
-          "No official platforms",
-          "Private meetings only"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Cyber diplomacy uses UN forums, regional organizations, and bilateral channels."
-      },
-      {
-        "id": 33,
-        "question": "What is a cyber incident response in diplomacy?",
-        "options": [
-          "No response needed",
-          "Coordinated response to cyber attacks with diplomatic involvement",
-          "Only technical response",
-          "Ignoring attacks"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Diplomatic response to cyber incidents may include sanctions or negotiations."
-      },
-      {
-        "id": 34,
-        "question": "What is the purpose of cyber norms?",
-        "options": [
-          "Creating restrictions",
-          "Establishing expected behaviors to reduce cyber conflicts",
-          "Eliminating technology",
-          "Increasing attacks"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Cyber norms establish expected responsible behaviors in cyberspace."
-      },
-      {
-        "id": 35,
-        "question": "Which organization leads cyber security standards globally?",
-        "options": [
-          "The World Bank",
-          "ISO, NIST, and industry consortiums",
-          "Only military entities",
-          "No standards body"
-        ],
-        "correctAnswer": 1,
-        "explanation": "ISO, NIST, and industry groups develop cyber security standards."
-      },
-      {
-        "id": 36,
-        "question": "What is the role of INTERPOL in cyber crime?",
-        "options": [
-          "No role",
-          "Coordinating international cyber crime investigations",
-          "Only local policing",
-          "Network management"
-        ],
-        "correctAnswer": 1,
-        "explanation": "INTERPOL coordinates international investigations of cyber crimes."
-      },
-      {
-        "id": 37,
-        "question": "What is supply chain security in cyber diplomacy?",
-        "options": [
-          "Shipping products",
-          "Ensuring security of software and hardware supply chains",
-          "Store management",
-          "Delivery services"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Supply chain security addresses risks from compromised components and software."
-      },
-      {
-        "id": 38,
-        "question": "What is the significance of multi-stakeholder approach in cyber governance?",
-        "options": [
-          "One entity decides all",
-          "Collaboration of governments, private sector, civil society, academia",
-          "No collaboration needed",
-          "Ignoring all stakeholders"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Multi-stakeholder approach ensures diverse perspectives in cyber governance."
-      },
-      {
-        "id": 39,
-        "question": "What is cyber hostage-taking diplomacy?",
-        "options": [
-          "Normal diplomacy",
-          "Using cyber attacks as pressure in diplomatic negotiations",
-          "Taking physical hostages",
-          "Internet shopping"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Nations may use cyber attacks as leverage in diplomatic negotiations."
-      },
-      {
-        "id": 40,
-        "question": "What is the future of cyber diplomacy?",
-        "options": [
-          "No future",
-          "Increasingly important for international stability and cooperation",
-          "Becoming less relevant",
-          "Only academic topic"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Cyber diplomacy will become increasingly central to international relations."
-      },
-      {
-        "id": 41,
-        "question": "What role do norms play in international cyberspace? (additional)",
-        "options": [
-          "They guide state behaviour and build expectations",
-          "They are legally binding treaties always",
-          "They prevent all cyber attacks",
-          "They are irrelevant"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Norms guide state behavior and help shape acceptable conduct in cyberspace."
-      },
-      {
-        "id": 42,
-        "question": "Why is capacity building important in cyber diplomacy? (additional)",
-        "options": [
-          "To help states develop cyber capabilities and resilience",
-          "To limit technology",
-          "To avoid cooperation",
-          "To increase vulnerabilities"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Capacity building assists states in developing skills, policies, and infrastructure."
-      },
-      {
-        "id": 43,
-        "question": "What is confidence-building measures (CBMs) in cyber context? (additional)",
-        "options": [
-          "Actions to increase transparency and reduce misperception",
-          "Military exercises only",
-          "Economic plans",
-          "Nothing practical"
-        ],
-        "correctAnswer": 0,
-        "explanation": "CBMs improve transparency and reduce the risk of escalation in cyberspace."
-      },
-      {
-        "id": 44,
-        "question": "Which body supports international cybercrime cooperation? (additional)",
-        "options": [
-          "INTERPOL",
-          "A single company",
-          "A local school",
-          "An unrelated NGO"
-        ],
-        "correctAnswer": 0,
-        "explanation": "INTERPOL coordinates cross-border cybercrime collaboration and investigations."
-      },
-      {
-        "id": 45,
-        "question": "What is cyber norm compliance mainly driven by? (additional)",
-        "options": [
-          "Diplomatic engagement and mutual expectations",
-          "Legal enforcement only",
-          "Random chance",
-          "Technology alone"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Compliance is often built through diplomacy, dialogue and shared expectations."
-      },
-      {
-        "id": 46,
-        "question": "Why coordinate internationally on incident response? (additional)",
-        "options": [
-          "To share indicators and reduce impact",
-          "To hide incidents",
-          "To slow mitigation",
-          "To prevent reporting"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Coordination shares intelligence and speeds containment across borders."
-      },
-      {
-        "id": 47,
-        "question": "What is the role of private sector in cyber diplomacy? (additional)",
-        "options": [
-          "They are key stakeholders providing expertise and infrastructure",
-          "They have no role",
-          "They only cause problems",
-          "They are purely regulators"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Private companies operate critical infrastructure and bring technical expertise."
-      },
-      {
-        "id": 48,
-        "question": "What is a bilateral cyber agreement? (additional)",
-        "options": [
-          "An agreement between two states on cyber cooperation",
-          "A global treaty",
-          "A local policy",
-          "A private contract"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Bilateral agreements set expectations and cooperation mechanisms between two countries."
-      },
-      {
-        "id": 49,
-        "question": "Why involve civil society in cyber governance? (additional)",
-        "options": [
-          "To include diverse perspectives and protect rights",
-          "To ignore human rights",
-          "To centralize power",
-          "To remove transparency"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Civil society brings views on privacy, human rights and public interest."
-      },
-      {
-        "id": 50,
-        "question": "What is attribution in cyber incidents? (additional)",
-        "options": [
-          "Determining the source or actor responsible",
-          "A type of encryption",
-          "A policy document",
-          "A malware name"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Attribution tries to identify who carried out an attack, often a complex process."
-      },
-      {
-        "id": 51,
-        "question": "How do export controls relate to cyber diplomacy? (additional)",
-        "options": [
-          "They regulate transfer of sensitive tech across borders",
-          "They only affect food",
-          "They are irrelevant",
-          "They are local laws only"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Export controls manage cross-border transfer of technologies that could affect national security."
-      },
-      {
-        "id": 52,
-        "question": "Why hold international cyber dialogues? (additional)",
-        "options": [
-          "To build trust, share best practices and reduce tensions",
-          "To create conflict",
-          "To avoid talking",
-          "To promote secrecy"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Dialogues build relationships and channels for cooperation."
-      },
-      {
-        "id": 53,
-        "question": "What is the significance of norms vs law in cyberspace? (additional)",
-        "options": [
-          "Norms set expected behaviour quicker; laws are binding but slower to adopt",
-          "They are identical",
-          "Laws are always superior",
-          "Norms replace laws"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Norms often precede formal legal instruments and shape behaviour informally."
-      },
-      {
-        "id": 54,
-        "question": "What is a multilateral forum for cyber issues? (additional)",
-        "options": [
-          "UN groups like the GGE or OEWG",
-          "A local club",
-          "A private company meeting",
-          "A sports event"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Multilateral forums gather multiple countries to discuss cyber norms and policies."
-      },
-      {
-        "id": 55,
-        "question": "Why is interoperability important in cyber norms? (additional)",
-        "options": [
-          "It ensures systems and responses work together across borders",
-          "It prevents cooperation",
-          "It decreases security",
-          "It is technical only"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Interoperability enables coordinated responses and information sharing."
-      },
-      {
-        "id": 56,
-        "question": "What is the role of confidence-building in crisis? (additional)",
-        "options": [
-          "Reduce misperception and avoid escalation",
-          "Increase hostility",
-          "Hide information",
-          "Delay actions"
-        ],
-        "correctAnswer": 0,
-        "explanation": "CBMs help reduce risk of unintended escalation during crises."
-      },
-      {
-        "id": 57,
-        "question": "Which practice supports responsible vulnerability disclosure? (additional)",
-        "options": [
-          "Coordinated disclosure to vendors and stakeholders",
-          "Publicly exploiting it immediately",
-          "Hiding it forever",
-          "Selling exploits only"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Coordinated disclosure balances fixing issues while informing stakeholders."
-      },
-      {
-        "id": 58,
-        "question": "Why is cross-border data flow a diplomatic challenge? (additional)",
-        "options": [
-          "Different privacy laws and sovereignty concerns",
-          "Because data refuses to move",
-          "It is only technical",
-          "No challenge exists"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Varied legal regimes create complexity for data transfer and protection."
-      },
-      {
-        "id": 59,
-        "question": "What is a public-private partnership in cyber? (additional)",
-        "options": [
-          "Collaboration between government and industry to improve security",
-          "A private club",
-          "An academic course",
-          "A marketing team"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Public-private partnerships leverage strengths of both sectors for resilience."
-      },
-      {
-        "id": 60,
-        "question": "How can small states participate effectively in cyber diplomacy? (additional)",
-        "options": [
-          "By joining coalitions, capacity building and using technical expertise",
-          "By isolating themselves",
-          "By refusing cooperation",
-          "By limiting internet"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Small states can engage through partnerships and targeted capacity building."
+        "explanation": "Norms seek to preserve critical humanitarian and emergency services from cyber disruption."
       }
     ]
   }
 }
+

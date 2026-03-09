@@ -4,699 +4,369 @@
     "courseCode": "CYS312",
     "courseName": "Operating System",
     "department": "Cybersecurity HND 1",
-    "duration": 80,
-    "totalQuestions": 60,
-    "passingScore": 40,
+    "duration": 30,
+    "totalQuestions": 30,
+    "passingScore": 20,
     "questions": [
       {
         "id": 1,
-        "question": "What is an operating system?",
+        "question": "In a multi-level feedback queue scheduling system with quantum sizes increasing exponentially (e.g., 2ms, 4ms, 8ms), what is the primary trade-off when a CPU-bound process is demoted to a lower priority queue compared to an I/O-bound process?",
         "options": [
-          "A hardware component",
-          "A system software that manages hardware and software resources",
-          "An application program",
-          "A type of virus"
+          "Increased context switching overhead for I/O-bound processes",
+          "Higher starvation risk for CPU-bound processes due to longer quantum times",
+          "Reduced responsiveness for interactive processes",
+          "Improved fairness in CPU allocation"
         ],
         "correctAnswer": 1,
-        "explanation": "An OS is system software that manages hardware resources and provides an interface for applications."
+        "explanation": "CPU-bound processes face longer waiting times in lower queues with larger quanta, potentially leading to starvation, while I/O-bound processes benefit from shorter quanta in higher queues."
       },
       {
         "id": 2,
-        "question": "Which of the following is a kernel function?",
+        "question": "When implementing priority inheritance in a real-time operating system to prevent priority inversion, what condition must be met for the protocol to guarantee bounded blocking time?",
         "options": [
-          "Text editing",
-          "Memory management and process scheduling",
-          "Web browsing",
-          "Email sending"
+          "All processes must have equal priority initially",
+          "The system must use preemptive scheduling exclusively",
+          "The number of shared resources must be limited to one per process",
+          "The priority ceiling must be set to the maximum priority of any process that may access the resource"
         ],
-        "correctAnswer": 1,
-        "explanation": "The kernel manages core functions like memory, processes, and hardware resources."
+        "correctAnswer": 3,
+        "explanation": "Priority ceiling protocol ensures that a task can be blocked by at most one lower-priority task, providing bounded blocking time."
       },
       {
         "id": 3,
-        "question": "What does the term 'multitasking' mean?",
+        "question": "In the context of the Banker's algorithm for deadlock avoidance, what does the 'safe state' guarantee beyond deadlock prevention?",
         "options": [
-          "Using multiple computers",
-          "Multiple processes sharing CPU time",
-          "Multiple users using one computer",
-          "Multiple monitors connected to one PC"
+          "Optimal resource utilization in all scenarios",
+          "Existence of at least one sequence where all processes can complete",
+          "Immediate allocation of all requested resources",
+          "Prevention of resource starvation"
         ],
         "correctAnswer": 1,
-        "explanation": "Multitasking allows multiple processes to share CPU time through scheduling."
+        "explanation": "A safe state ensures there exists an order of process execution where each can obtain its maximum resource needs without deadlock."
       },
       {
         "id": 4,
-        "question": "Which OS is based on Unix and known for security?",
-        "options": ["Windows XP", "Linux", "MS-DOS", "MacOS 7"],
+        "question": "Which synchronization primitive would be most appropriate for implementing a bounded buffer producer-consumer problem in a kernel-level thread library, considering the need for both mutual exclusion and condition synchronization?",
+        "options": [
+          "Semaphores with busy-waiting",
+          "Monitors with condition variables",
+          "Spinlocks with event counters",
+          "Atomic operations without blocking"
+        ],
         "correctAnswer": 1,
-        "explanation": "Linux is Unix-based and known for its security features and open-source nature."
+        "explanation": "Monitors provide encapsulation of mutual exclusion and condition variables for efficient blocking and signaling in producer-consumer scenarios."
       },
       {
         "id": 5,
-        "question": "What is virtual memory?",
+        "question": "In a distributed operating system using Lamport's logical clocks, what invariant must hold for the 'happens-before' relation to correctly order events across processes?",
         "options": [
-          "Memory that doesn't exist",
-          "RAM only",
-          "Using disk space to supplement RAM",
-          "Memory in the cloud"
+          "Clock values must be monotonically increasing within each process",
+          "All send events must precede their corresponding receive events",
+          "The clock value of a receive event must be greater than that of its send event",
+          "Physical time must be synchronized across all nodes"
         ],
         "correctAnswer": 2,
-        "explanation": "Virtual memory uses disk storage to extend available RAM, improving system performance."
+        "explanation": "The logical clock ensures that if event a happens before event b, then C(a) < C(b), with receives taking the maximum of local and received clocks."
       },
       {
         "id": 6,
-        "question": "Which scheduling algorithm is known as FCFS?",
+        "question": "When implementing demand paging with a working set model, what is the primary disadvantage of using a fixed window size for tracking page references compared to a variable window based on time?",
         "options": [
-          "Fixed Cycle First Serve",
-          "First Come First Serve",
-          "Fast Computation First System",
-          "Free Cache First Storage"
+          "Increased page fault rates during phase changes",
+          "Higher memory overhead for page table maintenance",
+          "Inability to adapt to varying program locality",
+          "Reduced accuracy in predicting future page needs"
         ],
-        "correctAnswer": 1,
-        "explanation": "FCFS (First Come First Serve) processes tasks in the order they arrive."
+        "correctAnswer": 2,
+        "explanation": "A fixed window size cannot adapt to programs with varying locality patterns, potentially leading to thrashing or inefficient memory usage."
       },
       {
         "id": 7,
-        "question": "What is a process in OS?",
+        "question": "In a segmented memory system with protection bits, what hardware mechanism is typically required to enforce segment limits and prevent buffer overflow attacks?",
         "options": [
-          "A hardware component",
-          "An instance of a running program",
-          "A type of file",
-          "A memory address"
+          "Base and limit registers for each segment",
+          "Page table entries with access control lists",
+          "Translation lookaside buffer with validity checks",
+          "Memory management unit with address space identifiers"
         ],
-        "correctAnswer": 1,
-        "explanation": "A process is an instance of a program in execution with its own memory and resources."
+        "correctAnswer": 0,
+        "explanation": "Base and limit registers provide hardware-enforced bounds checking for each segment, preventing unauthorized access beyond allocated memory."
       },
       {
         "id": 8,
-        "question": "What is the purpose of paging?",
+        "question": "What is the key insight behind the copy-on-write optimization in virtual memory systems when forking processes, and how does it impact system performance?",
         "options": [
-          "Organizing telephone numbers",
-          "Dividing memory into fixed-size blocks for easier management",
-          "Creating web pages",
-          "Managing network traffic"
+          "It eliminates the need for page tables in child processes",
+          "It defers physical memory allocation until pages are modified, reducing initial fork overhead",
+          "It allows parent and child to share all memory without protection",
+          "It automatically compresses memory pages during process creation"
         ],
         "correctAnswer": 1,
-        "explanation": "Paging divides physical memory into fixed-size blocks to reduce fragmentation."
+        "explanation": "Copy-on-write marks pages as read-only initially, allowing sharing until modification, which optimizes memory usage and speeds up process creation."
       },
       {
         "id": 9,
-        "question": "Which OS provides a graphical user interface as standard?",
+        "question": "In NUMA (Non-Uniform Memory Access) architectures, what scheduling strategy minimizes memory access latency for multi-threaded applications?",
         "options": [
-          "MS-DOS",
-          "Windows and macOS",
-          "UNIX command line",
-          "Assembly language"
+          "Global queue scheduling with random processor assignment",
+          "Processor affinity scheduling that keeps threads on nodes with local memory",
+          "Round-robin scheduling across all available processors",
+          "Priority-based scheduling ignoring memory locality"
         ],
         "correctAnswer": 1,
-        "explanation": "Windows and macOS provide GUI as standard for user interaction."
+        "explanation": "Processor affinity ensures threads access memory from nearby nodes, reducing latency in NUMA systems compared to random assignment."
       },
       {
         "id": 10,
-        "question": "What is a thread?",
+        "question": "What is the primary security vulnerability introduced by memory-mapped files in operating systems, and how can it be mitigated?",
         "options": [
-          "A lightweight process sharing process resources",
-          "A type of file",
-          "A network connection",
-          "A storage device"
+          "Direct hardware access without kernel mediation",
+          "Potential for privilege escalation through shared memory regions",
+          "Inability to enforce access controls on mapped files",
+          "Automatic exposure of sensitive data to all processes"
         ],
-        "correctAnswer": 0,
-        "explanation": "A thread is a lightweight process that shares resources with other threads in the same process."
+        "correctAnswer": 1,
+        "explanation": "Memory-mapped files can allow processes to access shared regions with elevated privileges; mitigation requires proper access control and isolation mechanisms."
       },
       {
         "id": 11,
-        "question": "What is deadlock?",
+        "question": "In a journaling file system like ext4, what is the trade-off between using a full journal versus a metadata-only journal for crash recovery?",
         "options": [
-          "A system crash",
-          "When two or more processes are blocked waiting for resources",
-          "A security breach",
-          "A type of malware"
+          "Full journal provides faster recovery but slower normal operations",
+          "Metadata-only journal ensures data consistency but may lose recent changes",
+          "Full journal prevents data loss but increases storage overhead",
+          "Metadata-only journal allows concurrent access but risks corruption"
         ],
-        "correctAnswer": 1,
-        "explanation": "Deadlock occurs when processes are mutually blocked waiting for resources held by each other."
+        "correctAnswer": 2,
+        "explanation": "Full journaling ensures complete consistency but requires more I/O during normal operations and more storage for the journal."
       },
       {
         "id": 12,
-        "question": "Which protection mechanism prevents user programs from accessing kernel memory?",
+        "question": "What fundamental limitation does the traditional UNIX file permission model (rwx for owner/group/others) have in enterprise environments requiring fine-grained access control?",
         "options": [
-          "Hardware interrupt",
-          "Privilege levels (User and Kernel modes)",
-          "Firewall",
-          "Password protection"
+          "Inability to handle more than three user categories",
+          "Lack of support for role-based access control (RBAC)",
+          "Fixed permission granularity without extensibility",
+          "Requirement for root privileges for all file operations"
         ],
         "correctAnswer": 1,
-        "explanation": "Privilege levels separate User mode (restricted) from Kernel mode (unrestricted)."
+        "explanation": "The simple rwx model lacks the flexibility for complex organizational hierarchies and role-based permissions needed in enterprise settings."
       },
       {
         "id": 13,
-        "question": "What is a file system?",
+        "question": "In RAID level 5 with distributed parity, what is the minimum number of disk failures that can cause data loss, and why?",
         "options": [
-          "A computer network",
-          "A method for organizing and accessing data on storage devices",
-          "A type of malware",
-          "An email system"
+          "One failure, due to parity distribution",
+          "Two failures, because parity is striped across disks",
+          "Three failures, requiring multiple parity calculations",
+          "Any failure, as parity cannot be reconstructed"
         ],
         "correctAnswer": 1,
-        "explanation": "A file system provides methods for organizing, storing, and retrieving files."
+        "explanation": "RAID 5 can tolerate one disk failure using parity, but a second failure during reconstruction can cause data loss since parity is distributed."
       },
       {
         "id": 14,
-        "question": "Which file system is commonly used in Windows?",
-        "options": ["ext4", "NTFS", "HFS+", "FAT32"],
-        "correctAnswer": 1,
-        "explanation": "NTFS is the modern file system used in Windows systems."
+        "question": "What is the primary advantage of using a log-structured file system (LFS) over traditional block-based file systems for flash memory devices?",
+        "options": [
+          "Reduced seek times due to sequential writes",
+          "Elimination of the need for wear leveling",
+          "Automatic compression of all file data",
+          "Support for random access patterns"
+        ],
+        "correctAnswer": 0,
+        "explanation": "LFS writes all modifications sequentially to a log, which aligns well with flash memory's write characteristics and reduces erase cycles."
       },
       {
         "id": 15,
-        "question": "What is I/O buffering?",
+        "question": "In the context of file system encryption, what attack vector does filename encryption (as opposed to full path encryption) potentially expose?",
         "options": [
-          "Improving internet speed",
-          "Temporary storage for data during input/output operations",
-          "A virus protection",
-          "A type of memory chip"
+          "Plaintext access to file contents",
+          "Directory structure leakage through filename patterns",
+          "Key recovery through known-plaintext attacks",
+          "Timing attacks on encryption operations"
         ],
         "correctAnswer": 1,
-        "explanation": "I/O buffering uses temporary storage to improve efficiency of input/output operations."
+        "explanation": "Encrypting only filenames may reveal directory structure and file relationships, allowing attackers to infer sensitive information."
       },
       {
         "id": 16,
-        "question": "Which OS is primarily used on smartphones?",
+        "question": "What is the core principle behind the Bell-LaPadula model for mandatory access control, and how does it prevent information leakage?",
         "options": [
-          "Windows Server",
-          "Android and iOS",
-          "Red Hat Enterprise Linux",
-          "FreeBSD"
+          "Users can only read data at their clearance level or below",
+          "All data must be encrypted before storage",
+          "Access is granted based on user identity only",
+          "Permissions are assigned dynamically per session"
         ],
-        "correctAnswer": 1,
-        "explanation": "Android and iOS are the primary operating systems for smartphones."
+        "correctAnswer": 0,
+        "explanation": "The 'no read up' property ensures subjects can only read objects at or below their security level, preventing unauthorized information flow upward."
       },
       {
         "id": 17,
-        "question": "What is the purpose of interrupt handling?",
+        "question": "In capability-based security systems, what hardware feature is typically required to prevent capability forgery attacks?",
         "options": [
-          "To block all user requests",
-          "To respond to hardware or software events requiring immediate attention",
-          "To slow down the system",
-          "To prevent data access"
+          "Memory encryption modules",
+          "Tagged memory architecture",
+          "Hardware-enforced address spaces",
+          "Cryptographic hash functions"
         ],
         "correctAnswer": 1,
-        "explanation": "Interrupt handling allows the OS to respond promptly to hardware or software events."
+        "explanation": "Tagged memory associates each memory word with a tag indicating whether it contains a valid capability, preventing unauthorized creation or modification."
       },
       {
         "id": 18,
-        "question": "What is swap memory?",
+        "question": "What is the primary limitation of using discretionary access control (DAC) in multi-user systems with untrusted users?",
         "options": [
-          "Trading computer systems",
-          "Disk space used as virtual memory",
-          "Exchanging user accounts",
-          "Network bandwidth"
+          "Inability to delegate permissions",
+          "Vulnerability to Trojan horse attacks through permission inheritance",
+          "Requirement for centralized administration",
+          "Lack of support for group-based permissions"
         ],
         "correctAnswer": 1,
-        "explanation": "Swap memory is disk space used as virtual memory to extend available RAM."
+        "explanation": "DAC allows users to grant permissions to others, potentially enabling malicious software to propagate access rights inappropriately."
       },
       {
         "id": 19,
-        "question": "Which scheduling algorithm minimizes average waiting time?",
+        "question": "In the context of secure boot mechanisms, what role does the Trusted Platform Module (TPM) play in establishing a chain of trust?",
         "options": [
-          "FCFS",
-          "Shortest Job First (SJF)",
-          "Round Robin",
-          "Priority Scheduling"
+          "Encrypting all system memory",
+          "Storing and verifying cryptographic hashes of boot components",
+          "Monitoring network traffic for anomalies",
+          "Providing user authentication services"
         ],
         "correctAnswer": 1,
-        "explanation": "SJF minimizes average waiting time by processing shortest jobs first."
+        "explanation": "TPM stores measurements of boot components in Platform Configuration Registers (PCRs), allowing verification of system integrity."
       },
       {
         "id": 20,
-        "question": "What is a system call?",
+        "question": "What is the key difference between Type 1 and Type 2 hypervisors in terms of security isolation for virtual machines?",
         "options": [
-          "A telephone call to IT support",
-          "An interface between user program and kernel services",
-          "An error message",
-          "A network request"
+          "Type 1 runs directly on hardware, providing stronger isolation",
+          "Type 2 supports more virtual machine types",
+          "Type 1 requires host OS for operation",
+          "Type 2 has direct hardware access"
         ],
-        "correctAnswer": 1,
-        "explanation": "System calls provide the interface through which programs request kernel services."
+        "correctAnswer": 0,
+        "explanation": "Type 1 hypervisors run directly on hardware without a host OS, reducing the attack surface and providing better isolation than Type 2 hypervisors."
       },
       {
         "id": 21,
-        "question": "Which memory hierarchy level is fastest?",
-        "options": ["Hard Disk", "RAM", "CPU Cache", "CD-ROM"],
-        "correctAnswer": 2,
-        "explanation": "CPU Cache is the fastest memory in the hierarchy, closest to the processor."
+        "question": "In concurrent programming, what condition must be satisfied for the four necessary conditions of deadlock to occur simultaneously?",
+        "options": [
+          "All processes must request resources in the same order",
+          "Mutual exclusion, hold and wait, no preemption, and circular wait",
+          "At least one process must be in a critical section",
+          "Resource allocation must be dynamic"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Coffman conditions require all four: mutual exclusion, hold and wait, no preemption, and circular wait for deadlock to be possible."
       },
       {
         "id": 22,
-        "question": "What is fragmentation in file systems?",
+        "question": "What is the primary advantage of using optimistic concurrency control over pessimistic locking in database systems?",
         "options": [
-          "Breaking files into smaller pieces",
-          "Scattered allocation of file data on disk",
-          "Encrypting files",
-          "Compressing data"
+          "Guaranteed serializability",
+          "Reduced lock contention and improved concurrency",
+          "Automatic deadlock resolution",
+          "Simplified transaction management"
         ],
         "correctAnswer": 1,
-        "explanation": "Fragmentation occurs when files are scattered across non-contiguous disk sectors."
+        "explanation": "Optimistic control allows transactions to proceed without locking, checking for conflicts only at commit time, enabling higher concurrency."
       },
       {
         "id": 23,
-        "question": "What is context switching?",
+        "question": "In the readers-writers problem with writer priority, what fairness issue arises when multiple readers are waiting?",
         "options": [
-          "Changing user accounts",
-          "Saving and restoring process state when switching between processes",
-          "Switching between applications manually",
-          "Changing network settings"
+          "Writers may starve due to continuous reader access",
+          "Readers may be indefinitely blocked by writers",
+          "Resource utilization becomes inefficient",
+          "Memory consumption increases unboundedly"
         ],
         "correctAnswer": 1,
-        "explanation": "Context switching saves one process's state and restores another's to switch execution."
+        "explanation": "Writer priority can lead to reader starvation if writers continuously gain access, preventing waiting readers from proceeding."
       },
       {
         "id": 24,
-        "question": "Which is a real-time operating system (RTOS)?",
-        "options": ["Windows 10", "VxWorks", "Linux Desktop", "macOS"],
-        "correctAnswer": 1,
-        "explanation": "VxWorks is a real-time OS designed for immediate, predictable response."
+        "question": "What is the key insight behind the ABA problem in lock-free data structures, and how does it compromise correctness?",
+        "options": [
+          "Memory locations can change multiple times between reads",
+          "Atomic operations may fail silently",
+          "Pointer values can appear unchanged despite modifications",
+          "Cache coherence protocols may delay updates"
+        ],
+        "correctAnswer": 2,
+        "explanation": "In ABA, a value changes from A to B and back to A, making compare-and-swap operations incorrectly assume no change occurred."
       },
       {
         "id": 25,
-        "question": "What is mutual exclusion (mutex)?",
+        "question": "In distributed consensus algorithms like Paxos, what property ensures that all correct processes eventually agree on a value despite failures?",
         "options": [
-          "Excluding users",
-          "A mechanism preventing simultaneous access to shared resources",
-          "Deleting accounts",
-          "Blocking network traffic"
+          "Liveness",
+          "Safety",
+          "Consistency",
+          "Availability"
         ],
-        "correctAnswer": 1,
-        "explanation": "Mutex ensures only one process/thread accesses critical sections at a time."
+        "correctAnswer": 0,
+        "explanation": "Liveness guarantees that the algorithm will eventually make progress and reach agreement, even with failures."
       },
       {
         "id": 26,
-        "question": "What does RAID provide?",
+        "question": "What is the primary function of the interrupt descriptor table (IDT) in x86 architecture kernel implementation?",
         "options": [
-          "Network acceleration",
-          "Data redundancy and improved performance",
-          "User authentication",
-          "Email delivery"
+          "Managing virtual memory mappings",
+          "Storing handlers for hardware and software interrupts",
+          "Tracking process scheduling queues",
+          "Maintaining file system metadata"
         ],
         "correctAnswer": 1,
-        "explanation": "RAID provides data redundancy and improved I/O performance through disk arrays."
+        "explanation": "The IDT contains pointers to interrupt service routines, enabling the kernel to respond to various interrupt types."
       },
       {
         "id": 27,
-        "question": "What is a device driver?",
+        "question": "In microkernel architectures, what design principle minimizes the trusted computing base (TCB) for security?",
         "options": [
-          "A person who drives vehicles",
-          "Software enabling OS to communicate with hardware devices",
-          "A type of malware",
-          "A network protocol"
+          "Implementing all services in user space",
+          "Running the kernel in protected mode only",
+          "Using hardware virtualization exclusively",
+          "Eliminating system calls entirely"
         ],
-        "correctAnswer": 1,
-        "explanation": "Device drivers are software modules that enable OS-hardware communication."
+        "correctAnswer": 0,
+        "explanation": "Moving services to user space reduces the kernel's size and complexity, minimizing the code that must be trusted for security."
       },
       {
         "id": 28,
-        "question": "What is the boot process?",
+        "question": "What is the key advantage of using a hybrid kernel (like Windows NT) over a monolithic kernel for device driver management?",
         "options": [
-          "Starting a computer",
-          "The sequence of events when computer starts from power-on to OS loading",
-          "Closing applications",
-          "Updating software"
+          "Elimination of kernel modules",
+          "Isolation of driver failures from the core kernel",
+          "Automatic driver code generation",
+          "Reduced memory requirements"
         ],
         "correctAnswer": 1,
-        "explanation": "Boot process is the sequence from power-on, BIOS, bootloader to OS kernel loading."
+        "explanation": "Hybrid kernels run drivers in kernel mode but with isolation mechanisms, preventing buggy drivers from crashing the entire system."
       },
       {
         "id": 29,
-        "question": "Which OS is open-source and free?",
-        "options": ["Windows Server", "Linux", "macOS", "iOS"],
-        "correctAnswer": 1,
-        "explanation": "Linux is open-source and free, allowing anyone to modify and distribute it."
+        "question": "In I/O scheduling algorithms, what is the primary trade-off when using the Completely Fair Queuing (CFQ) scheduler compared to the Deadline scheduler?",
+        "options": [
+          "CFQ provides better real-time guarantees but may starve processes",
+          "Deadline ensures fairness but increases latency for interactive I/O",
+          "CFQ optimizes throughput at the expense of fairness",
+          "Deadline scheduler requires more memory for queue management"
+        ],
+        "correctAnswer": 2,
+        "explanation": "CFQ aims for fairness across processes but may sacrifice throughput compared to Deadline's focus on meeting I/O deadlines."
       },
       {
         "id": 30,
-        "question": "What is process synchronization?",
+        "question": "What fundamental challenge does the von Neumann bottleneck pose for modern operating system performance optimization?",
         "options": [
-          "Coordinating timing of multiple processes working together",
-          "Making backups",
-          "Updating software",
-          "Checking file dates"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Process synchronization coordinates multiple processes to prevent race conditions."
-      },
-      {
-        "id": 31,
-        "question": "What is a semaphore?",
-        "options": [
-          "A flag-based signaling system",
-          "A synchronization primitive controlling resource access",
-          "A type of malware",
-          "A network device"
+          "Limiting parallel processing capabilities",
+          "Constraining data transfer between CPU and memory",
+          "Preventing efficient cache utilization",
+          "Restricting network I/O speeds"
         ],
         "correctAnswer": 1,
-        "explanation": "Semaphores are synchronization primitives using counters to control resource access."
-      },
-      {
-        "id": 32,
-        "question": "What is logical addressing?",
-        "options": [
-          "Physical memory addresses",
-          "Virtual addresses generated by CPU and translated by MMU",
-          "IP addresses",
-          "MAC addresses"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Logical addressing uses virtual addresses that are translated to physical addresses."
-      },
-      {
-        "id": 33,
-        "question": "Which OS is typically used on servers?",
-        "options": ["Windows 10", "Linux and Windows Server", "iOS", "macOS"],
-        "correctAnswer": 1,
-        "explanation": "Linux and Windows Server are commonly used server operating systems."
-      },
-      {
-        "id": 34,
-        "question": "What is the purpose of the scheduler?",
-        "options": [
-          "Managing user emails",
-          "Deciding which process gets CPU time and when",
-          "Organizing files",
-          "Controlling network traffic"
-        ],
-        "correctAnswer": 1,
-        "explanation": "The scheduler allocates CPU time among processes according to scheduling algorithms."
-      },
-      {
-        "id": 35,
-        "question": "What is cache coherence?",
-        "options": [
-          "A type of memory encryption",
-          "Ensuring consistency of data across multiple caches",
-          "A network protocol",
-          "A backup system"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Cache coherence ensures data consistency in multi-processor systems."
-      },
-      {
-        "id": 36,
-        "question": "What is a zombie process?",
-        "options": [
-          "A malware infection",
-          "A terminated process still occupying resources",
-          "A hacked computer",
-          "An encrypted file"
-        ],
-        "correctAnswer": 1,
-        "explanation": "A zombie process has terminated but hasn't been fully cleaned up by parent."
-      },
-      {
-        "id": 37,
-        "question": "What is memory segmentation?",
-        "options": [
-          "Deleting memory",
-          "Dividing memory into logical segments with different sizes",
-          "Encrypting memory",
-          "Compressing memory"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Segmentation divides memory into variable-sized logical segments."
-      },
-      {
-        "id": 38,
-        "question": "Which OS architecture uses microkernel design?",
-        "options": [
-          "Linux monolithic kernel",
-          "Windows NT-based systems",
-          "QNX",
-          "FreeBSD"
-        ],
-        "correctAnswer": 2,
-        "explanation": "QNX uses microkernel architecture with minimal kernel, other services as processes."
-      },
-      {
-        "id": 39,
-        "question": "What is preemptive scheduling?",
-        "options": [
-          "No interruption of running processes",
-          "OS can interrupt running process to give CPU to another",
-          "Manual process switching",
-          "No scheduling at all"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Preemptive scheduling allows OS to interrupt running processes for fair CPU sharing."
-      },
-      {
-        "id": 40,
-        "question": "What is the main advantage of multithreading?",
-        "options": [
-          "Increased memory usage",
-          "Improved responsiveness and resource sharing",
-          "Reduced security",
-          "Slower execution"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Multithreading improves responsiveness and allows efficient resource sharing."
-      },
-      {
-        "id": 41,
-        "question": "Which scheduling policy favors short jobs? (additional)",
-        "options": [
-          "Round-Robin",
-          "Shortest Job First",
-          "First Come First Serve",
-          "No scheduling"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Shortest Job First prioritizes jobs with shorter execution times."
-      },
-      {
-        "id": 42,
-        "question": "What is kernel panic? (additional)",
-        "options": [
-          "A controlled shutdown",
-          "A fatal error in the kernel leading to system halt",
-          "A user action",
-          "A scheduling event"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Kernel panic is a critical kernel error causing system halt to prevent damage."
-      },
-      {
-        "id": 43,
-        "question": "Which is an advantage of preemptive multitasking? (additional)",
-        "options": [
-          "Better responsiveness",
-          "Longer latency",
-          "No context switches",
-          "Simpler design"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Preemption improves responsiveness by allowing the OS to switch tasks as needed."
-      },
-      {
-        "id": 44,
-        "question": "Why use kernel modules? (additional)",
-        "options": [
-          "Add features without rebooting",
-          "Replace the OS",
-          "Delete users",
-          "Slow down boot"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Kernel modules allow functionality extensions like drivers without rebuilding the kernel."
-      },
-      {
-        "id": 45,
-        "question": "What is a zombie process? (additional)",
-        "options": [
-          "Terminated process still holding an entry in process table",
-          "A running process",
-          "A kernel thread",
-          "A hardware interrupt"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Zombie processes are dead but still have process table entries until reaped by parent."
-      },
-      {
-        "id": 46,
-        "question": "What is memory fragmentation? (additional)",
-        "options": [
-          "Scattered free memory preventing large allocations",
-          "Contiguous memory only",
-          "A security feature",
-          "A scheduling policy"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Fragmentation prevents efficient use of memory for large blocks."
-      },
-      {
-        "id": 47,
-        "question": "Which mechanism speeds up file access? (additional)",
-        "options": [
-          "Caching",
-          "Deleting files",
-          "Disabling IO",
-          "Formatting disks"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Caching keeps frequently accessed data in faster storage to improve access times."
-      },
-      {
-        "id": 48,
-        "question": "What is prefetching? (additional)",
-        "options": [
-          "Loading data before it is requested to reduce latency",
-          "Delaying loading",
-          "Encrypting data",
-          "Corrupting cache"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Prefetching anticipates future requests to improve performance."
-      },
-      {
-        "id": 49,
-        "question": "Which is a method to protect memory? (additional)",
-        "options": [
-          "Memory protection using MMU",
-          "Open access",
-          "No protection",
-          "Shared memory everywhere"
-        ],
-        "correctAnswer": 0,
-        "explanation": "MMUs enforce access control to memory regions for safety and isolation."
-      },
-      {
-        "id": 50,
-        "question": "What is a file descriptor? (additional)",
-        "options": [
-          "An integer handle to an open file",
-          "A file name",
-          "A network packet",
-          "A driver"
-        ],
-        "correctAnswer": 0,
-        "explanation": "File descriptors are OS-level handles representing open files or streams."
-      },
-      {
-        "id": 51,
-        "question": "What is kernel space vs user space? (additional)",
-        "options": [
-          "Kernel space has privileged code; user space runs applications",
-          "They are identical",
-          "Both are for hardware only",
-          "User space is for drivers"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Kernel and user spaces separate privileged OS code from unprivileged application code."
-      },
-      {
-        "id": 52,
-        "question": "Why use logical addresses? (additional)",
-        "options": [
-          "They provide process-level addressing independent of physical memory",
-          "They are used for networking only",
-          "They slow systems",
-          "They encrypt data"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Logical addresses allow processes to operate as if they have contiguous memory."
-      },
-      {
-        "id": 53,
-        "question": "What is a page table? (additional)",
-        "options": [
-          "Mapping from virtual pages to physical frames",
-          "A disk table",
-          "A network map",
-          "A user list"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Page tables map virtual memory pages to physical memory frames."
-      },
-      {
-        "id": 54,
-        "question": "Which improves disk throughput? (additional)",
-        "options": [
-          "Disk scheduling algorithms and caching",
-          "Deleting files",
-          "Turning off disks",
-          "Increasing fragmentation"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Scheduling and caching increase disk throughput by ordering and buffering requests."
-      },
-      {
-        "id": 55,
-        "question": "What is a kernel module's purpose? (additional)",
-        "options": [
-          "Extend kernel functionality dynamically",
-          "Replace user apps",
-          "Format disks",
-          "Slow boot"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Modules allow adding/removing kernel features like drivers at runtime."
-      },
-      {
-        "id": 56,
-        "question": "What is demand paging advantage? (additional)",
-        "options": [
-          "Saves memory by loading only needed pages",
-          "Loads everything always",
-          "Increases memory usage",
-          "Removes swapping"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Demand paging reduces memory footprint and loads pages only on access."
-      },
-      {
-        "id": 57,
-        "question": "Why prefer copy-on-write? (additional)",
-        "options": [
-          "It delays copies until necessary, saving memory",
-          "It copies immediately",
-          "It prevents sharing",
-          "It encrypts memory"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Copy-on-write optimizes memory by avoiding unnecessary duplication."
-      },
-      {
-        "id": 58,
-        "question": "What is kernel thread advantage? (additional)",
-        "options": [
-          "Better performance for blocking operations",
-          "No benefit",
-          "More crashes",
-          "Slower IO"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Kernel threads can be scheduled independently and handle blocking efficiently."
-      },
-      {
-        "id": 59,
-        "question": "What does the swap space store? (additional)",
-        "options": [
-          "Pages moved out of RAM to disk",
-          "Permanent files",
-          "Network packets",
-          "Log files only"
-        ],
-        "correctAnswer": 0,
-        "explanation": "Swap stores memory pages that have been moved to disk to free RAM."
-      },
-      {
-        "id": 60,
-        "question": "How does the OS balance I/O and CPU? (additional)",
-        "options": [
-          "Through scheduling and buffering",
-          "By ignoring IO",
-          "By halting CPU",
-          "By deleting processes"
-        ],
-        "correctAnswer": 0,
-        "explanation": "OS uses scheduling and buffering to coordinate CPU and I/O tasks efficiently."
+        "explanation": "The bottleneck refers to the limited bandwidth between CPU and memory, which hinders performance as processor speeds outpace memory access times."
       }
     ]
   }

@@ -21,6 +21,34 @@ const ExamController = {
   isSwitching: false, // Prevent double course switches
   isSubmitting: false, // Prevent double submissions
   modalOpen: false, // Track if any modal is open
+  eventsBound: false, // Prevent duplicate listeners after course switch
+
+  /**
+   * Normalize course values from UI/storage (e.g. "CYS 313" -> "CYS313")
+   * @param {string} rawCourse
+   * @returns {string}
+   */
+  normalizeCourseCode(rawCourse) {
+    if (!rawCourse) return "";
+    return String(rawCourse).replace(/\s+/g, "").toUpperCase().trim();
+  },
+
+  /**
+   * Return a valid course code from a raw value or current selector
+   * @param {string} rawCourse
+   * @returns {string}
+   */
+  resolveCourseCode(rawCourse) {
+    const allowedCourses = ["CYS311", "CYS312", "CYS313", "CYS314", "GNS301", "NCC311"];
+    const normalized = this.normalizeCourseCode(rawCourse);
+    if (allowedCourses.includes(normalized)) return normalized;
+
+    const selector = document.getElementById("courseSelector");
+    const selected = selector ? this.normalizeCourseCode(selector.value) : "";
+    if (allowedCourses.includes(selected)) return selected;
+
+    return allowedCourses[0];
+  },
 
   /**
    * Initialize the exam page
@@ -35,8 +63,12 @@ const ExamController = {
       return;
     }
 
-    // Initialize with the course from userData
-    this.currentCourse = userData.subject;
+    // Initialize with a normalized, valid course from userData or fallback
+    this.currentCourse = this.resolveCourseCode(
+      userData.subject || userData.courseCode,
+    );
+    userData.subject = this.currentCourse;
+    AppUtils.saveToLocalStorage("userData", userData);
 
     // Show a minimal loading state
     this.showLoadingMessage("Loading exam questions...");
@@ -52,8 +84,11 @@ const ExamController = {
       this.displayQuestion();
 
       // Update timer display to 30:00 but DON'T start timer yet
-      this.totalDuration = 1800; // 30 minutes
-      this.timeRemaining = 1800;
+      this.totalDuration =
+        Number.isFinite(this.examData?.duration) && this.examData.duration > 0
+          ? this.examData.duration * 60
+          : 1800;
+      this.timeRemaining = this.totalDuration;
       this.updateTimerDisplay();
 
       console.log("Exam initialized successfully");
@@ -72,7 +107,8 @@ const ExamController = {
    * @param {string} courseCode - The course code (e.g., "CYS311")
    */
   async loadExamData(courseCode) {
-    console.log("Loading exam data for course:", courseCode);
+    const resolvedCourseCode = this.resolveCourseCode(courseCode);
+    console.log("Loading exam data for course:", resolvedCourseCode);
 
     // Check if running on file:// protocol (not allowed for fetch)
     if (location.protocol === "file:") {
@@ -82,24 +118,21 @@ const ExamController = {
       );
     }
 
-    // Construct path to course-specific JSON file
-    const basePath = location.pathname.substring(
-      0,
-      location.pathname.lastIndexOf("/"),
-    );
-    const jsonPath = `${location.origin}${basePath}/data/questions_${courseCode}.json`;
-    console.log("Trying to load from:", jsonPath);
+    // Build reliable absolute and relative paths
+    const fileName = `questions_${resolvedCourseCode}.json`;
+    const absoluteUrl = new URL(`data/${fileName}`, window.location.href).href;
+    const relativeUrl = `data/${fileName}`;
+    console.log("Trying to load from:", absoluteUrl);
 
     // Fallback: if above produces issues, try relative path
     let response;
     try {
-      response = await fetch(jsonPath);
+      response = await fetch(absoluteUrl);
 
       if (!response.ok) {
         // Try with relative path as fallback
-        const relPath = `data/questions_${courseCode}.json`;
-        console.log("Absolute path failed, trying relative path:", relPath);
-        response = await fetch(relPath);
+        console.log("Absolute path failed, trying relative path:", relativeUrl);
+        response = await fetch(relativeUrl);
 
         if (!response.ok) {
           throw new Error(`HTTP ${response.status} - ${response.statusText}`);
@@ -114,50 +147,67 @@ const ExamController = {
     let data;
     try {
       data = await response.json();
-      console.log(
-        "JSON parsed successfully. Questions loaded:",
-        data.exam.questions.length,
-      );
+      console.log("JSON parsed successfully");
     } catch (parseErr) {
       console.error("Failed to parse JSON:", parseErr);
       throw new Error("Invalid JSON format in question file.");
     }
 
+    // Support both formats: { exam: { questions: [...] } } and { questions: [...] }
+    const examData = data.exam || data;
+    const extractedQuestions = Array.isArray(examData.questions)
+      ? examData.questions
+      : Array.isArray(data.questions)
+        ? data.questions
+        : Array.isArray(data)
+          ? data
+          : null;
+
     // Validate structure
-    if (!data || !data.exam || !Array.isArray(data.exam.questions)) {
+    if (!examData || !Array.isArray(extractedQuestions)) {
       throw new Error(
-        "Question file structure invalid: missing exam.questions array.",
+        "Question file structure invalid: missing questions array.",
       );
     }
 
-    // Handle edge case: empty questions array
-    if (data.exam.questions.length === 0) {
+    // Validate questions array is not empty
+    if (!extractedQuestions || extractedQuestions.length === 0) {
       throw new Error("No questions found in the selected course.");
     }
 
     // Assign to controller state
-    this.examData = data.exam;
-    this.questions = data.exam.questions || [];
-    console.log(`Loaded ${this.questions.length} questions`);
+    this.examData = examData;
+    this.questions = extractedQuestions;
+
+    // Auto-detect and set total questions count
+    const totalQuestions = this.questions.length;
+    console.log(`Loaded ${totalQuestions} questions`);
 
     // Validate we have questions
-    if (this.questions.length === 0) {
+    if (!this.questions || this.questions.length === 0) {
       throw new Error("Failed to load questions properly.");
     }
 
     // Update UI with course info and question count
     const courseCodeDisplay = document.getElementById("courseCodeDisplay");
-    if (courseCodeDisplay) courseCodeDisplay.textContent = courseCode;
+    if (courseCodeDisplay) {
+      courseCodeDisplay.textContent = examData.courseCode || resolvedCourseCode;
+    }
 
     const totalQuestionsNum = document.getElementById("totalQuestionsNum");
-    if (totalQuestionsNum)
-      totalQuestionsNum.textContent = this.questions.length;
+    if (totalQuestionsNum) {
+      totalQuestionsNum.textContent = totalQuestions;
+    }
   },
 
   /**
    * Setup event listeners for buttons
    */
   setupEventListeners() {
+    if (this.eventsBound) {
+      return;
+    }
+
     // Navigation buttons
     document
       .getElementById("prevBtn")
@@ -205,6 +255,8 @@ const ExamController = {
         }
       });
     }
+
+    this.eventsBound = true;
   },
 
   /**
@@ -212,6 +264,8 @@ const ExamController = {
    * @param {string} newCourse - The new course code
    */
   switchCourse(newCourse) {
+    const resolvedNewCourse = this.resolveCourseCode(newCourse);
+
     // Prevent double course switches
     if (this.isSwitching) {
       return;
@@ -237,7 +291,12 @@ const ExamController = {
       courseSelector.disabled = true;
     }
 
-    console.log("Switching course from", this.currentCourse, "to", newCourse);
+    console.log(
+      "Switching course from",
+      this.currentCourse,
+      "to",
+      resolvedNewCourse,
+    );
 
     // Stop timer and clean up
     if (this.timerInterval) {
@@ -246,7 +305,7 @@ const ExamController = {
     }
 
     // Reset exam state completely
-    this.currentCourse = newCourse;
+    this.currentCourse = resolvedNewCourse;
     this.currentQuestionIndex = 0;
     this.answers = {};
     this.examStartTime = null;
@@ -258,8 +317,8 @@ const ExamController = {
     AppUtils.removeFromLocalStorage("examData");
 
     // Update userData with new course
-    const userData = AppUtils.getFromLocalStorage("userData");
-    userData.subject = newCourse;
+    const userData = AppUtils.getFromLocalStorage("userData", {});
+    userData.subject = resolvedNewCourse;
     AppUtils.saveToLocalStorage("userData", userData);
 
     // Show loading state

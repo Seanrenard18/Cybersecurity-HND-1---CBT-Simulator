@@ -3,15 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cybersecurity HND 1 - CBT Exam Simulator - Instructions</title>
+    <title>CBT Exam Simulator - Instructions</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Navigation Header -->
     <header class="navbar">
       <div class="navbar-container">
         <div class="logo">
-          <h1>🛡️ Cybersecurity HND 1 - CBT Exam Simulator</h1>
+          <h1>CBT Exam Simulator</h1>
         </div>
         <div class="navbar-right">
           <button class="btn btn-link" id="logoutBtn">Logout</button>
@@ -19,41 +18,44 @@
       </div>
     </header>
 
-    <!-- Main Content -->
     <main class="instructions-container">
       <div class="instructions-wrapper">
-        <!-- User Info Card -->
         <div class="user-info-card">
           <div class="user-info-header">
             <h3>Welcome, <span id="userName"></span>!</h3>
           </div>
           <div class="user-info-details">
             <p><strong>Email:</strong> <span id="userEmail"></span></p>
-            <p>
-              <strong>Selected Course:</strong> <span id="userSubject"></span>
-            </p>
+            <p><strong>Selected Course:</strong> <span id="userSubject"></span></p>
+            <p><strong>Department:</strong> <span id="userDepartment"></span></p>
           </div>
         </div>
 
-        <!-- Instructions Card -->
         <div class="instructions-card">
-          <h2>📋 Exam Instructions</h2>
+          <h2>Exam Instructions</h2>
 
-          <!-- Exam Details Section -->
           <section class="instruction-section">
             <h3>Exam Details</h3>
             <div class="details-grid">
+              <div class="detail-item">
+                <span class="detail-label">Course Code:</span>
+                <span class="detail-value" id="courseCodeDisplay">--</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Course Title:</span>
+                <span class="detail-value" id="courseTitleDisplay">--</span>
+              </div>
               <div class="detail-item">
                 <span class="detail-label">Total Questions:</span>
                 <span class="detail-value" id="totalQuestionsDisplay">--</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Duration:</span>
-                <span class="detail-value">30 minutes</span>
+                <span class="detail-value" id="durationDisplay">--</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Passing Score:</span>
-                <span class="detail-value">40%</span>
+                <span class="detail-value" id="passingScoreDisplay">40%</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Question Type:</span>
@@ -62,23 +64,17 @@
             </div>
           </section>
 
-          <!-- Quick Rules Section -->
           <section class="instruction-section">
-            <h3>⚠️ Important Rules</h3>
+            <h3>Important Rules</h3>
             <ul class="rules-list">
-              <li>
-                Read questions carefully and select the most appropriate answer.
-              </li>
-              <li>You can change your answers before submitting the exam.</li>
-              <li>Auto-submission occurs when time runs out.</li>
-              <li>
-                Ensure your internet connection remains stable during the exam.
-              </li>
-              <li>You can switch between courses and the timer will reset.</li>
+              <li>Questions are randomized for each exam session.</li>
+              <li>An invisible session token is assigned automatically at login.</li>
+              <li>Background auto-saving runs continuously during the exam.</li>
+              <li>You can change your answers before final submission.</li>
+              <li>The exam auto-submits when time expires.</li>
             </ul>
           </section>
 
-          <!-- Acknowledgment Section -->
           <section class="instruction-section">
             <div class="acknowledgment">
               <div class="form-group checkbox">
@@ -90,108 +86,190 @@
             </div>
           </section>
 
-          <!-- Action Buttons -->
           <div class="action-buttons">
-            <button class="btn btn-secondary" id="backBtn">
-              ← Back to Login
-            </button>
+            <button class="btn btn-secondary" id="backBtn">Back to Login</button>
             <button class="btn btn-primary" id="startExamBtn" disabled>
-              Start Exam →
+              Start Exam
             </button>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <p>&copy; 2025 CBT Exam Simulator | All rights reserved</p>
     </footer>
 
-    <!-- JavaScript -->
+    <script src="js/course-config.js"></script>
     <script src="js/app.js"></script>
     <script>
-      // Load user data
-      function loadUserData() {
-        const userData = localStorage.getItem("userData");
-        if (!userData) {
+      function createSessionToken() {
+        if (window.crypto && typeof window.crypto.randomUUID === "function") {
+          return window.crypto.randomUUID();
+        }
+        return AppUtils.generateId();
+      }
+
+      function ensureSessionToken(userData) {
+        if (!userData.sessionToken) {
+          userData.sessionToken = createSessionToken();
+        }
+        return userData;
+      }
+
+      async function loadExamMetadata(course) {
+        const fileName = course.questionFile || `questions_${course.courseCode}.json`;
+        const urls = [
+          new URL(`data/${fileName}`, window.location.href).href,
+          `data/${fileName}`,
+        ];
+
+        let response = null;
+        for (let i = 0; i < urls.length; i++) {
+          try {
+            response = await fetch(urls[i]);
+            if (response.ok) {
+              break;
+            }
+          } catch (err) {
+            response = null;
+          }
+        }
+
+        if (!response || !response.ok) {
+          throw new Error("Failed to load question file");
+        }
+
+        const payload = await response.json();
+        const exam = payload.exam || payload;
+        const questions = Array.isArray(exam.questions)
+          ? exam.questions
+          : Array.isArray(payload.questions)
+            ? payload.questions
+            : Array.isArray(payload)
+              ? payload
+              : [];
+
+        const duration =
+          Number.isFinite(Number(exam.duration)) && Number(exam.duration) > 0
+            ? Number(exam.duration)
+            : course.duration || 30;
+
+        return {
+          totalQuestions: questions.length,
+          duration,
+          passingScore:
+            Number.isFinite(Number(exam.passingScore)) && Number(exam.passingScore) > 0
+              ? Number(exam.passingScore)
+              : Math.ceil(questions.length * 0.4),
+          title: exam.title || course.title || CourseConfig.buildCourseLabel(course),
+          courseName: exam.courseName || course.courseName,
+          courseCode: exam.courseCode || course.courseCode,
+          department: exam.department || course.department || "",
+        };
+      }
+
+      async function loadUserData() {
+        const savedUser = localStorage.getItem("userData");
+        if (!savedUser) {
           window.location.href = "login.html";
           return;
         }
 
-        const user = JSON.parse(userData);
+        await CourseConfig.loadCatalog();
+
+        let user = JSON.parse(savedUser);
+        user = ensureSessionToken(user);
+
+        const selectedCode = CourseConfig.normalizeCourseCode(
+          user.subject || user.courseCode,
+        );
+
+        let course = CourseConfig.getCourseByCode(selectedCode);
+        if (!course) {
+          const defaultCode = CourseConfig.getDefaultCourseCode();
+          course = CourseConfig.getCourseByCode(defaultCode);
+        }
+
+        if (!course) {
+          throw new Error("No course configuration available.");
+        }
+
+        const metadata = await loadExamMetadata(course);
+
+        user.subject = course.courseCode;
+        user.courseCode = course.courseCode;
+        user.courseName = metadata.courseName || course.courseName;
+        user.courseTitle = metadata.title;
+        user.department = metadata.department;
+        user.duration = metadata.duration;
+
+        localStorage.setItem("userData", JSON.stringify(user));
+
         document.getElementById("userName").textContent = user.fullName;
         document.getElementById("userEmail").textContent = user.email;
-        document.getElementById("userSubject").textContent = user.subject;
+        document.getElementById("userSubject").textContent =
+          CourseConfig.buildCourseLabel(course);
+        document.getElementById("userDepartment").textContent =
+          metadata.department || course.department || "--";
 
-        // Load total questions dynamically
-        loadTotalQuestions(user.subject);
+        document.getElementById("courseCodeDisplay").textContent = course.displayCode;
+        document.getElementById("courseTitleDisplay").textContent =
+          metadata.courseName || course.courseName;
+        document.getElementById("totalQuestionsDisplay").textContent =
+          metadata.totalQuestions;
+        document.getElementById("durationDisplay").textContent = `${metadata.duration} minutes`;
+        const passingPercent =
+          metadata.totalQuestions > 0
+            ? Math.round((metadata.passingScore / metadata.totalQuestions) * 100)
+            : 40;
+        document.getElementById("passingScoreDisplay").textContent =
+          `${passingPercent}%`;
       }
 
-      // Load total questions for the selected course
-      async function loadTotalQuestions(courseCode) {
-        try {
-          const basePath = location.pathname.substring(
-            0,
-            location.pathname.lastIndexOf("/"),
-          );
-          const jsonPath = `${location.origin}${basePath}/data/questions_${courseCode}.json`;
+      function bindEventListeners() {
+        document
+          .getElementById("agreeCheckbox")
+          .addEventListener("change", function () {
+            document.getElementById("startExamBtn").disabled = !this.checked;
+          });
 
-          const response = await fetch(jsonPath).catch(() =>
-            fetch(`data/questions_${courseCode}.json`),
-          );
+        document
+          .getElementById("startExamBtn")
+          .addEventListener("click", function () {
+            const userData = JSON.parse(localStorage.getItem("userData"));
+            userData.examStartTime = new Date().toISOString();
+            localStorage.setItem("userData", JSON.stringify(userData));
+            window.location.href = "exam.html";
+          });
 
-          if (response.ok) {
-            const data = await response.json();
-            if (data.exam && data.exam.questions) {
-              document.getElementById("totalQuestionsDisplay").textContent =
-                data.exam.questions.length;
-            }
+        document.getElementById("backBtn").addEventListener("click", function () {
+          if (confirm("Are you sure? You will need to login again.")) {
+            AppUtils.logout();
           }
-        } catch (err) {
-          console.error("Could not load question count:", err);
-          document.getElementById("totalQuestionsDisplay").textContent = "--";
-        }
+        });
+
+        document
+          .getElementById("logoutBtn")
+          .addEventListener("click", function () {
+            if (confirm("Are you sure you want to logout?")) {
+              AppUtils.logout();
+            }
+          });
       }
 
-      // Enable start exam button when checkbox is checked
-      document
-        .getElementById("agreeCheckbox")
-        .addEventListener("change", function () {
-          document.getElementById("startExamBtn").disabled = !this.checked;
-        });
-
-      // Start exam button handler
-      document
-        .getElementById("startExamBtn")
-        .addEventListener("click", function () {
-          const userData = JSON.parse(localStorage.getItem("userData"));
-          userData.examStartTime = new Date().toISOString();
-          localStorage.setItem("userData", JSON.stringify(userData));
-          window.location.href = "exam.html";
-        });
-
-      // Back button handler
-      document.getElementById("backBtn").addEventListener("click", function () {
-        if (confirm("Are you sure? You will need to login again.")) {
-          localStorage.removeItem("userData");
+      async function initInstructions() {
+        try {
+          bindEventListeners();
+          await loadUserData();
+        } catch (err) {
+          console.error("Failed to initialize instructions page:", err);
+          alert("Unable to load exam instructions. Please login again.");
           window.location.href = "login.html";
         }
-      });
+      }
 
-      // Logout button handler
-      document
-        .getElementById("logoutBtn")
-        .addEventListener("click", function () {
-          if (confirm("Are you sure you want to logout?")) {
-            localStorage.removeItem("userData");
-            localStorage.removeItem("examAnswers");
-            window.location.href = "login.html";
-          }
-        });
-
-      // Initialize page
-      loadUserData();
+      document.addEventListener("DOMContentLoaded", initInstructions);
     </script>
   </body>
 </html>

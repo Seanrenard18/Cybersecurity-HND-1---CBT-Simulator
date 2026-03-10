@@ -1,0 +1,348 @@
+{
+  "exam": {
+    "title": "GNS 312 - Moral Philosophy",
+    "courseCode": "GNS312",
+    "courseName": "Moral Philosophy",
+    "department": "General Studies",
+    "duration": 30,
+    "totalQuestions": 30,
+    "passingScore": 12,
+    "systemRules": {
+      "randomizeQuestions": true,
+      "assignSessionTokenOnLogin": true,
+      "backgroundAutosave": true
+    },
+    "questions": [
+      {
+        "id": 1,
+        "question": "The etymological meaning of philosophy is best expressed as:",
+        "optionA": "Pursuit of power",
+        "optionB": "Practice of debate",
+        "optionC": "Love of wisdom",
+        "optionD": "Study of religion",
+        "correctAnswer": "C",
+        "explanation": "Philosophy comes from Greek philo (love) and sophia (wisdom), so it literally means love of wisdom.",
+        "image": null
+      },
+      {
+        "id": 2,
+        "question": "In academic usage, philosophy is mainly concerned with:",
+        "optionA": "Collecting historical dates",
+        "optionB": "Critical and rational inquiry into fundamental questions",
+        "optionC": "Memorizing sacred texts only",
+        "optionD": "Training for laboratory experiments only",
+        "correctAnswer": "B",
+        "explanation": "In academic use, philosophy is critical and rational inquiry into foundational questions about reality, knowledge, and values.",
+        "image": null
+      },
+      {
+        "id": 3,
+        "question": "Which option best reflects the broad scope of philosophy?",
+        "optionA": "Only mathematics and geometry",
+        "optionB": "Only language and literature",
+        "optionC": "Only religion and mythology",
+        "optionD": "Reality, knowledge, values, and reasoning",
+        "correctAnswer": "D",
+        "explanation": "Its scope covers reality, knowledge, values, and reasoning, which are core areas of philosophical study.",
+        "image": null
+      },
+      {
+        "id": 4,
+        "question": "The Socratic method is primarily a method of:",
+        "optionA": "Systematic questioning to test assumptions",
+        "optionB": "Blind acceptance of authority",
+        "optionC": "Statistical prediction",
+        "optionD": "Laboratory observation",
+        "correctAnswer": "A",
+        "explanation": "The Socratic method relies on systematic questioning to test beliefs and assumptions.",
+        "image": null
+      },
+      {
+        "id": 5,
+        "question": "A central goal of Socratic questioning is to:",
+        "optionA": "Win arguments at all costs",
+        "optionB": "Reveal contradictions and clarify concepts",
+        "optionC": "Avoid moral topics",
+        "optionD": "Replace reason with emotion",
+        "correctAnswer": "B",
+        "explanation": "Socratic questioning aims to expose contradictions and clarify concepts.",
+        "image": null
+      },
+      {
+        "id": 6,
+        "question": "The dialectic method in philosophy emphasizes:",
+        "optionA": "Memorizing final answers",
+        "optionB": "Ignoring opposing views",
+        "optionC": "Examining opposing claims to reach deeper understanding",
+        "optionD": "Using only numerical formulas",
+        "correctAnswer": "C",
+        "explanation": "Dialectic advances understanding by examining opposing claims and testing them against each other.",
+        "image": null
+      },
+      {
+        "id": 7,
+        "question": "The analytic method is most closely associated with:",
+        "optionA": "Ritual performance",
+        "optionB": "Political propaganda",
+        "optionC": "Military strategy",
+        "optionD": "Clarification of language and logical structure",
+        "correctAnswer": "D",
+        "explanation": "The analytic method focuses on clarifying language and the logical structure of arguments.",
+        "image": null
+      },
+      {
+        "id": 8,
+        "question": "Which branch of philosophy studies valid reasoning and argument forms?",
+        "optionA": "Ethics",
+        "optionB": "Logic",
+        "optionC": "Aesthetics",
+        "optionD": "Anthropology",
+        "correctAnswer": "B",
+        "explanation": "Logic is the branch that studies valid reasoning and argument forms.",
+        "image": null
+      },
+      {
+        "id": 9,
+        "question": "Ethics as a branch of philosophy focuses on:",
+        "optionA": "Right and wrong conduct",
+        "optionB": "Chemical reactions",
+        "optionC": "Planetary motion",
+        "optionD": "Sound engineering",
+        "correctAnswer": "A",
+        "explanation": "Ethics evaluates right and wrong conduct and moral responsibility.",
+        "image": null
+      },
+      {
+        "id": 10,
+        "question": "Epistemology is the branch that studies:",
+        "optionA": "Physical matter and energy",
+        "optionB": "Voting behavior",
+        "optionC": "The nature, sources, and limits of knowledge",
+        "optionD": "Musical creativity",
+        "correctAnswer": "C",
+        "explanation": "Epistemology studies the nature, sources, and limits of knowledge.",
+        "image": null
+      },
+      {
+        "id": 11,
+        "question": "Metaphysics is mainly concerned with:",
+        "optionA": "Exam timetables",
+        "optionB": "Language translation",
+        "optionC": "Government budgeting",
+        "optionD": "Being, existence, and ultimate reality",
+        "correctAnswer": "D",
+        "explanation": "Metaphysics examines being, existence, and ultimate reality.",
+        "image": null
+      },
+      {
+        "id": 12,
+        "question": "Which statement is commonly associated with Socrates?",
+        "optionA": "Knowledge is impossible",
+        "optionB": "The unexamined life is not worth living",
+        "optionC": "Man is naturally selfish in all cases",
+        "optionD": "Reality is only material objects",
+        "correctAnswer": "B",
+        "explanation": "Socrates is famously linked to the claim that the unexamined life is not worth living.",
+        "image": null
+      },
+      {
+        "id": 13,
+        "question": "Plato is especially known for the doctrine of:",
+        "optionA": "Forms (Ideas)",
+        "optionB": "Class conflict",
+        "optionC": "Tabula rasa",
+        "optionD": "Empirical behaviorism",
+        "correctAnswer": "A",
+        "explanation": "Plato is known for the Theory of Forms or Ideas.",
+        "image": null
+      },
+      {
+        "id": 14,
+        "question": "Aristotle's virtue ethics teaches that moral virtue is:",
+        "optionA": "Whatever society votes for",
+        "optionB": "Total rejection of emotions",
+        "optionC": "A mean between extremes",
+        "optionD": "Obedience without reflection",
+        "correctAnswer": "C",
+        "explanation": "Aristotle defines virtue as a mean between extremes of excess and deficiency.",
+        "image": null
+      },
+      {
+        "id": 15,
+        "question": "One major importance of studying philosophy is that it:",
+        "optionA": "Removes all disagreement from society",
+        "optionB": "Guarantees wealth quickly",
+        "optionC": "Eliminates the need for science",
+        "optionD": "Strengthens critical thinking and moral judgment",
+        "correctAnswer": "D",
+        "explanation": "Studying philosophy strengthens critical thinking and moral judgment.",
+        "image": null
+      },
+      {
+        "id": 16,
+        "question": "The statement 'man is a social being' implies that humans:",
+        "optionA": "Can live meaningfully without others",
+        "optionB": "Develop through interaction with other people",
+        "optionC": "Are independent of culture",
+        "optionD": "Reject all institutions",
+        "correctAnswer": "B",
+        "explanation": "Calling humans social beings highlights that they develop through interaction with others.",
+        "image": null
+      },
+      {
+        "id": 17,
+        "question": "Man's place in society is best understood as:",
+        "optionA": "Purely biological survival",
+        "optionB": "Total isolation from community",
+        "optionC": "A balance of rights, duties, and social roles",
+        "optionD": "Absolute freedom without responsibility",
+        "correctAnswer": "C",
+        "explanation": "Human life in society balances individual rights with duties and social roles.",
+        "image": null
+      },
+      {
+        "id": 18,
+        "question": "The biological approach to the study of man emphasizes:",
+        "optionA": "Genetics, anatomy, and physical evolution",
+        "optionB": "Class structure and social mobility",
+        "optionC": "Legal institutions and constitutions",
+        "optionD": "Religious rituals only",
+        "correctAnswer": "A",
+        "explanation": "The biological approach studies humans as organisms, focusing on genetics, anatomy, and evolution.",
+        "image": null
+      },
+      {
+        "id": 19,
+        "question": "The psychological approach focuses mainly on:",
+        "optionA": "Population density",
+        "optionB": "Trade networks",
+        "optionC": "Political sovereignty",
+        "optionD": "Mind, emotion, motivation, and behavior",
+        "correctAnswer": "D",
+        "explanation": "The psychological approach centers on mind, emotion, motivation, and behavior.",
+        "image": null
+      },
+      {
+        "id": 20,
+        "question": "The sociological approach studies man in terms of:",
+        "optionA": "Cellular structure",
+        "optionB": "Institutions, norms, groups, and social structure",
+        "optionC": "Planetary systems",
+        "optionD": "Private dreams only",
+        "correctAnswer": "B",
+        "explanation": "The sociological approach examines institutions, norms, groups, and social structure.",
+        "image": null
+      },
+      {
+        "id": 21,
+        "question": "Cooperation as a pattern of social interaction means:",
+        "optionA": "People work together toward shared goals",
+        "optionB": "People avoid all communication",
+        "optionC": "One group dominates another by force",
+        "optionD": "Individuals reject all common rules",
+        "correctAnswer": "A",
+        "explanation": "Cooperation means people work together toward shared goals.",
+        "image": null
+      },
+      {
+        "id": 22,
+        "question": "Competition in society is best described as:",
+        "optionA": "Violent conflict only",
+        "optionB": "Permanent hostility between all groups",
+        "optionC": "Striving for scarce opportunities or rewards",
+        "optionD": "Total equality of outcomes",
+        "correctAnswer": "C",
+        "explanation": "Competition is the striving for scarce opportunities or rewards.",
+        "image": null
+      },
+      {
+        "id": 23,
+        "question": "Conflict as a social pattern usually appears when:",
+        "optionA": "Everyone has identical interests",
+        "optionB": "There is complete value consensus",
+        "optionC": "Resources are unlimited",
+        "optionD": "Individuals or groups pursue incompatible goals",
+        "correctAnswer": "D",
+        "explanation": "Conflict appears when individuals or groups pursue incompatible goals.",
+        "image": null
+      },
+      {
+        "id": 24,
+        "question": "Accommodation in social interaction refers to:",
+        "optionA": "The complete end of all differences",
+        "optionB": "Adjustment that allows peaceful coexistence after tension",
+        "optionC": "Refusal to negotiate",
+        "optionD": "Replacing culture with technology",
+        "correctAnswer": "B",
+        "explanation": "Accommodation is the adjustment that permits peaceful coexistence after tension.",
+        "image": null
+      },
+      {
+        "id": 25,
+        "question": "A society can be defined as:",
+        "optionA": "Any temporary crowd in a market",
+        "optionB": "A random collection of strangers",
+        "optionC": "An organized network of social relationships",
+        "optionD": "Only a legal government office",
+        "correctAnswer": "C",
+        "explanation": "A society is an organized network of social relationships.",
+        "image": null
+      },
+      {
+        "id": 26,
+        "question": "Which of the following is a core feature of society?",
+        "optionA": "Common territory",
+        "optionB": "No shared rules",
+        "optionC": "Absence of communication",
+        "optionD": "Lack of institutions",
+        "correctAnswer": "A",
+        "explanation": "Common territory provides a shared geographic space that enables regular social interaction.",
+        "image": null
+      },
+      {
+        "id": 27,
+        "question": "The feature 'population' in society means:",
+        "optionA": "A society can exist without people",
+        "optionB": "Only leaders count as members",
+        "optionC": "Only adults belong to society",
+        "optionD": "A society consists of interacting people",
+        "correctAnswer": "D",
+        "explanation": "Population means a society consists of interacting people.",
+        "image": null
+      },
+      {
+        "id": 28,
+        "question": "Culture is a major feature of society because it provides:",
+        "optionA": "Only economic profit",
+        "optionB": "Shared values, norms, symbols, and practices",
+        "optionC": "Abolition of social identity",
+        "optionD": "Permanent social conflict",
+        "correctAnswer": "B",
+        "explanation": "Culture supplies shared values, norms, symbols, and practices that guide behavior.",
+        "image": null
+      },
+      {
+        "id": 29,
+        "question": "Which option best represents social institutions in a society?",
+        "optionA": "Weather systems and seasons",
+        "optionB": "Mountains and rivers",
+        "optionC": "Family, education, economy, religion, and government",
+        "optionD": "Only internet applications",
+        "correctAnswer": "C",
+        "explanation": "Social institutions include family, education, economy, religion, and government.",
+        "image": null
+      },
+      {
+        "id": 30,
+        "question": "A stable society usually maintains order through:",
+        "optionA": "Social control mechanisms and continuity of norms",
+        "optionB": "Elimination of all traditions",
+        "optionC": "Permanent state of conflict",
+        "optionD": "Complete rejection of law",
+        "correctAnswer": "A",
+        "explanation": "Stable societies maintain order through social control mechanisms and continuity of norms.",
+        "image": null
+      }
+    ]
+  }
+}

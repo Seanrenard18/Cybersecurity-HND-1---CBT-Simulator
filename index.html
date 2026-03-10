@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cybersecurity HND 1 - CBT Exam Simulator</title>
+    <title>CBT Exam Simulator</title>
     <style>
       * {
         margin: 0;
@@ -44,8 +44,10 @@
       }
 
       .logo {
-        font-size: 80px;
+        font-size: 56px;
         margin-bottom: 20px;
+        color: #2ecc71;
+        font-weight: 700;
       }
 
       h1 {
@@ -86,11 +88,11 @@
       }
 
       .features li:before {
-        content: "✓";
+        content: "OK";
         color: #2ecc71;
         font-weight: bold;
         margin-right: 12px;
-        font-size: 1.2rem;
+        font-size: 0.8rem;
       }
 
       .buttons {
@@ -217,74 +219,52 @@
   </head>
   <body>
     <div class="container">
-      <!-- Logo -->
-      <div class="logo">🛡️</div>
+      <div class="logo">CBT</div>
 
-      <!-- Title -->
-      <h1>Cybersecurity HND 1 - CBT Exam Simulator</h1>
-      <p class="subtitle">Department Exam Assessment Platform</p>
-      <p class="subtitle">By Otobo Solomon Destiny</p>
+      <h1>CBT Exam Simulator</h1>
+      <p class="subtitle">Course-Agnostic Examination Practice Platform</p>
 
-      <!-- Info Box -->
       <div class="info-box">
-        <h4>Welcome! 👋</h4>
+        <h4>Welcome</h4>
         <p>
-          Start your exam preparation with our comprehensive CBT simulator
-          featuring 40 questions, real-time tracking, and detailed performance
-          analysis.
+          Practice with timed, metadata-driven computer-based tests across
+          multiple departments and courses.
         </p>
       </div>
 
-      <!-- Quick Links -->
       <div class="quick-links">
-        <a href="QUICKSTART.md" class="quick-link">
-          <strong>🚀 Quick Start</strong>
-          <small>Get started in 3 steps</small>
-        </a>
         <a href="README.md" class="quick-link">
-          <strong>📖 Documentation</strong>
-          <small>Complete guide</small>
+          <strong>Documentation</strong>
+          <small>Setup and usage guide</small>
         </a>
       </div>
 
-      <!-- Features -->
       <div class="features">
-        <h3>✨ Key Features</h3>
-        <ul>  
-          <li>30 comprehensive exam questions</li>
-          <li>Real-time 30-minute countdown timer</li>
-          <li>Instant performance analysis</li>
-          <li>Detailed answer review with explanations</li>
-          <li>Auto-save functionality</li>
-          <li>Print/Download results</li>
-          <li>Clean, responsive design</li>
-
-          <li>
-            This CBT simulator is a paid study resource. If you found this
-            useful, please respect the effort behind it and do not redistribute.
-          </li>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Course metadata loaded from a shared catalog</li>
+          <li>Per-session randomized questions</li>
+          <li>Invisible session token assignment on login</li>
+          <li>Background auto-save of exam progress</li>
+          <li>Detailed performance review and result export</li>
+          <li>Responsive interface for desktop and mobile</li>
         </ul>
       </div>
 
-      <!-- Main Buttons -->
       <div class="buttons">
-        <a href="login.html" class="btn btn-primary"> 🎯 Start Exam Now </a>
-        <a href="exam.html" class="btn btn-secondary">
-          🔎 Go To Exam (Direct)
-        </a>
+        <a href="login.html" class="btn btn-primary">Start Exam</a>
+        <a href="exam.html" class="btn btn-secondary">Go To Exam</a>
       </div>
 
-      <!-- Footer -->
       <div class="footer">
         <p>
-          <strong>Exam Duration:</strong> 30 minutes |
-          <strong>Questions:</strong> 60 | <strong>Passing Score:</strong> 40%
+          <strong>Duration:</strong> Course-based |
+          <strong>Questions:</strong> Course-based |
+          <strong>Passing Score:</strong> 40%
         </p>
-        <p style="margin-top: 15px">
-          &copy; 2025 CBT Exam Simulator | All rights reserved
-        </p>
-        <p style="margin-top: 15px; font-size: 0.8rem;">
-          <a href="admin.html" style="color: #2ecc71; text-decoration: none;">Admin Panel</a>
+        <p style="margin-top: 15px">&copy; 2025 CBT Exam Simulator | All rights reserved</p>
+        <p style="margin-top: 15px; font-size: 0.8rem">
+          <a href="admin.html" style="color: #2ecc71; text-decoration: none">Admin Panel</a>
         </p>
       </div>
     </div>

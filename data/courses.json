@@ -1,0 +1,67 @@
+{
+  "courses": [
+    {
+      "courseCode": "CYS311",
+      "displayCode": "CYS 311",
+      "courseName": "Information Security & Policy Development",
+      "title": "CYS 311 - Information Security & Policy Development",
+      "department": "Cybersecurity HND 1",
+      "duration": 30,
+      "questionFile": "questions_CYS311.json"
+    },
+    {
+      "courseCode": "CYS312",
+      "displayCode": "CYS 312",
+      "courseName": "Operating System",
+      "title": "CYS 312 - Operating System",
+      "department": "Cybersecurity HND 1",
+      "duration": 30,
+      "questionFile": "questions_CYS312.json"
+    },
+    {
+      "courseCode": "CYS313",
+      "displayCode": "CYS 313",
+      "courseName": "Cyber Diplomacy, Policy and Law",
+      "title": "CYS 313 - Cyber Diplomacy, Policy and Law",
+      "department": "Cybersecurity HND 1",
+      "duration": 30,
+      "questionFile": "questions_CYS313.json"
+    },
+    {
+      "courseCode": "CYS314",
+      "displayCode": "CYS 314",
+      "courseName": "Mathematics For Cybersecurity",
+      "title": "CYS 314 - Mathematics For Cybersecurity",
+      "department": "Cybersecurity HND 1",
+      "duration": 30,
+      "questionFile": "questions_CYS314.json"
+    },
+    {
+      "courseCode": "GNS301",
+      "displayCode": "GNS 301",
+      "courseName": "Use of English",
+      "title": "GNS 301 - Use of English",
+      "department": "General Studies HND 1",
+      "duration": 30,
+      "questionFile": "questions_GNS301.json"
+    },
+    {
+      "courseCode": "NCC311",
+      "displayCode": "NCC 311",
+      "courseName": "Network Essentials",
+      "title": "NCC 311 - Network Essentials",
+      "department": "Cybersecurity HND 1",
+      "duration": 80,
+      "questionFile": "questions_NCC311.json"
+    },
+    {
+      "courseCode": "GNS312",
+      "displayCode": "GNS 312",
+      "courseName": "Moral Philosophy",
+      "title": "GNS 312 - Moral Philosophy",
+      "department": "General Studies",
+      "duration": 30,
+      "questionFile": "questions_GNS312.json"
+    }
+  ]
+}

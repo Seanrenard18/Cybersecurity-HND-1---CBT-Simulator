@@ -221,7 +221,20 @@ const AppUtils = {
   logout() {
     this.removeFromLocalStorage("userData");
     this.removeFromLocalStorage("examAnswers");
+    this.removeFromLocalStorage("examData");
     this.removeFromLocalStorage("examResults");
+
+    try {
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith("examState:")) {
+          localStorage.removeItem(key);
+        }
+      }
+    } catch (error) {
+      console.error("Error clearing exam session state:", error);
+    }
+
     window.location.href = "login.html";
   },
 

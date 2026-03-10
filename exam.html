@@ -3,34 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cybersecurity HND 1 - CBT Exam Simulator - Exam</title>
+    <title>CBT Exam Simulator - Exam</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Navigation Header -->
     <header class="navbar exam-navbar">
       <div class="navbar-container">
         <div class="logo">
-          <h1>🛡️ CBT Exam</h1>
+          <h1>CBT Exam</h1>
         </div>
         <div class="course-selector-container">
           <label for="courseSelector" class="course-label">Course:</label>
           <select id="courseSelector" class="course-selector">
             <option value="">-- Select Course --</option>
-            <option value="CYS311">CYS 311</option>
-            <option value="CYS312">CYS 312</option>
-            <option value="CYS313">CYS 313</option>
-            <option value="CYS314">CYS 314</option>
-            <option value="GNS301">GNS 301</option>
-            <option value="NCC311">NCC 311</option>
           </select>
         </div>
         <div class="exam-info">
           <div class="timer-display">
-            <span class="timer-icon">⏱️</span>
-            <span class="timer-text"
-              >Time: <strong id="timer">30:00</strong></span
-            >
+            <span class="timer-text">Time: <strong id="timer">30:00</strong></span>
           </div>
           <div class="subject-display">
             <span class="subject-text" id="courseCodeDisplay"></span>
@@ -42,15 +32,13 @@
             class="btn btn-exit btn-small"
             title="Exit exam"
           >
-            ⏻ Exit
+            Exit
           </button>
         </div>
       </div>
     </header>
 
-    <!-- Main Exam Container -->
     <main class="exam-container">
-      <!-- Left Sidebar - Question List -->
       <aside class="question-sidebar">
         <div class="sidebar-header">
           <h3>Questions</h3>
@@ -60,12 +48,10 @@
           </div>
         </div>
 
-        <!-- Question List -->
         <div class="question-list">
           <div id="questionListContainer"></div>
         </div>
 
-        <!-- Summary Stats -->
         <div class="sidebar-footer">
           <div class="stats">
             <div class="stat-item answered">
@@ -84,34 +70,31 @@
         </div>
       </aside>
 
-      <!-- Right Content Area - Question Display -->
       <section class="exam-content">
-        <!-- Current Question Display -->
         <div class="question-display">
           <div class="question-header">
             <h3 id="questionNumber">Question 1</h3>
           </div>
 
-          <!-- Question Text -->
           <div class="question-text">
             <p id="questionContent"></p>
+            <div id="questionImageContainer" style="display: none">
+              <img id="questionImage" alt="Question image" style="max-width: 100%; margin-top: 12px" />
+            </div>
           </div>
 
-          <!-- Options -->
           <div class="options-container">
             <div id="optionsContainer"></div>
           </div>
 
-          <!-- Question Navigation -->
           <div class="question-navigation">
             <button class="btn btn-secondary" id="prevBtn" disabled>
-              ← Previous
+              Previous
             </button>
-            <button class="btn btn-secondary" id="nextBtn">Next →</button>
+            <button class="btn btn-secondary" id="nextBtn">Next</button>
             <button class="btn btn-primary" id="submitBtn">Submit Exam</button>
           </div>
 
-          <!-- Explanation Box (Shown after submission) -->
           <div
             class="explanation-box"
             id="explanationBox"
@@ -124,7 +107,6 @@
       </section>
     </main>
 
-    <!-- Confirm Submit Modal -->
     <div class="modal" id="confirmModal">
       <div class="modal-content">
         <h3>Confirm Submission</h3>
@@ -136,7 +118,6 @@
       </div>
     </div>
 
-    <!-- Exit Exam Modal -->
     <div class="modal" id="exitModal">
       <div class="modal-content">
         <h3>Exit Exam?</h3>
@@ -148,10 +129,9 @@
       </div>
     </div>
 
-    <!-- Modal Backdrop -->
     <div class="modal-backdrop" id="modalBackdrop"></div>
 
-    <!-- JavaScript -->
+    <script src="js/course-config.js"></script>
     <script src="js/app.js"></script>
     <script src="js/exam.js"></script>
   </body>

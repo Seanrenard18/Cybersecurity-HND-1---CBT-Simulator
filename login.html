@@ -3,34 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cybersecurity HND 1 - CBT Exam Simulator - Login</title>
+    <title>CBT Exam Simulator - Login</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Navigation Header -->
     <header class="navbar">
       <div class="navbar-container">
         <div class="logo">
-          <h1>🛡️ Cybersecurity HND 1 - CBT Exam Simulator</h1>
+          <h1>CBT Exam Simulator</h1>
         </div>
       </div>
     </header>
 
-    <!-- Login Container -->
     <main class="login-container">
       <div class="login-wrapper">
         <div class="login-card">
-          <!-- Login Illustration -->
           <div class="login-illustration">
-            <div class="illustration-icon">👤</div>
+            <div class="illustration-icon">User</div>
           </div>
 
-          <!-- Login Form -->
           <h2>Welcome Back</h2>
           <p class="login-subtitle">Sign in to start your exam</p>
 
           <form id="loginForm" class="login-form">
-            <!-- Full Name Input -->
             <div class="form-group">
               <label for="fullName">Full Name</label>
               <input
@@ -42,7 +37,6 @@
               />
             </div>
 
-            <!-- Email Input -->
             <div class="form-group">
               <label for="email">Email Address</label>
               <input
@@ -54,91 +48,121 @@
               />
             </div>
 
-            <!-- Course Selection -->
             <div class="form-group">
               <label for="subject">Select Course</label>
               <select id="subject" name="subject" required>
                 <option value="">-- Choose a course --</option>
-                <option value="CYS311">
-                  CYS 311 - Information Security & Policy Development
-                </option>
-                <option value="CYS312">CYS 312 - Operating Systems</option>
-                <option value="CYS313">
-                  CYS 313 - Cyber Diplomacy & International Cooperation
-                </option>
-                <option value="CYS314">
-                  CYS 314 - Mathematics For Cybersecurity
-                </option>
-                <option value="GNS301">GNS 301 - Use Of English</option>
-                <option value="NCC311">NCC 311 - Network Essentials</option>
               </select>
             </div>
 
-            <!-- Submit Button -->
             <button type="submit" class="btn btn-primary btn-block">
               Proceed to Instructions
             </button>
           </form>
 
-          <!-- Info Section -->
           <div class="login-info">
             <p class="info-text">
-              <strong>ℹ️ Important:</strong> Please ensure you have a stable
-              internet connection before proceeding with the exam.
+              <strong>Important:</strong> Make sure your internet connection is
+              stable before proceeding.
             </p>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <p>&copy; 2025 CBT Exam Simulator | All rights reserved</p>
-      <p style="margin-top: 10px; font-size: 0.8rem;">
-        <a href="admin.html" style="color: #2ecc71; text-decoration: none;">Admin Panel</a>
+      <p style="margin-top: 10px; font-size: 0.8rem">
+        <a href="admin.html" style="color: #2ecc71; text-decoration: none"
+          >Admin Panel</a
+        >
       </p>
     </footer>
 
-    <!-- JavaScript -->
+    <script src="js/course-config.js"></script>
     <script src="js/app.js"></script>
     <script>
-      // Handle login form submission
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+      function createSessionToken() {
+        if (window.crypto && typeof window.crypto.randomUUID === "function") {
+          return window.crypto.randomUUID();
+        }
+        return AppUtils.generateId();
+      }
 
-          // Get form values
-          const fullName = document.getElementById("fullName").value.trim();
-          const email = document.getElementById("email").value.trim();
-          const subject = document.getElementById("subject").value;
-
-          // Basic validation
-          if (!fullName || !email || !subject) {
-            alert("Please fill in all required fields");
-            return;
-          }
-
-          // Validate email format
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            alert("Please enter a valid email address");
-            return;
-          }
-
-          // Store user data in localStorage
-          const userData = {
-            fullName,
-            email,
-            subject,
-            loginTime: new Date().toISOString(),
-          };
-
-          localStorage.setItem("userData", JSON.stringify(userData));
-
-          // Redirect to instructions page
-          window.location.href = "instructions.html";
+      async function initializeCourseSelect() {
+        const courseSelect = document.getElementById("subject");
+        await CourseConfig.populateSelect(courseSelect, {
+          placeholderText: "-- Choose a course --",
+          includePlaceholder: true,
         });
+      }
+
+      async function initLoginPage() {
+        try {
+          await initializeCourseSelect();
+        } catch (err) {
+          console.error("Unable to load course catalog:", err);
+          alert(
+            "Unable to load available courses. Please ensure the server is running."
+          );
+          return;
+        }
+
+        document
+          .getElementById("loginForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const selectedCode = document.getElementById("subject").value;
+
+            if (!fullName || !email || !selectedCode) {
+              alert("Please fill in all required fields");
+              return;
+            }
+
+            if (!AppUtils.validateEmail(email)) {
+              alert("Please enter a valid email address");
+              return;
+            }
+
+            const course = CourseConfig.getCourseByCode(selectedCode);
+            if (!course) {
+              alert("Selected course is invalid. Please choose again.");
+              return;
+            }
+
+            const userData = {
+              fullName,
+              email,
+              subject: course.courseCode,
+              courseCode: course.courseCode,
+              courseTitle: course.title || CourseConfig.buildCourseLabel(course),
+              courseName: course.courseName,
+              department: course.department || "",
+              duration: course.duration || 30,
+              sessionToken: createSessionToken(),
+              loginTime: new Date().toISOString(),
+            };
+
+            localStorage.setItem("userData", JSON.stringify(userData));
+            localStorage.removeItem("examAnswers");
+            localStorage.removeItem("examData");
+            localStorage.removeItem("examResults");
+
+            for (let i = localStorage.length - 1; i >= 0; i--) {
+              const key = localStorage.key(i);
+              if (key && key.startsWith("examState:")) {
+                localStorage.removeItem(key);
+              }
+            }
+
+            window.location.href = "instructions.html";
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", initLoginPage);
     </script>
   </body>
 </html>

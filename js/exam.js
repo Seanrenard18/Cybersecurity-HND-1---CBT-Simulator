@@ -1,310 +1,474 @@
 /* ========================================
    CBT EXAM SIMULATOR - EXAM PAGE JAVASCRIPT
-   Handles Exam Logic, Timer, Navigation & Submission
+   Handles course loading, exam flow, timer, and autosave
    ======================================== */
 
-/**
- * Main Exam Controller Object
- */
 const ExamController = {
-  // State variables
   examData: null,
   questions: [],
   currentQuestionIndex: 0,
-  answers: {}, // Object to store user answers
+  answers: {},
   examStartTime: null,
   timerInterval: null,
-  totalDuration: 1800, // 30 minutes in seconds (fixed)
+  autosaveInterval: null,
+  totalDuration: 1800,
   timeRemaining: 1800,
-  examStarted: false, // Track if exam has actually begun
+  examStarted: false,
   currentCourse: null,
-  isSwitching: false, // Prevent double course switches
-  isSubmitting: false, // Prevent double submissions
-  modalOpen: false, // Track if any modal is open
-  eventsBound: false, // Prevent duplicate listeners after course switch
+  isSwitching: false,
+  isSubmitting: false,
+  modalOpen: false,
+  eventsBound: false,
 
-  /**
-   * Normalize course values from UI/storage (e.g. "CYS 313" -> "CYS313")
-   * @param {string} rawCourse
-   * @returns {string}
-   */
   normalizeCourseCode(rawCourse) {
-    if (!rawCourse) return "";
-    return String(rawCourse).replace(/\s+/g, "").toUpperCase().trim();
+    if (typeof CourseConfig !== "undefined") {
+      return CourseConfig.normalizeCourseCode(rawCourse);
+    }
+    return String(rawCourse || "").replace(/\s+/g, "").toUpperCase().trim();
   },
 
-  /**
-   * Return a valid course code from a raw value or current selector
-   * @param {string} rawCourse
-   * @returns {string}
-   */
+  createSessionToken() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") {
+      return window.crypto.randomUUID();
+    }
+    return AppUtils.generateId();
+  },
+
+  ensureSessionToken(userData) {
+    if (!userData.sessionToken) {
+      userData.sessionToken = this.createSessionToken();
+      AppUtils.saveToLocalStorage("userData", userData);
+    }
+    return userData;
+  },
+
+  getSessionToken() {
+    const userData = AppUtils.getFromLocalStorage("userData", {});
+    return userData.sessionToken || "anonymous";
+  },
+
+  getExamStateKey(courseCode = this.currentCourse) {
+    const normalizedCourse = this.normalizeCourseCode(courseCode || "default");
+    return `examState:${this.getSessionToken()}:${normalizedCourse}`;
+  },
+
   resolveCourseCode(rawCourse) {
-    const allowedCourses = ["CYS311", "CYS312", "CYS313", "CYS314", "GNS301", "NCC311"];
     const normalized = this.normalizeCourseCode(rawCourse);
-    if (allowedCourses.includes(normalized)) return normalized;
+    if (CourseConfig.getCourseByCode(normalized)) {
+      return normalized;
+    }
 
     const selector = document.getElementById("courseSelector");
     const selected = selector ? this.normalizeCourseCode(selector.value) : "";
-    if (allowedCourses.includes(selected)) return selected;
+    if (CourseConfig.getCourseByCode(selected)) {
+      return selected;
+    }
 
-    return allowedCourses[0];
+    return CourseConfig.getDefaultCourseCode();
   },
 
-  /**
-   * Initialize the exam page
-   */
-  async init() {
-    console.log("Initializing exam...");
+  syncUserCourseMetadata(courseCode) {
+    const userData = AppUtils.getFromLocalStorage("userData", {});
+    const course = CourseConfig.getCourseByCode(courseCode);
+    if (!course) {
+      return;
+    }
 
-    // Check authentication
+    userData.subject = course.courseCode;
+    userData.courseCode = course.courseCode;
+    userData.courseName = course.courseName;
+    userData.courseTitle = course.title || CourseConfig.buildCourseLabel(course);
+    userData.department = course.department || "";
+    userData.duration = course.duration || 30;
+
+    AppUtils.saveToLocalStorage("userData", userData);
+  },
+
+  async populateCourseSelector() {
+    const selector = document.getElementById("courseSelector");
+    if (!selector) {
+      return;
+    }
+
+    await CourseConfig.populateSelect(selector, {
+      selectedCode: this.currentCourse,
+      placeholderText: "-- Select Course --",
+      includePlaceholder: true,
+    });
+
+    selector.value = this.currentCourse;
+  },
+
+  async init() {
     const userData = AppUtils.getFromLocalStorage("userData");
     if (!userData) {
       AppUtils.redirect("login.html");
       return;
     }
 
-    // Initialize with a normalized, valid course from userData or fallback
-    this.currentCourse = this.resolveCourseCode(
-      userData.subject || userData.courseCode,
-    );
-    userData.subject = this.currentCourse;
-    AppUtils.saveToLocalStorage("userData", userData);
-
-    // Show a minimal loading state
     this.showLoadingMessage("Loading exam questions...");
 
     try {
-      // Load exam data
-      await this.loadExamData(this.currentCourse);
+      await CourseConfig.loadCatalog();
 
-      // Initialize UI and restore previous answers if any
-      this.restoreAnswers();
+      if (CourseConfig.getCourses().length === 0) {
+        throw new Error("No courses found in course catalog.");
+      }
+
+      const enrichedUserData = this.ensureSessionToken(userData);
+      this.currentCourse = this.resolveCourseCode(
+        enrichedUserData.subject || enrichedUserData.courseCode,
+      );
+
+      this.syncUserCourseMetadata(this.currentCourse);
+      await this.populateCourseSelector();
+      await this.loadExamData(this.currentCourse);
+      this.restoreExamState();
       this.setupEventListeners();
       this.displayQuestionList();
       this.displayQuestion();
-
-      // Update timer display to 30:00 but DON'T start timer yet
-      this.totalDuration =
-        Number.isFinite(this.examData?.duration) && this.examData.duration > 0
-          ? this.examData.duration * 60
-          : 1800;
-      this.timeRemaining = this.totalDuration;
+      this.updateProgress();
       this.updateTimerDisplay();
+      this.startBackgroundAutosave();
 
-      console.log("Exam initialized successfully");
+      if (this.examStarted && this.timeRemaining > 0) {
+        this.startTimerInterval();
+      }
     } catch (err) {
       console.error("Failed to initialize exam:", err);
       this.showErrorMessage(
-        "Unable to load exam. Please ensure your Live Server is running and the selected course file exists.",
+        "Unable to load exam data. Ensure your server is running and question files exist.",
       );
     } finally {
       this.hideLoadingMessage();
     }
   },
 
-  /**
-   * Load exam questions from course-specific JSON file
-   * @param {string} courseCode - The course code (e.g., "CYS311")
-   */
+  async fetchCourseFile(fileName) {
+    const urls = [
+      new URL(`data/${fileName}`, window.location.href).href,
+      `data/${fileName}`,
+    ];
+
+    let response = null;
+    let lastError = null;
+
+    for (let i = 0; i < urls.length; i++) {
+      try {
+        response = await fetch(urls[i]);
+        if (response.ok) {
+          break;
+        }
+        lastError = new Error(`HTTP ${response.status} while loading ${urls[i]}`);
+      } catch (err) {
+        lastError = err;
+      }
+      response = null;
+    }
+
+    if (!response) {
+      throw new Error(
+        `Unable to fetch question file. ${lastError ? lastError.message : ""}`,
+      );
+    }
+
+    return response.json();
+  },
+
   async loadExamData(courseCode) {
     const resolvedCourseCode = this.resolveCourseCode(courseCode);
-    console.log("Loading exam data for course:", resolvedCourseCode);
+    const course = CourseConfig.getCourseByCode(resolvedCourseCode);
 
-    // Check if running on file:// protocol (not allowed for fetch)
-    if (location.protocol === "file:") {
-      throw new Error(
-        "Cannot load exam from file:// protocol. Please use a web server (Live Server). " +
-          "See TESTING_GUIDE.md for setup instructions.",
-      );
+    if (!course) {
+      throw new Error(`Course not found: ${resolvedCourseCode}`);
     }
 
-    // Build reliable absolute and relative paths
-    const fileName = `questions_${resolvedCourseCode}.json`;
-    const absoluteUrl = new URL(`data/${fileName}`, window.location.href).href;
-    const relativeUrl = `data/${fileName}`;
-    console.log("Trying to load from:", absoluteUrl);
+    const fileName = course.questionFile || `questions_${resolvedCourseCode}.json`;
+    const payload = await this.fetchCourseFile(fileName);
+    const exam = payload.exam || payload;
 
-    // Fallback: if above produces issues, try relative path
-    let response;
-    try {
-      response = await fetch(absoluteUrl);
+    const rawQuestions = Array.isArray(exam.questions)
+      ? exam.questions
+      : Array.isArray(payload.questions)
+        ? payload.questions
+        : Array.isArray(payload)
+          ? payload
+          : [];
 
-      if (!response.ok) {
-        // Try with relative path as fallback
-        console.log("Absolute path failed, trying relative path:", relativeUrl);
-        response = await fetch(relativeUrl);
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status} - ${response.statusText}`);
-        }
-      }
-    } catch (fetchErr) {
-      console.error("Fetch error for exam JSON:", fetchErr);
-      throw new Error("Failed to fetch question file. " + fetchErr.message);
+    if (!rawQuestions.length) {
+      throw new Error("No questions found for selected course.");
     }
 
-    // Parse JSON
-    let data;
-    try {
-      data = await response.json();
-      console.log("JSON parsed successfully");
-    } catch (parseErr) {
-      console.error("Failed to parse JSON:", parseErr);
-      throw new Error("Invalid JSON format in question file.");
+    const normalizedQuestions = rawQuestions
+      .map((question, index) => this.normalizeQuestion(question, index))
+      .filter((question) => question !== null);
+
+    if (!normalizedQuestions.length) {
+      throw new Error("Question data is invalid.");
     }
 
-    // Support both formats: { exam: { questions: [...] } } and { questions: [...] }
-    const examData = data.exam || data;
-    const extractedQuestions = Array.isArray(examData.questions)
-      ? examData.questions
-      : Array.isArray(data.questions)
-        ? data.questions
-        : Array.isArray(data)
-          ? data
-          : null;
+    const systemRules = {
+      randomizeQuestions: true,
+      assignSessionTokenOnLogin: true,
+      backgroundAutosave: true,
+      ...(exam.systemRules || {}),
+    };
 
-    // Validate structure
-    if (!examData || !Array.isArray(extractedQuestions)) {
-      throw new Error(
-        "Question file structure invalid: missing questions array.",
-      );
-    }
+    const shouldShuffle = systemRules.randomizeQuestions !== false;
+    const shuffleSeed = `${this.getSessionToken()}-${resolvedCourseCode}`;
 
-    // Validate questions array is not empty
-    if (!extractedQuestions || extractedQuestions.length === 0) {
-      throw new Error("No questions found in the selected course.");
-    }
+    this.questions = shouldShuffle
+      ? this.shuffleQuestions(normalizedQuestions, shuffleSeed)
+      : normalizedQuestions;
 
-    // Assign to controller state
-    this.examData = examData;
-    this.questions = extractedQuestions;
+    const duration =
+      Number.isFinite(Number(exam.duration)) && Number(exam.duration) > 0
+        ? Number(exam.duration)
+        : course.duration || 30;
 
-    // Auto-detect and set total questions count
     const totalQuestions = this.questions.length;
-    console.log(`Loaded ${totalQuestions} questions`);
 
-    // Validate we have questions
-    if (!this.questions || this.questions.length === 0) {
-      throw new Error("Failed to load questions properly.");
-    }
+    this.examData = {
+      ...exam,
+      courseCode: resolvedCourseCode,
+      courseName: exam.courseName || course.courseName,
+      title: exam.title || course.title || CourseConfig.buildCourseLabel(course),
+      department: exam.department || course.department || "",
+      duration,
+      totalQuestions,
+      passingScore:
+        Number.isFinite(Number(exam.passingScore)) && Number(exam.passingScore) > 0
+          ? Number(exam.passingScore)
+          : Math.ceil(totalQuestions * 0.4),
+      systemRules,
+    };
 
-    // Update UI with course info and question count
+    this.totalDuration = duration * 60;
+    this.timeRemaining = this.totalDuration;
+    this.currentQuestionIndex = 0;
+    this.answers = {};
+    this.examStarted = false;
+    this.examStartTime = null;
+
     const courseCodeDisplay = document.getElementById("courseCodeDisplay");
     if (courseCodeDisplay) {
-      courseCodeDisplay.textContent = examData.courseCode || resolvedCourseCode;
+      const displayCode = course.displayCode || CourseConfig.formatDisplayCode(course.courseCode);
+      courseCodeDisplay.textContent = `${displayCode} - ${this.examData.courseName}`;
     }
 
-    const totalQuestionsNum = document.getElementById("totalQuestionsNum");
-    if (totalQuestionsNum) {
-      totalQuestionsNum.textContent = totalQuestions;
+    const totalQuestionsElement = document.getElementById("totalQuestionsNum");
+    if (totalQuestionsElement) {
+      totalQuestionsElement.textContent = totalQuestions;
     }
   },
 
-  /**
-   * Setup event listeners for buttons
-   */
+  normalizeQuestion(rawQuestion, index) {
+    const questionText = String(rawQuestion.question || "").trim();
+    if (!questionText) {
+      return null;
+    }
+
+    const optionsFromArray = Array.isArray(rawQuestion.options)
+      ? rawQuestion.options
+      : [];
+
+    const optionsFromFields = [
+      rawQuestion.optionA,
+      rawQuestion.optionB,
+      rawQuestion.optionC,
+      rawQuestion.optionD,
+    ];
+
+    const optionSource = optionsFromArray.length > 0 ? optionsFromArray : optionsFromFields;
+
+    const options = optionSource
+      .map((option) => String(option || "").trim())
+      .filter((option) => option.length > 0);
+
+    if (options.length < 2) {
+      return null;
+    }
+
+    const correctAnswer = this.normalizeCorrectAnswer(rawQuestion.correctAnswer, options);
+
+    return {
+      id: Number.isFinite(Number(rawQuestion.id)) ? Number(rawQuestion.id) : index + 1,
+      question: questionText,
+      options,
+      correctAnswer,
+      explanation: String(rawQuestion.explanation || "No explanation provided."),
+      image: rawQuestion.image || null,
+    };
+  },
+
+  normalizeCorrectAnswer(rawAnswer, options) {
+    if (Number.isInteger(rawAnswer)) {
+      return rawAnswer >= 0 && rawAnswer < options.length ? rawAnswer : 0;
+    }
+
+    if (typeof rawAnswer === "number" && Number.isFinite(rawAnswer)) {
+      const parsed = Math.floor(rawAnswer);
+      return parsed >= 0 && parsed < options.length ? parsed : 0;
+    }
+
+    const normalized = String(rawAnswer || "").trim();
+    if (!normalized) {
+      return 0;
+    }
+
+    const upper = normalized.toUpperCase();
+    const letterMap = { A: 0, B: 1, C: 2, D: 3 };
+    if (Object.prototype.hasOwnProperty.call(letterMap, upper)) {
+      const mappedIndex = letterMap[upper];
+      return mappedIndex < options.length ? mappedIndex : 0;
+    }
+
+    const textIndex = options.findIndex(
+      (option) => option.toLowerCase() === normalized.toLowerCase(),
+    );
+
+    return textIndex >= 0 ? textIndex : 0;
+  },
+
+  hashString(input) {
+    let hash = 2166136261;
+    for (let i = 0; i < input.length; i++) {
+      hash ^= input.charCodeAt(i);
+      hash +=
+        (hash << 1) +
+        (hash << 4) +
+        (hash << 7) +
+        (hash << 8) +
+        (hash << 24);
+    }
+    return hash >>> 0;
+  },
+
+  seededRandom(seedValue) {
+    let seed = seedValue >>> 0;
+    return function random() {
+      seed |= 0;
+      seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  },
+
+  shuffleQuestions(questions, seedSource) {
+    const shuffled = questions.slice();
+    const random = this.seededRandom(this.hashString(seedSource || "default-seed"));
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled;
+  },
+
   setupEventListeners() {
     if (this.eventsBound) {
       return;
     }
 
-    // Navigation buttons
-    document
-      .getElementById("prevBtn")
-      .addEventListener("click", () => this.previousQuestion());
-    document
-      .getElementById("nextBtn")
-      .addEventListener("click", () => this.nextQuestion());
-    document
-      .getElementById("submitBtn")
-      .addEventListener("click", () => this.showSubmitConfirmation());
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      this.previousQuestion();
+    });
 
-    // Submit confirmation modal buttons
-    document
-      .getElementById("cancelBtn")
-      .addEventListener("click", () => this.closeModal("confirmModal"));
-    document
-      .getElementById("confirmBtn")
-      .addEventListener("click", () => this.submitExam());
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      this.nextQuestion();
+    });
 
-    // Exit confirmation modal buttons
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      this.showSubmitConfirmation();
+    });
+
+    document.getElementById("cancelBtn").addEventListener("click", () => {
+      this.closeModal("confirmModal");
+    });
+
+    document.getElementById("confirmBtn").addEventListener("click", () => {
+      this.submitExam();
+    });
+
     const exitCancelBtn = document.getElementById("exitCancelBtn");
     const exitConfirmBtn = document.getElementById("exitConfirmBtn");
-    if (exitCancelBtn) {
-      exitCancelBtn.addEventListener("click", () =>
-        this.closeModal("exitModal"),
-      );
-    }
-    if (exitConfirmBtn) {
-      exitConfirmBtn.addEventListener("click", () => this.confirmExit());
-    }
-
-    // Terminate/Exit button - show confirmation modal
     const terminateBtn = document.getElementById("terminateBtn");
-    if (terminateBtn) {
-      terminateBtn.addEventListener("click", () => this.showExitConfirmation());
+
+    if (exitCancelBtn) {
+      exitCancelBtn.addEventListener("click", () => {
+        this.closeModal("exitModal");
+      });
     }
 
-    // Course selector change
+    if (exitConfirmBtn) {
+      exitConfirmBtn.addEventListener("click", () => {
+        this.confirmExit();
+      });
+    }
+
+    if (terminateBtn) {
+      terminateBtn.addEventListener("click", () => {
+        this.showExitConfirmation();
+      });
+    }
+
     const courseSelector = document.getElementById("courseSelector");
     if (courseSelector) {
-      courseSelector.value = this.currentCourse; // Set to current course
-      courseSelector.addEventListener("change", (e) => {
-        if (e.target.value && e.target.value !== this.currentCourse) {
-          this.switchCourse(e.target.value);
+      courseSelector.addEventListener("change", (event) => {
+        const selected = this.normalizeCourseCode(event.target.value);
+        if (selected && selected !== this.currentCourse) {
+          this.switchCourse(selected);
         }
       });
     }
 
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        this.persistExamState();
+      }
+    });
+
+    window.addEventListener("pagehide", () => {
+      this.persistExamState();
+    });
+
     this.eventsBound = true;
   },
 
-  /**
-   * Switch to a different course - resets exam state
-   * @param {string} newCourse - The new course code
-   */
-  switchCourse(newCourse) {
+  async switchCourse(newCourse) {
     const resolvedNewCourse = this.resolveCourseCode(newCourse);
 
-    // Prevent double course switches
-    if (this.isSwitching) {
+    if (!resolvedNewCourse || resolvedNewCourse === this.currentCourse) {
       return;
     }
 
-    // Prevent switching while modal is open
-    if (this.modalOpen) {
+    if (this.isSwitching || this.modalOpen) {
       return;
     }
 
-    if (
-      !confirm("Switching courses will clear your current progress. Continue?")
-    ) {
-      // Reset the selector to current course
-      document.getElementById("courseSelector").value = this.currentCourse;
+    if (!confirm("Switching courses will clear your current progress. Continue?")) {
+      const selector = document.getElementById("courseSelector");
+      if (selector) {
+        selector.value = this.currentCourse;
+      }
       return;
     }
 
-    // Set switching flag to prevent double action
     this.isSwitching = true;
-    const courseSelector = document.getElementById("courseSelector");
-    if (courseSelector) {
-      courseSelector.disabled = true;
+    const selector = document.getElementById("courseSelector");
+
+    if (selector) {
+      selector.disabled = true;
     }
 
-    console.log(
-      "Switching course from",
-      this.currentCourse,
-      "to",
-      resolvedNewCourse,
-    );
+    this.stopTimer();
+    this.stopBackgroundAutosave();
+    this.clearSavedExamState(this.currentCourse);
+    this.clearSavedExamState(resolvedNewCourse);
+    this.clearLegacyExamData();
 
-    // Stop timer and clean up
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-      this.timerInterval = null;
-    }
-
-    // Reset exam state completely
     this.currentCourse = resolvedNewCourse;
     this.currentQuestionIndex = 0;
     this.answers = {};
@@ -312,50 +476,155 @@ const ExamController = {
     this.examStarted = false;
     this.timeRemaining = 1800;
 
-    // Clear localStorage exam data
-    AppUtils.removeFromLocalStorage("examAnswers");
-    AppUtils.removeFromLocalStorage("examData");
-
-    // Update userData with new course
-    const userData = AppUtils.getFromLocalStorage("userData", {});
-    userData.subject = resolvedNewCourse;
-    AppUtils.saveToLocalStorage("userData", userData);
-
-    // Show loading state
+    this.syncUserCourseMetadata(resolvedNewCourse);
     this.showLoadingMessage("Switching course...");
 
-    // Reload the exam with short delay to ensure clean state
-    setTimeout(() => {
-      this.isSwitching = false;
-      if (courseSelector) {
-        courseSelector.disabled = false;
+    try {
+      await this.init();
+    } catch (err) {
+      console.error("Error switching course:", err);
+      AppUtils.showNotification("Error switching course. Please refresh.", "error");
+    } finally {
+      if (selector) {
+        selector.disabled = false;
       }
-      this.init().catch((err) => {
-        console.error("Error switching courses:", err);
-        this.isSwitching = false;
-        if (courseSelector) {
-          courseSelector.disabled = false;
-        }
-        AppUtils.showNotification(
-          "Error switching courses. Please refresh.",
-          "error",
-        );
-      });
-    }, 300);
+      this.isSwitching = false;
+    }
   },
 
-  /**
-   * Display current question
-   */
+  clampQuestionIndex(value) {
+    if (!Number.isFinite(Number(value))) {
+      return 0;
+    }
+
+    const numeric = Math.floor(Number(value));
+    if (numeric < 0) {
+      return 0;
+    }
+
+    if (numeric >= this.questions.length) {
+      return this.questions.length - 1;
+    }
+
+    return numeric;
+  },
+
+  restoreExamState() {
+    const savedState = AppUtils.getFromLocalStorage(this.getExamStateKey(), null);
+
+    if (savedState && savedState.courseCode === this.currentCourse) {
+      this.answers =
+        savedState.answers && typeof savedState.answers === "object"
+          ? savedState.answers
+          : {};
+      this.currentQuestionIndex = this.clampQuestionIndex(savedState.currentQuestionIndex);
+      this.examStarted = Boolean(savedState.examStarted);
+
+      const savedTimeRemaining = Number(savedState.timeRemaining);
+      if (Number.isFinite(savedTimeRemaining)) {
+        this.timeRemaining = Math.max(
+          0,
+          Math.min(this.totalDuration, savedTimeRemaining),
+        );
+      } else {
+        this.timeRemaining = this.totalDuration;
+      }
+
+      this.examStartTime = savedState.examStartTime
+        ? new Date(savedState.examStartTime)
+        : null;
+
+      return;
+    }
+
+    const legacyAnswers = AppUtils.getFromLocalStorage("examAnswers", {});
+    const legacyExamData = AppUtils.getFromLocalStorage("examData", null);
+
+    if (legacyExamData && legacyExamData.course === this.currentCourse) {
+      this.answers = legacyAnswers && typeof legacyAnswers === "object" ? legacyAnswers : {};
+      this.examStartTime = legacyExamData.startTime
+        ? new Date(legacyExamData.startTime)
+        : null;
+      this.examStarted = Boolean(this.examStartTime);
+
+      if (this.examStartTime) {
+        const elapsed = Math.floor((Date.now() - this.examStartTime.getTime()) / 1000);
+        this.timeRemaining = Math.max(this.totalDuration - elapsed, 0);
+      }
+    } else {
+      this.answers = {};
+      this.examStartTime = null;
+      this.examStarted = false;
+      this.timeRemaining = this.totalDuration;
+    }
+
+    this.currentQuestionIndex = 0;
+  },
+
+  persistExamState() {
+    if (!this.currentCourse) {
+      return;
+    }
+
+    const state = {
+      courseCode: this.currentCourse,
+      currentQuestionIndex: this.currentQuestionIndex,
+      answers: this.answers,
+      examStarted: this.examStarted,
+      examStartTime: this.examStartTime ? this.examStartTime.toISOString() : null,
+      timeRemaining: this.timeRemaining,
+      lastSavedAt: new Date().toISOString(),
+    };
+
+    AppUtils.saveToLocalStorage(this.getExamStateKey(), state);
+    if (Object.keys(this.answers).length > 0) {
+      AppUtils.saveToLocalStorage("examAnswers", this.answers);
+    } else {
+      AppUtils.removeFromLocalStorage("examAnswers");
+    }
+
+    if (this.examStartTime) {
+      AppUtils.saveToLocalStorage("examData", {
+        startTime: this.examStartTime.toISOString(),
+        course: this.currentCourse,
+      });
+    }
+  },
+
+  startBackgroundAutosave() {
+    this.stopBackgroundAutosave();
+
+    this.autosaveInterval = setInterval(() => {
+      if (this.isSubmitting || this.isSwitching) {
+        return;
+      }
+      this.persistExamState();
+    }, 5000);
+  },
+
+  stopBackgroundAutosave() {
+    if (this.autosaveInterval) {
+      clearInterval(this.autosaveInterval);
+      this.autosaveInterval = null;
+    }
+  },
+
+  clearSavedExamState(courseCode = this.currentCourse) {
+    AppUtils.removeFromLocalStorage(this.getExamStateKey(courseCode));
+  },
+
+  clearLegacyExamData() {
+    AppUtils.removeFromLocalStorage("examAnswers");
+    AppUtils.removeFromLocalStorage("examData");
+  },
+
   displayQuestion() {
-    if (this.questions.length === 0) {
-      console.error("No questions loaded");
+    if (!this.questions.length) {
       return;
     }
 
     const question = this.questions[this.currentQuestionIndex];
 
-    // Update question number and text
     document.getElementById("questionNumber").textContent = `Question ${
       this.currentQuestionIndex + 1
     }`;
@@ -363,32 +632,35 @@ const ExamController = {
       this.currentQuestionIndex + 1;
     document.getElementById("questionContent").textContent = question.question;
 
-    // Display options
-    this.displayOptions(question);
+    const imageContainer = document.getElementById("questionImageContainer");
+    const imageElement = document.getElementById("questionImage");
 
-    // Update navigation buttons
+    if (imageContainer && imageElement) {
+      if (question.image) {
+        imageElement.src = question.image;
+        imageContainer.style.display = "block";
+      } else {
+        imageElement.removeAttribute("src");
+        imageContainer.style.display = "none";
+      }
+    }
+
+    this.displayOptions(question);
     this.updateNavigationButtons();
 
-    // Hide explanation box
     const explanationBox = document.getElementById("explanationBox");
-    if (explanationBox) explanationBox.style.display = "none";
+    if (explanationBox) {
+      explanationBox.style.display = "none";
+    }
 
-    // Highlight current question in sidebar
     this.highlightCurrentQuestion();
 
-    // Scroll to top
     const examContent = document.querySelector(".exam-content");
-    if (examContent) examContent.scrollTop = 0;
-
-    // Start timer if this is the first question being viewed
-    if (!this.examStarted && this.currentQuestionIndex === 0) {
-      // Timer will start when user selects their first answer
+    if (examContent) {
+      examContent.scrollTop = 0;
     }
   },
 
-  /**
-   * Display multiple choice options
-   */
   displayOptions(question) {
     const optionsContainer = document.getElementById("optionsContainer");
     optionsContainer.innerHTML = "";
@@ -397,24 +669,22 @@ const ExamController = {
       const optionDiv = document.createElement("div");
       optionDiv.className = "option";
 
-      // Check if this option was previously selected
-      const isSelected = this.answers[this.currentQuestionIndex] === index;
+      const isSelected = Number(this.answers[this.currentQuestionIndex]) === index;
       if (isSelected) {
         optionDiv.classList.add("selected");
       }
 
       optionDiv.innerHTML = `
-                <input 
-                    type="radio" 
-                    id="option${index}" 
-                    name="answer" 
-                    value="${index}"
-                    ${isSelected ? "checked" : ""}
-                >
-                <label for="option${index}" class="option-text">${option}</label>
-            `;
+        <input
+          type="radio"
+          id="option${index}"
+          name="answer"
+          value="${index}"
+          ${isSelected ? "checked" : ""}
+        >
+        <label for="option${index}" class="option-text">${option}</label>
+      `;
 
-      // Add click handler
       optionDiv.addEventListener("click", () => {
         this.selectAnswer(index);
       });
@@ -423,79 +693,64 @@ const ExamController = {
     });
   },
 
-  /**
-   * Handle answer selection - also starts the timer on first answer
-   */
   selectAnswer(optionIndex) {
-    // Start timer on first answer if not started
     if (!this.examStarted) {
       this.examStarted = true;
-      console.log("Exam started - timer beginning now");
-      this.startTimer();
+      if (!this.examStartTime) {
+        this.examStartTime = new Date();
+      }
+      this.startTimerInterval();
       AppUtils.showNotification(
-        "Exam timer started! 30 minutes.",
+        `Exam timer started. ${Math.floor(this.totalDuration / 60)} minutes available.`,
         "info",
-        3000,
       );
     }
 
-    // Save answer
     this.answers[this.currentQuestionIndex] = optionIndex;
-    AppUtils.saveToLocalStorage("examAnswers", this.answers);
+    this.persistExamState();
 
-    // Update UI
     document.querySelectorAll(".option").forEach((option) => {
       option.classList.remove("selected");
     });
-    document.querySelectorAll(".option")[optionIndex].classList.add("selected");
 
-    // Check the radio button
-    document.getElementById(`option${optionIndex}`).checked = true;
+    const selectedOption = document.querySelectorAll(".option")[optionIndex];
+    if (selectedOption) {
+      selectedOption.classList.add("selected");
+    }
 
-    // Update progress
+    const input = document.getElementById(`option${optionIndex}`);
+    if (input) {
+      input.checked = true;
+    }
+
     this.updateProgress();
     this.highlightCurrentQuestion();
-
-    console.log(
-      `Answer selected for question ${
-        this.currentQuestionIndex + 1
-      }: ${optionIndex}`,
-    );
   },
 
-  /**
-   * Navigate to next question
-   */
   nextQuestion() {
     if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex++;
       this.displayQuestion();
+      this.persistExamState();
     }
   },
 
-  /**
-   * Navigate to previous question
-   */
   previousQuestion() {
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
       this.displayQuestion();
+      this.persistExamState();
     }
   },
 
-  /**
-   * Jump to specific question
-   */
   jumpToQuestion(questionIndex) {
     if (questionIndex >= 0 && questionIndex < this.questions.length) {
       this.currentQuestionIndex = questionIndex;
       this.displayQuestion();
+      this.persistExamState();
     }
   },
 
-  /**
-   * Update navigation button states
-   */
   updateNavigationButtons() {
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
@@ -504,25 +759,20 @@ const ExamController = {
     nextBtn.disabled = this.currentQuestionIndex === this.questions.length - 1;
   },
 
-  /**
-   * Display question list in sidebar
-   */
   displayQuestionList() {
     const listContainer = document.getElementById("questionListContainer");
     listContainer.innerHTML = "";
 
-    this.questions.forEach((question, index) => {
+    this.questions.forEach((_, index) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "question-item";
       button.textContent = `Q${index + 1}`;
 
-      // Add answered class if question has an answer
       if (this.answers[index] !== undefined) {
         button.classList.add("answered");
       }
 
-      // Add active class for current question
       if (index === this.currentQuestionIndex) {
         button.classList.add("active");
       }
@@ -535,139 +785,129 @@ const ExamController = {
     });
   },
 
-  /**
-   * Highlight current question in sidebar
-   */
   highlightCurrentQuestion() {
     document.querySelectorAll(".question-item").forEach((item, index) => {
       item.classList.remove("active");
+
       if (index === this.currentQuestionIndex) {
         item.classList.add("active");
       }
 
-      // Update answered status
       if (this.answers[index] !== undefined) {
         item.classList.add("answered");
       }
     });
   },
 
-  /**
-   * Update progress count
-   */
   updateProgress() {
     const answeredCount = Object.keys(this.answers).length;
     const unansweredCount = this.questions.length - answeredCount;
+
     document.getElementById("answeredCount").textContent = answeredCount;
     document.getElementById("unansweredCount").textContent = unansweredCount;
   },
 
-  /**
-   * Start countdown timer (30 minutes fixed)
-   */
-  startTimer() {
-    this.examStartTime = new Date();
-    this.timeRemaining = 1800; // Always 30 minutes
-
-    // Save exam start time
-    AppUtils.saveToLocalStorage("examData", {
-      startTime: this.examStartTime.toISOString(),
-      course: this.currentCourse,
-    });
-
+  startTimerInterval() {
+    this.stopTimer();
     this.updateTimerDisplay();
 
     this.timerInterval = setInterval(() => {
-      this.timeRemaining--;
+      if (!this.examStarted) {
+        return;
+      }
+
+      this.timeRemaining -= 1;
       this.updateTimerDisplay();
 
-      // Auto-submit when time expires
       if (this.timeRemaining <= 0) {
-        clearInterval(this.timerInterval);
-        AppUtils.showNotification(
-          "Time is up! Auto-submitting exam...",
-          "warning",
-        );
-        setTimeout(() => this.submitExam(), 1500);
+        this.timeRemaining = 0;
+        this.updateTimerDisplay();
+        this.stopTimer();
+        this.persistExamState();
+        AppUtils.showNotification("Time is up. Auto-submitting exam...", "warning");
+        setTimeout(() => this.submitExam(), 1000);
+        return;
       }
 
-      // Warning at 5 minutes
       if (this.timeRemaining === 300) {
-        AppUtils.showNotification("⏰ 5 minutes remaining!", "warning");
+        AppUtils.showNotification("5 minutes remaining.", "warning");
       }
 
-      // Critical warning at 1 minute
       if (this.timeRemaining === 60) {
-        AppUtils.showNotification("🔴 1 minute remaining! Hurry up!", "error");
+        AppUtils.showNotification("1 minute remaining.", "error");
+      }
+
+      if (this.timeRemaining % 5 === 0) {
+        this.persistExamState();
       }
     }, 1000);
   },
 
-  /**
-   * Update timer display with color coding
-   */
-  updateTimerDisplay() {
-    const timerText = AppUtils.formatTime(this.timeRemaining);
-    document.getElementById("timer").textContent = timerText;
-
-    // Change color based on time remaining
-    const timerElement = document.querySelector(".timer-display");
-    if (timerElement) {
-      if (this.timeRemaining <= 60) {
-        timerElement.style.color = "#e74c3c"; // Red
-      } else if (this.timeRemaining <= 300) {
-        timerElement.style.color = "#f39c12"; // Orange
-      } else {
-        timerElement.style.color = "white"; // White
-      }
+  stopTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
     }
   },
 
-  /**
-   * Show a loading message
-   */
+  updateTimerDisplay() {
+    const timerText = AppUtils.formatTime(Math.max(0, this.timeRemaining));
+    const timerElement = document.getElementById("timer");
+    if (timerElement) {
+      timerElement.textContent = timerText;
+    }
+
+    const timerDisplay = document.querySelector(".timer-display");
+    if (!timerDisplay) {
+      return;
+    }
+
+    if (this.timeRemaining <= 60) {
+      timerDisplay.style.color = "#e74c3c";
+    } else if (this.timeRemaining <= 300) {
+      timerDisplay.style.color = "#f39c12";
+    } else {
+      timerDisplay.style.color = "white";
+    }
+  },
+
   showLoadingMessage(message) {
     let loader = document.getElementById("examLoader");
+
     if (!loader) {
       loader = document.createElement("div");
       loader.id = "examLoader";
       loader.className = "exam-loader";
-      const container =
-        document.querySelector(".exam-content") || document.body;
+      const container = document.querySelector(".exam-content") || document.body;
       container.prepend(loader);
     }
+
     loader.textContent = message || "Loading...";
     loader.style.display = "block";
   },
 
-  /**
-   * Hide loading message
-   */
   hideLoadingMessage() {
     const loader = document.getElementById("examLoader");
-    if (loader) loader.style.display = "none";
+    if (loader) {
+      loader.style.display = "none";
+    }
   },
 
-  /**
-   * Show error message
-   */
-  showErrorMessage(msg) {
+  showErrorMessage(message) {
     const content = document.querySelector(".exam-content");
     if (content) {
       content.innerHTML = `
         <div class="exam-error">
           <h3>Unable to load exam</h3>
-          <p>${msg}</p>
+          <p>${message}</p>
           <p>Please contact your administrator or try again later.</p>
-        </div>`;
+        </div>
+      `;
     } else {
-      alert(msg);
+      alert(message);
     }
   },
 
-  /**
-   * Show submit confirmation modal
-   */
   showSubmitConfirmation() {
     const answeredCount = Object.keys(this.answers).length;
     const unansweredCount = this.questions.length - answeredCount;
@@ -675,131 +915,86 @@ const ExamController = {
     let message = `You have answered ${answeredCount} out of ${this.questions.length} questions.`;
 
     if (unansweredCount > 0) {
-      message += `\n\n⚠️ ${unansweredCount} question(s) remain unanswered.`;
+      message += `\n\n${unansweredCount} question(s) remain unanswered.`;
       message += "\n\nAre you sure you want to submit?";
     } else {
-      message += "\n\n✓ All questions answered! Ready to submit?";
+      message += "\n\nAll questions answered. Ready to submit?";
     }
 
     document.getElementById("confirmMessage").textContent = message;
-    this.openModal();
+    this.openModal("confirmModal");
   },
 
-  /**
-   * Show exit confirmation modal with warning
-   */
   showExitConfirmation() {
     document.getElementById("exitMessage").textContent =
       "All your progress will be lost. Are you sure you want to exit?";
     this.openModal("exitModal");
   },
 
-  /**
-   * Confirm exit and return home
-   */
   confirmExit() {
-    // Stop timer
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-      this.timerInterval = null;
-    }
-
-    // Clear exam state
-    try {
-      AppUtils.removeFromLocalStorage("examAnswers");
-      AppUtils.removeFromLocalStorage("examData");
-      AppUtils.removeFromLocalStorage("examResults");
-    } catch (err) {
-      console.error("Error clearing exam state:", err);
-    }
+    this.stopTimer();
+    this.stopBackgroundAutosave();
+    this.clearSavedExamState(this.currentCourse);
+    this.clearLegacyExamData();
+    AppUtils.removeFromLocalStorage("examResults");
 
     this.closeModal("exitModal");
-    AppUtils.showNotification("Exiting exam...", "info", 1000);
+    AppUtils.showNotification("Exiting exam...", "info", 800);
+
     setTimeout(() => {
       window.location.href = "index.html";
-    }, 1000);
+    }, 800);
   },
 
-  /**
-   * Terminate the current exam and return home (legacy method)
-   */
   terminateCourse() {
-    const confirmTerminate = confirm(
-      "Are you sure you want to exit the exam? Your progress will be lost.",
-    );
-    if (!confirmTerminate) return;
-
-    // Stop timer
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-      this.timerInterval = null;
-    }
-
-    // Clear exam state
-    try {
-      AppUtils.removeFromLocalStorage("examAnswers");
-      AppUtils.removeFromLocalStorage("examData");
-      AppUtils.removeFromLocalStorage("examResults");
-    } catch (err) {
-      console.error("Error clearing exam state:", err);
-    }
-
-    AppUtils.showNotification("Exiting exam...", "info", 1000);
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 1000);
+    this.showExitConfirmation();
   },
 
-  /**
-   * Open confirmation modal - supports multiple modals
-   * @param {string} modalId - The ID of the modal to open (default: confirmModal)
-   */
   openModal(modalId = "confirmModal") {
     const modal = document.getElementById(modalId);
     const backdrop = document.getElementById("modalBackdrop");
+
     if (modal) {
       modal.classList.add("active");
     }
+
     if (backdrop) {
       backdrop.classList.add("active");
     }
+
     this.modalOpen = true;
   },
 
-  /**
-   * Close confirmation modal - supports multiple modals
-   * @param {string} modalId - The ID of the modal to close (default: confirmModal)
-   */
   closeModal(modalId = "confirmModal") {
     const modal = document.getElementById(modalId);
     const backdrop = document.getElementById("modalBackdrop");
+
     if (modal) {
       modal.classList.remove("active");
     }
+
     if (backdrop) {
       backdrop.classList.remove("active");
     }
+
     this.modalOpen = false;
   },
 
-  /**
-   * Submit exam and calculate results
-   */
   submitExam() {
-    console.log("Submitting exam...");
-
-    // Stop timer
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
+    if (this.isSubmitting) {
+      return;
     }
 
-    // Calculate results
+    this.isSubmitting = true;
+    this.stopTimer();
+    this.stopBackgroundAutosave();
+
     let correctCount = 0;
     const userAnswers = [];
 
     this.questions.forEach((question, index) => {
       const userAnswer = this.answers[index];
-      const isCorrect = userAnswer === question.correctAnswer;
+      const isCorrect = Number(userAnswer) === question.correctAnswer;
 
       if (isCorrect) {
         correctCount++;
@@ -810,124 +1005,70 @@ const ExamController = {
         question: question.question,
         userAnswerIndex: userAnswer,
         userAnswer:
-          userAnswer !== undefined
-            ? question.options[userAnswer]
-            : "Not answered",
+          userAnswer !== undefined ? question.options[userAnswer] : "Not answered",
         correctAnswerIndex: question.correctAnswer,
         correctAnswer: question.options[question.correctAnswer],
-        explanation: question.explanation,
+        explanation: question.explanation || "No explanation provided.",
         isCorrect,
       });
     });
 
-    // Calculate score
-    const scoreData = AppUtils.calculateScore(
-      correctCount,
-      this.questions.length,
-    );
-
-    // Prepare exam results
-    const userData = AppUtils.getFromLocalStorage("userData");
+    const scoreData = AppUtils.calculateScore(correctCount, this.questions.length);
+    const userData = AppUtils.getFromLocalStorage("userData", {});
     const examEndTime = new Date().toISOString();
-    const examStartData = AppUtils.getFromLocalStorage("examData");
+
+    const startTime = this.examStartTime
+      ? this.examStartTime.toISOString()
+      : AppUtils.getFromLocalStorage("examData", {}).startTime || examEndTime;
 
     const results = {
       userData,
       examData: {
-        course: this.currentCourse,
+        courseCode: this.currentCourse,
+        courseTitle: this.examData.title,
+        courseName: this.examData.courseName,
+        department: this.examData.department,
+        duration: this.examData.duration,
         correctCount,
         totalQuestions: this.questions.length,
         score: scoreData.percentage,
         passed: scoreData.passed,
         status: scoreData.status,
-        startTime: examStartData ? examStartData.startTime : examEndTime,
+        startTime,
         endTime: examEndTime,
-        timeTaken: examStartData
-          ? AppUtils.calculateDuration(examStartData.startTime, examEndTime)
-          : "00:00",
+        timeTaken: AppUtils.calculateDuration(startTime, examEndTime),
       },
       userAnswers,
       submitTime: examEndTime,
     };
 
-    // Save results
     AppUtils.saveToLocalStorage("examResults", results);
+    this.clearSavedExamState(this.currentCourse);
+    this.clearLegacyExamData();
 
-    // Clear exam data
-    AppUtils.removeFromLocalStorage("examAnswers");
-    AppUtils.removeFromLocalStorage("examData");
-
-    // Close modal and redirect
-    this.closeModal();
-    AppUtils.showNotification("Exam submitted successfully!", "success", 2000);
+    this.closeModal("confirmModal");
+    AppUtils.showNotification("Exam submitted successfully.", "success", 1200);
 
     setTimeout(() => {
       window.location.href = "results.html";
-    }, 2000);
-  },
-
-  /**
-   * Restore previously saved answers
-   */
-  restoreAnswers() {
-    const savedAnswers = AppUtils.getFromLocalStorage("examAnswers", {});
-    this.answers = savedAnswers;
-    console.log("Restored answers:", this.answers);
-    this.updateProgress();
+    }, 1200);
   },
 };
 
-/**
- * Initialize exam when DOM is ready
- */
-document.addEventListener("DOMContentLoaded", async function () {
-  try {
-    await ExamController.init();
-  } catch (err) {
-    console.error("Initialization error:", err);
-  }
+document.addEventListener("DOMContentLoaded", async () => {
+  await ExamController.init();
 });
 
-/**
- * Prevent accidental navigation away during exam
- */
-window.addEventListener("beforeunload", function (e) {
+window.addEventListener("beforeunload", (event) => {
   if (ExamController.examStarted && ExamController.timerInterval) {
-    e.preventDefault();
-    e.returnValue = "";
-    return "Are you sure? Your exam is in progress.";
+    ExamController.persistExamState();
+    event.preventDefault();
+    event.returnValue = "";
   }
 });
 
-// Cleanup on page unload to prevent memory leaks
 window.addEventListener("unload", () => {
-  // Clear timer
-  if (ExamController && ExamController.timerInterval) {
-    clearInterval(ExamController.timerInterval);
-    ExamController.timerInterval = null;
-  }
-
-  // Remove all event listeners by cloning elements
-  const buttons = document.querySelectorAll("button");
-  buttons.forEach((button) => {
-    const clone = button.cloneNode(true);
-    button.parentNode.replaceChild(clone, button);
-  });
-
-  // Clear local references
-  if (ExamController) {
-    ExamController.questions = [];
-    ExamController.answers = {};
-  }
-});
-
-// Additional cleanup on page visibility change
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden && ExamController && ExamController.timerInterval) {
-    // Page is hidden - timer continues to run (expected behavior)
-    console.log("Exam is running in background");
-  } else if (!document.hidden && ExamController && ExamController.examStarted) {
-    // Page is visible again - exam continues normally
-    console.log("Exam resumed from background");
-  }
+  ExamController.persistExamState();
+  ExamController.stopTimer();
+  ExamController.stopBackgroundAutosave();
 });

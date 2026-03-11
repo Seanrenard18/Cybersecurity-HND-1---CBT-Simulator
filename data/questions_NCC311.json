@@ -1,369 +1,343 @@
-}
-  {
+{
   "exam": {
-    "title": "CYS 311 - Information Security & Policy Development",
-    "courseCode": "CYS311",
-    "courseName": "Information Security & Policy Development",
+    "title": "NCC 311 - Network Essentials",
+    "courseCode": "NCC311",
+    "courseName": "Network Essentials",
     "department": "Cybersecurity HND 1",
     "duration": 30,
     "totalQuestions": 30,
     "passingScore": 20,
     "questions": [
       {
-  {
-    "question": "Why do organizations build computer networks?",
-    "options": {
-      "A": "To share resources and communicate efficiently",
-      "B": "To slow down data access",
-      "C": "To increase power consumption",
-      "D": "To isolate every user"
-    },
-    "correctAnswer": "A",
-    "explanation": "Networks let users share data, hardware, and services, improving collaboration and efficiency."
-  },
-  {
-    "question": "Which network type typically covers a single building or campus?",
-    "options": {
-      "A": "WAN",
-      "B": "MAN",
-      "C": "LAN",
-      "D": "PAN"
-    },
-    "correctAnswer": "C",
-    "explanation": "A Local Area Network (LAN) spans a small geographic area such as a building or campus."
-  },
-  {
-    "question": "Which topology connects all devices to a central switch or hub?",
-    "options": {
-      "A": "Bus",
-      "B": "Star",
-      "C": "Ring",
-      "D": "Mesh"
-    },
-    "correctAnswer": "B",
-    "explanation": "Star topology links each node to a central device, simplifying fault isolation."
-  },
-  {
-    "question": "Which device selects the best path to forward packets between networks?",
-    "options": {
-      "A": "Hub",
-      "B": "Switch",
-      "C": "Router",
-      "D": "Repeater"
-    },
-    "correctAnswer": "C",
-    "explanation": "Routers operate at the Network layer to route packets between different networks."
-  },
-  {
-    "question": "How many layers are in the OSI reference model?",
-    "options": {
-      "A": "4",
-      "B": "5",
-      "C": "6",
-      "D": "7"
-    },
-    "correctAnswer": "D",
-    "explanation": "The OSI model has 7 layers from Physical up to Application."
-  },
-  {
-    "question": "What is the main purpose of a subnet mask?",
-    "options": {
-      "A": "Encrypt traffic on a LAN",
-      "B": "Identify network and host portions of an IP address",
-      "C": "Convert domain names to IP addresses",
-      "D": "Assign default gateways"
-    },
-    "correctAnswer": "B",
-    "explanation": "Subnet masks separate the network bits from host bits in an IPv4 address."
-  },
-  {
-    "question": "How many bits are in an IPv6 address?",
-    "options": {
-      "A": "32",
-      "B": "64",
-      "C": "96",
-      "D": "128"
-    },
-    "correctAnswer": "D",
-    "explanation": "IPv6 uses 128-bit addresses, vastly expanding available address space."
-  },
-  {
-    "question": "Which address uniquely identifies a network interface at Layer 2?",
-    "options": {
-      "A": "IPv4 address",
-      "B": "IPv6 address",
-      "C": "MAC address",
-      "D": "Subnet mask"
-    },
-    "correctAnswer": "C",
-    "explanation": "MAC addresses are hardware identifiers burned into network interface cards."
-  },
-  {
-    "question": "What service does DHCP provide to network clients?",
-    "options": {
-      "A": "Web hosting",
-      "B": "Automatic IP configuration",
-      "C": "Email delivery",
-      "D": "File encryption"
-    },
-    "correctAnswer": "B",
-    "explanation": "DHCP dynamically assigns IP addresses and related settings to hosts."
-  },
-  {
-    "question": "Which protocol resolves domain names like example.com to IP addresses?",
-    "options": {
-      "A": "DNS",
-      "B": "ICMP",
-      "C": "SNMP",
-      "D": "SMTP"
-    },
-    "correctAnswer": "A",
-    "explanation": "DNS translates human-friendly domain names into numeric IP addresses."
-  },
-  {
-    "question": "During encapsulation, which header is added at the Data Link layer?",
-    "options": {
-      "A": "TCP/UDP ports",
-      "B": "IP source and destination",
-      "C": "Source and destination MAC addresses",
-      "D": "Application protocol ID"
-    },
-    "correctAnswer": "C",
-    "explanation": "Frames at Layer 2 contain MAC addresses to deliver data on the local link."
-  },
-  {
-    "question": "Which is a key benefit of wired Ethernet over Wi‑Fi?",
-    "options": {
-      "A": "Easier user mobility",
-      "B": "Less interference and steadier throughput",
-      "C": "No cabling required",
-      "D": "Unlimited distance without repeaters"
-    },
-    "correctAnswer": "B",
-    "explanation": "Wired links are more stable and less prone to interference than wireless links."
-  },
-  {
-    "question": "What is the maximum recommended length of a single Cat6 Ethernet run?",
-    "options": {
-      "A": "50 meters",
-      "B": "75 meters",
-      "C": "100 meters",
-      "D": "150 meters"
-    },
-    "correctAnswer": "C",
-    "explanation": "Standard twisted‑pair Ethernet segments are limited to about 100 meters."
-  },
-  {
-    "question": "Which Ethernet standard supports 1 Gbps over copper (RJ‑45)?",
-    "options": {
-      "A": "10BASE-T",
-      "B": "100BASE-TX",
-      "C": "1000BASE-T",
-      "D": "10GBASE-SR"
-    },
-    "correctAnswer": "C",
-    "explanation": "1000BASE‑T delivers 1 Gbps over Category 5e or better copper cabling."
-  },
-  {
-    "question": "Which Wi‑Fi standard is marketed as Wi‑Fi 6?",
-    "options": {
-      "A": "802.11n",
-      "B": "802.11ac",
-      "C": "802.11ax",
-      "D": "802.11b"
-    },
-    "correctAnswer": "C",
-    "explanation": "802.11ax (Wi‑Fi 6) improves efficiency and supports both 2.4 and 5 GHz bands."
-  },
-  {
-    "question": "What is the primary role of a Network Interface Card (NIC)?",
-    "options": {
-      "A": "Manage user accounts",
-      "B": "Provide the physical and logical link to the network",
-      "C": "Filter web content",
-      "D": "Act as a DHCP server"
-    },
-    "correctAnswer": "B",
-    "explanation": "A NIC connects a device to the network and handles frame transmission and reception."
-  },
-  {
-    "question": "A user tricked into revealing their password is an example of which threat?",
-    "options": {
-      "A": "Physical theft",
-      "B": "Hardware failure",
-      "C": "Social engineering",
-      "D": "Environmental hazard"
-    },
-    "correctAnswer": "C",
-    "explanation": "Phishing and similar tactics exploit human trust, making them social engineering threats."
-  },
-  {
-    "question": "What is the main function of a firewall?",
-    "options": {
-      "A": "Speed up CPUs",
-      "B": "Filter network traffic based on security rules",
-      "C": "Store backup data",
-      "D": "Provide Wi‑Fi access"
-    },
-    "correctAnswer": "B",
-    "explanation": "Firewalls enforce allow/deny policies on inbound and outbound traffic."
-  },
-  {
-    "question": "Which is the best example of two-factor authentication?",
-    "options": {
-      "A": "Password only",
-      "B": "PIN plus username",
-      "C": "Password plus one-time code from a phone",
-      "D": "Shared family account"
-    },
-    "correctAnswer": "C",
-    "explanation": "2FA combines something you know (password) with something you have (OTP device/phone)."
-  },
-  {
-    "question": "What security property does encryption primarily provide?",
-    "options": {
-      "A": "Confidentiality",
-      "B": "Availability",
-      "C": "Physical safety",
-      "D": "Redundancy"
-    },
-    "correctAnswer": "A",
-    "explanation": "Encryption protects data from unauthorized disclosure, ensuring confidentiality."
-  },
-  {
-    "question": "Which protocol secures web traffic by adding TLS to HTTP?",
-    "options": {
-      "A": "FTP",
-      "B": "HTTPS",
-      "C": "SMTP",
-      "D": "Telnet"
-    },
-    "correctAnswer": "B",
-    "explanation": "HTTPS uses TLS to encrypt and authenticate web sessions."
-  },
-  {
-    "question": "How does network segmentation improve security?",
-    "options": {
-      "A": "By enlarging broadcast domains",
-      "B": "By isolating traffic and limiting lateral movement",
-      "C": "By disabling encryption",
-      "D": "By increasing collision domains"
-    },
-    "correctAnswer": "B",
-    "explanation": "Segmentation, such as VLANs, contains threats and restricts access between segments."
-  },
-  {
-    "question": "What does the ping command help verify?",
-    "options": {
-      "A": "Cable pinouts",
-      "B": "Layer 1 power levels",
-      "C": "IP connectivity to a remote host",
-      "D": "CPU usage on a router"
-    },
-    "correctAnswer": "C",
-    "explanation": "Ping uses ICMP echo to confirm reachability and measure basic latency."
-  },
-  {
-    "question": "Which command on Windows displays current IP configuration?",
-    "options": {
-      "A": "netstat",
-      "B": "ipconfig",
-      "C": "nslookup",
-      "D": "tracert"
-    },
-    "correctAnswer": "B",
-    "explanation": "ipconfig shows IP address, subnet mask, and gateway for each interface."
-  },
-  {
-    "question": "Which tool lists active connections and listening ports?",
-    "options": {
-      "A": "netstat",
-      "B": "arp -a",
-      "C": "hostname",
-      "D": "route print"
-    },
-    "correctAnswer": "A",
-    "explanation": "netstat reports TCP/UDP sessions and sockets, useful for troubleshooting."
-  },
-  {
-    "question": "What is the primary use of nslookup?",
-    "options": {
-      "A": "Check VLAN assignments",
-      "B": "Query DNS records",
-      "C": "Capture packets",
-      "D": "Test cable length"
-    },
-    "correctAnswer": "B",
-    "explanation": "nslookup sends DNS queries to troubleshoot name resolution problems."
-  },
-  {
-    "question": "When configuring a new router, which security step should be done first?",
-    "options": {
-      "A": "Enable guest Wi‑Fi",
-      "B": "Leave default passwords",
-      "C": "Change the default administrator credentials",
-      "D": "Disable logging"
-    },
-    "correctAnswer": "C",
-    "explanation": "Changing default admin credentials prevents easy unauthorized access."
-  },
-  {
-    "question": "Which service commonly uses TCP port 80?",
-    "options": {
-      "A": "SMTP email transfer",
-      "B": "Web (HTTP)",
-      "C": "SSH remote login",
-      "D": "DNS queries"
-    },
-    "correctAnswer": "B",
-    "explanation": "HTTP web traffic typically listens on TCP port 80."
-  },
-  {
-    "question": "Which statement best describes cloud computing?",
-    "options": {
-      "A": "Fixed on-premises servers only",
-      "B": "On-demand, scalable resources delivered over the network",
-      "C": "Services limited to email hosting",
-      "D": "Requires buying hardware for every workload"
-    },
-    "correctAnswer": "B",
-    "explanation": "Cloud platforms provide elastic compute, storage, and services accessible via networks."
-  },
-  {
-    "question": "What is a primary benefit of QoS on a network?",
-    "options": {
-      "A": "Blocks all streaming traffic",
-      "B": "Prioritizes critical or real-time traffic",
-      "C": "Eliminates the need for switches",
-      "D": "Guarantees unlimited bandwidth"
-    },
-    "correctAnswer": "B",
-    "explanation": "Quality of Service marks and schedules traffic so important flows get preference."
-  },
-  {
-    "question": "Which protocol is commonly used for voice over IP (VoIP) call setup?",
-    "options": {
-      "A": "SMTP",
-      "B": "SIP",
-      "C": "IMAP",
-      "D": "POP3"
-    },
-    "correctAnswer": "B",
-    "explanation": "SIP establishes, modifies, and terminates VoIP sessions."
-  },
-  {
-    "question": "Which tool helps monitor device status and performance across a network?",
-    "options": {
-      "A": "SNMP-based network monitor",
-      "B": "Text editor",
-      "C": "Disk defragmenter",
-      "D": "Screen recorder"
-    },
-    "correctAnswer": "A",
-    "explanation": "SNMP queries counters and status from network devices for monitoring."
-  }
-
-     ]
+        "id": 1,
+        "question": "Why do organizations build computer networks?",
+        "optionA": "To share resources and communicate efficiently",
+        "optionB": "To slow down data access",
+        "optionC": "To increase power consumption",
+        "optionD": "To isolate every user",
+        "correctAnswer": "A",
+        "explanation": "Networks let users share data, hardware, and services, improving collaboration and efficiency.",
+        "image": null
+      },
+      {
+        "id": 2,
+        "question": "Which network type typically covers a single building or campus?",
+        "optionA": "WAN",
+        "optionB": "MAN",
+        "optionC": "LAN",
+        "optionD": "PAN",
+        "correctAnswer": "C",
+        "explanation": "A Local Area Network (LAN) spans a small geographic area such as a building or campus.",
+        "image": null
+      },
+      {
+        "id": 3,
+        "question": "Which topology connects all devices to a central switch or hub?",
+        "optionA": "Bus",
+        "optionB": "Star",
+        "optionC": "Ring",
+        "optionD": "Mesh",
+        "correctAnswer": "B",
+        "explanation": "Star topology links each node to a central device, simplifying fault isolation.",
+        "image": null
+      },
+      {
+        "id": 4,
+        "question": "Which device selects the best path to forward packets between networks?",
+        "optionA": "Hub",
+        "optionB": "Switch",
+        "optionC": "Router",
+        "optionD": "Repeater",
+        "correctAnswer": "C",
+        "explanation": "Routers operate at the Network layer to route packets between different networks.",
+        "image": null
+      },
+      {
+        "id": 5,
+        "question": "How many layers are in the OSI reference model?",
+        "optionA": "4",
+        "optionB": "5",
+        "optionC": "6",
+        "optionD": "7",
+        "correctAnswer": "D",
+        "explanation": "The OSI model has 7 layers from Physical up to Application.",
+        "image": null
+      },
+      {
+        "id": 6,
+        "question": "What is the main purpose of a subnet mask?",
+        "optionA": "Encrypt traffic on a LAN",
+        "optionB": "Identify network and host portions of an IP address",
+        "optionC": "Convert domain names to IP addresses",
+        "optionD": "Assign default gateways",
+        "correctAnswer": "B",
+        "explanation": "Subnet masks separate the network bits from host bits in an IPv4 address.",
+        "image": null
+      },
+      {
+        "id": 7,
+        "question": "How many bits are in an IPv6 address?",
+        "optionA": "32",
+        "optionB": "64",
+        "optionC": "96",
+        "optionD": "128",
+        "correctAnswer": "D",
+        "explanation": "IPv6 uses 128-bit addresses, vastly expanding available address space.",
+        "image": null
+      },
+      {
+        "id": 8,
+        "question": "Which address uniquely identifies a network interface at Layer 2?",
+        "optionA": "IPv4 address",
+        "optionB": "IPv6 address",
+        "optionC": "MAC address",
+        "optionD": "Subnet mask",
+        "correctAnswer": "C",
+        "explanation": "MAC addresses are hardware identifiers burned into network interface cards.",
+        "image": null
+      },
+      {
+        "id": 9,
+        "question": "What service does DHCP provide to network clients?",
+        "optionA": "Web hosting",
+        "optionB": "Automatic IP configuration",
+        "optionC": "Email delivery",
+        "optionD": "File encryption",
+        "correctAnswer": "B",
+        "explanation": "DHCP dynamically assigns IP addresses and related settings to hosts.",
+        "image": null
+      },
+      {
+        "id": 10,
+        "question": "Which protocol resolves domain names like example.com to IP addresses?",
+        "optionA": "DNS",
+        "optionB": "ICMP",
+        "optionC": "SNMP",
+        "optionD": "SMTP",
+        "correctAnswer": "A",
+        "explanation": "DNS translates human-friendly domain names into numeric IP addresses.",
+        "image": null
+      },
+      {
+        "id": 11,
+        "question": "During encapsulation, which header is added at the Data Link layer?",
+        "optionA": "TCP/UDP ports",
+        "optionB": "IP source and destination",
+        "optionC": "Source and destination MAC addresses",
+        "optionD": "Application protocol ID",
+        "correctAnswer": "C",
+        "explanation": "Frames at Layer 2 contain MAC addresses to deliver data on the local link.",
+        "image": null
+      },
+      {
+        "id": 12,
+        "question": "Which is a key benefit of wired Ethernet over Wi‑Fi?",
+        "optionA": "Easier user mobility",
+        "optionB": "Less interference and steadier throughput",
+        "optionC": "No cabling required",
+        "optionD": "Unlimited distance without repeaters",
+        "correctAnswer": "B",
+        "explanation": "Wired links are more stable and less prone to interference than wireless links.",
+        "image": null
+      },
+      {
+        "id": 13,
+        "question": "What is the maximum recommended length of a single Cat6 Ethernet run?",
+        "optionA": "50 meters",
+        "optionB": "75 meters",
+        "optionC": "100 meters",
+        "optionD": "150 meters",
+        "correctAnswer": "C",
+        "explanation": "Standard twisted‑pair Ethernet segments are limited to about 100 meters.",
+        "image": null
+      },
+      {
+        "id": 14,
+        "question": "Which Ethernet standard supports 1 Gbps over copper (RJ‑45)?",
+        "optionA": "10BASE-T",
+        "optionB": "100BASE-TX",
+        "optionC": "1000BASE-T",
+        "optionD": "10GBASE-SR",
+        "correctAnswer": "C",
+        "explanation": "1000BASE‑T delivers 1 Gbps over Category 5e or better copper cabling.",
+        "image": null
+      },
+      {
+        "id": 15,
+        "question": "Which wireless standard is marketed as Wi‑Fi 6?",
+        "optionA": "802.11n",
+        "optionB": "802.11ac",
+        "optionC": "802.11ax",
+        "optionD": "802.11b",
+        "correctAnswer": "C",
+        "explanation": "802.11ax (Wi‑Fi 6) improves efficiency and supports both 2.4 and 5 GHz bands.",
+        "image": null
+      },
+      {
+        "id": 16,
+        "question": "What is the primary role of a Network Interface Card (NIC)?",
+        "optionA": "Manage user accounts",
+        "optionB": "Provide the physical and logical link to the network",
+        "optionC": "Filter web content",
+        "optionD": "Act as a DHCP server",
+        "correctAnswer": "B",
+        "explanation": "A NIC connects a device to the network and handles frame transmission and reception.",
+        "image": null
+      },
+      {
+        "id": 17,
+        "question": "A user tricked into revealing their password is an example of which threat?",
+        "optionA": "Physical theft",
+        "optionB": "Hardware failure",
+        "optionC": "Social engineering",
+        "optionD": "Environmental hazard",
+        "correctAnswer": "C",
+        "explanation": "Phishing and similar tactics exploit human trust, making them social engineering threats.",
+        "image": null
+      },
+      {
+        "id": 18,
+        "question": "What is the main function of a firewall?",
+        "optionA": "Speed up CPUs",
+        "optionB": "Filter network traffic based on security rules",
+        "optionC": "Store backup data",
+        "optionD": "Provide Wi‑Fi access",
+        "correctAnswer": "B",
+        "explanation": "Firewalls enforce allow/deny policies on inbound and outbound traffic.",
+        "image": null
+      },
+      {
+        "id": 19,
+        "question": "Which is the best example of two-factor authentication?",
+        "optionA": "Password only",
+        "optionB": "PIN plus username",
+        "optionC": "Password plus one-time code from a phone",
+        "optionD": "Shared family account",
+        "correctAnswer": "C",
+        "explanation": "2FA combines something you know (password) with something you have (OTP device/phone).",
+        "image": null
+      },
+      {
+        "id": 20,
+        "question": "What security property does encryption primarily provide?",
+        "optionA": "Confidentiality",
+        "optionB": "Availability",
+        "optionC": "Physical safety",
+        "optionD": "Redundancy",
+        "correctAnswer": "A",
+        "explanation": "Encryption protects data from unauthorized disclosure, ensuring confidentiality.",
+        "image": null
+      },
+      {
+        "id": 21,
+        "question": "Which protocol secures web traffic by adding TLS to HTTP?",
+        "optionA": "FTP",
+        "optionB": "HTTPS",
+        "optionC": "SMTP",
+        "optionD": "Telnet",
+        "correctAnswer": "B",
+        "explanation": "HTTPS uses TLS to encrypt and authenticate web sessions.",
+        "image": null
+      },
+      {
+        "id": 22,
+        "question": "How does network segmentation improve security?",
+        "optionA": "By enlarging broadcast domains",
+        "optionB": "By isolating traffic and limiting lateral movement",
+        "optionC": "By disabling encryption",
+        "optionD": "By increasing collision domains",
+        "correctAnswer": "B",
+        "explanation": "Segmentation, such as VLANs, contains threats and restricts access between segments.",
+        "image": null
+      },
+      {
+        "id": 23,
+        "question": "What does the ping command help verify?",
+        "optionA": "Cable pinouts",
+        "optionB": "Layer 1 power levels",
+        "optionC": "IP connectivity to a remote host",
+        "optionD": "CPU usage on a router",
+        "correctAnswer": "C",
+        "explanation": "Ping uses ICMP echo to confirm reachability and measure basic latency.",
+        "image": null
+      },
+      {
+        "id": 24,
+        "question": "Which command on Windows displays current IP configuration?",
+        "optionA": "netstat",
+        "optionB": "ipconfig",
+        "optionC": "nslookup",
+        "optionD": "tracert",
+        "correctAnswer": "B",
+        "explanation": "ipconfig shows IP address, subnet mask, and gateway for each interface.",
+        "image": null
+      },
+      {
+        "id": 25,
+        "question": "Which tool lists active connections and listening ports?",
+        "optionA": "netstat",
+        "optionB": "arp -a",
+        "optionC": "hostname",
+        "optionD": "route print",
+        "correctAnswer": "A",
+        "explanation": "netstat reports TCP/UDP sessions and sockets, useful for troubleshooting.",
+        "image": null
+      },
+      {
+        "id": 26,
+        "question": "What is the primary use of nslookup?",
+        "optionA": "Check VLAN assignments",
+        "optionB": "Query DNS records",
+        "optionC": "Capture packets",
+        "optionD": "Test cable length",
+        "correctAnswer": "B",
+        "explanation": "nslookup sends DNS queries to troubleshoot name resolution problems.",
+        "image": null
+      },
+      {
+        "id": 27,
+        "question": "When configuring a new router, which security step should be done first?",
+        "optionA": "Enable guest Wi‑Fi",
+        "optionB": "Leave default passwords",
+        "optionC": "Change the default administrator credentials",
+        "optionD": "Disable logging",
+        "correctAnswer": "C",
+        "explanation": "Changing default admin credentials prevents easy unauthorized access.",
+        "image": null
+      },
+      {
+        "id": 28,
+        "question": "Which service commonly uses TCP port 80?",
+        "optionA": "SMTP email transfer",
+        "optionB": "Web (HTTP)",
+        "optionC": "SSH remote login",
+        "optionD": "DNS queries",
+        "correctAnswer": "B",
+        "explanation": "HTTP web traffic typically listens on TCP port 80.",
+        "image": null
+      },
+      {
+        "id": 29,
+        "question": "Which statement best describes cloud computing?",
+        "optionA": "Fixed on-premises servers only",
+        "optionB": "On-demand, scalable resources delivered over the network",
+        "optionC": "Services limited to email hosting",
+        "optionD": "Requires buying hardware for every workload",
+        "correctAnswer": "B",
+        "explanation": "Cloud platforms provide elastic compute, storage, and services accessible via networks.",
+        "image": null
+      },
+      {
+        "id": 30,
+        "question": "What is a primary benefit of QoS on a network?",
+        "optionA": "Blocks all streaming traffic",
+        "optionB": "Prioritizes critical or real-time traffic",
+        "optionC": "Eliminates the need for switches",
+        "optionD": "Guarantees unlimited bandwidth",
+        "correctAnswer": "B",
+        "explanation": "Quality of Service marks and schedules traffic so important flows get preference.",
+        "image": null
+      }
+    ]
   }
 }
-

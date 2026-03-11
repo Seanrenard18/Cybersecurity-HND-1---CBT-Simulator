@@ -1,4 +1,15 @@
-[
+}
+  {
+  "exam": {
+    "title": "CYS 311 - Information Security & Policy Development",
+    "courseCode": "CYS311",
+    "courseName": "Information Security & Policy Development",
+    "department": "Cybersecurity HND 1",
+    "duration": 30,
+    "totalQuestions": 30,
+    "passingScore": 20,
+    "questions": [
+      {
   {
     "question": "Why do organizations build computer networks?",
     "options": {
@@ -351,4 +362,8 @@
     "correctAnswer": "A",
     "explanation": "SNMP queries counters and status from network devices for monitoring."
   }
-]
+
+     ]
+  }
+}
+
